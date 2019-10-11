@@ -9,14 +9,21 @@ function [sta] = NYQ_init(par,sta)
 % of each parameter. Note that if you have multiple modes, then you can encode
 % multiple modes onto one 32-bit number
 
+FixP_out = {2,30,'s'}; % {I,F,'s'} where 's' is signed
+QType_out = 'WrpTrc'; % we wrap and truncate
+
 % length 16 coeff array:
-% sta.NYQ.coeff = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.8,0.7,0.6,0.5,0.4,0.3,0.2,0.1]; %filter coefficents
+% x = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.8,0.7,0.6,0.5,0.4,0.3,0.2,0.1]; %filter coefficents
 
 % length 24 coeff array:
-% sta.NYQ.coeff = [0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.5,0.6,0.7,0.8,0.9,0.9,0.8,0.7,0.6,0.5,0.4,0.35,0.3,0.25,0.2,0.15,0.1]; %filter coefficents
+% x = [0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.5,0.6,0.7,0.8,0.9,0.9,0.8,0.7,0.6,0.5,0.4,0.35,0.3,0.25,0.2,0.15,0.1]; %filter coefficents
 
-sta.NYQ.coeff = [0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45, 0.5, 0.55, 0.6,0.65, 0.7,0.75, 0.8,0.9,0.9,0.8,0.75,0.7,0.65,0.6,0.55,0.5,0.45,0.4,0.35,0.3,0.25,0.2,0.15,0.1]; %filter coefficents
-% sta.NYQ.coeff = fi(sta.NYQ.coeff, 1, 32, 24);
+% length 32 coeff array:
+x = [0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45, 0.5, 0.55, 0.6,0.65, 0.7,0.75, 0.8,0.9,0.9,0.8,0.75,0.7,0.65,0.6,0.55,0.5,0.45,0.4,0.35,0.3,0.25,0.2,0.15,0.1]; %filter coefficents
+
+for y = 1:length(x)
+    sta.NYQ.coeff(y) = RealRESIZE(x(y), FixP_out,QType_out);
+end
 
 sta.NYQ.cnt = 0; % set counter to zero
 sta.NYQ.old_output = 0; % old output
