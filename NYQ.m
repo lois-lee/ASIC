@@ -15,6 +15,10 @@ function [sta,out] = NYQ(par,sta,in)
 % in = fi(in, 1, 24, 23);
 
 
+FixP_out = {0,23,'s'}; % {I,F,'s'} where 's' is signed
+QType_out = 'WrpTrc'; % we wrap and truncate
+
+
 % add most recent input to buffer
 sta.NYQ.past = [in; sta.NYQ.past];    
 
@@ -42,6 +46,6 @@ if sta.NYQ.cnt>=par.GLO.osr
     sta.NYQ.new_output = 0;
 end
 
-out = sta.NYQ.old_output;
+out = RealRESIZE(sta.NYQ.old_output,FixP_out, QType_out);
 
 end
