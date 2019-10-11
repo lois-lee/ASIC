@@ -4,6 +4,17 @@
 % ===================================================================
 function [sta,out] = NYQ(par,sta,in)
 
+
+% Convert the key signal and parameter representations of your block in fixed-point
+% format. Quantize the sample inputs and outputs (if applicable) to 24-bit fixed-point
+% with format {0,23,’s’}, which enables us to cover a range [−1, 1); 24-bit is a common
+% standard for high-end audio equipment and we will be using this for each block that
+% processes samples
+
+% https://www.mathworks.com/help/fixedpoint/ref/embedded.fi.html#mw_7c8c4a58-2771-41b7-8652-be2bffec20f2
+% in = fi(in, 1, 24, 23);
+
+
 % add most recent input to buffer
 sta.NYQ.past = [in; sta.NYQ.past];    
 
