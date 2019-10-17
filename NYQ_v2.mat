@@ -42,6 +42,11 @@ if sta.NYQ.cnt_D >= par.GLO.osr
     % plus the values in the enable ffs    
     sta.NYQ.output_DP = sta.NYQ.accumulate_D(1) + sta.NYQ.temp_D(1);
 
+    % The enable ffs should hold the data from the multiplier before it 
+    for i=1:length(sta.NYQ.temp_D)
+        sta.NYQ.temp_D(i) = sta.NYQ.accumulate_D(i+1);
+    end
+    
     % Clear MAC flip flops
     for i=1:length(sta.NYQ.accumulate_D)
         sta.NYQ.accumulate_D(i) = 0;
@@ -52,8 +57,11 @@ end
 % Return the output
 out = sta.NYQ.output_DP;
 
+% Divide by 8=(2^3) to maintain the correct output range:
+out = out/8;
+
 % Resize the output
-% out = RealRESIZE(out, FixP_out,QType_out);
-out = RealRESIZE(out, {3,21,'s'}, QType_out);
+out = RealRESIZE(out, FixP_out,QType_out);
+% out = RealRESIZE(out, {3,21,'s'}, QType_out);
 
 end
