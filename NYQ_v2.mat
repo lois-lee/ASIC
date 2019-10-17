@@ -8,7 +8,7 @@ FixP_out = {0,23,'s'}; % {I,F,'s'} where 's' is signed
 QType_out = 'WrpTrc_NoWarn'; % we wrap and truncate
 
 % Resize the input
-% in = RealRESIZE(in, FixP_out,QType_out);
+in = RealRESIZE(in, FixP_out,QType_out);
 
 % For each input, we want to multiply x[n] in each of the multipliers by 
 % the coefficients that the counter is pointing to at that cycle.
@@ -28,6 +28,7 @@ if sta.NYQ.cnt_D >= par.GLO.osr
     
     % The filtered output is equivalent to the first multiplier value
     % plus the values in the enable ffs    
+    %     
     sta.NYQ.output_DP = sta.NYQ.accumulate_D(1) + sum(sta.NYQ.temp_D);
 
     % The enable ffs should hold the data from the multiplier before it 
@@ -47,5 +48,6 @@ out = sta.NYQ.output_DP;
 
 % Resize the output
 % out = RealRESIZE(out, FixP_out,QType_out);
+out = RealRESIZE(out, {3,21,'s'}, QType_out);
 
 end
