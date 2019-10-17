@@ -40,16 +40,16 @@ end
 
 
 % ACC: The number of multipliers = number of coefficients/oversampling ratio
-sta.NYQ.number_mult_D = length(sta.NYQ.coeff)/(par.GLO.osr);
+number_mult_D = length(sta.NYQ.coeff)/(par.GLO.osr);
 % Instantiate the accumulators for each multiplier
-sta.NYQ.accumulate_D = zeros(1,sta.NYQ.number_mult_D);
+sta.NYQ.accumulate_D = zeros(1,number_mult_D);
 
 % Instantiate the enable flip flops, note that the number of ffs here is 
 % the number of multipliers - 1, this is because we have ffs between each
 % multiplier and we do not need one from the first multiplier and the
 % output.
 
-sta.NYQ.temp_D = zeros(1,sta.NYQ.number_mult_D - 1);
+sta.NYQ.temp_D = zeros(1,number_mult_D - 1);
 
 
 
