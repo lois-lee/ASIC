@@ -70,8 +70,8 @@ sta.NYQ.output_DP = 0;      % old output
 
 % resize using RealRESIZE
 
-%sta.NYQ.cnt_D = RealRESIZE(sta.NYQ.cnt_D, FixP_out,QType_out);
-%sta.NYQ.output_DP = RealRESIZE(sta.NYQ.output_DP, FixP_out,QType_out);
+sta.NYQ.cnt_D = RealRESIZE(sta.NYQ.cnt_D, FixP_out,QType_out);
+sta.NYQ.output_DP = RealRESIZE(sta.NYQ.output_DP, FixP_out,QType_out);
 
 
 end
