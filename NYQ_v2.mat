@@ -26,10 +26,19 @@ if sta.NYQ.cnt_D >= par.GLO.osr
     % Reset the counter
     sta.NYQ.cnt_D = 0;
     
+    % Every time the counter overflows, each temp ff should take the value
+    % of the previous MAC block and temp ff before it.
+    for i=1:len(sta.NYQ.temp_D)
+        if i == len(sta.NYQ.temp_D)
+            sta.NYQ.temp_D(i) = sta.NYQ.accumulate_D(i+1);
+        else 
+            sta.NYQ.temp_D(i) = sta.NYQ.temp_D(i+1) + sta.NYQ.accumulate_D(i+1);
+        end 
+    end
+    
     % The filtered output is equivalent to the first multiplier value
     % plus the values in the enable ffs    
-    %     
-    sta.NYQ.output_DP = sta.NYQ.accumulate_D(1) + sum(sta.NYQ.temp_D);
+    sta.NYQ.output_DP = sta.NYQ.accumulate_D(1) + sta.NYQ.temp_D(1);
 
     % The enable ffs should hold the data from the multiplier before it 
     for i=1:length(sta.NYQ.temp_D)
