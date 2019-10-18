@@ -15,6 +15,9 @@ in = RealRESIZE(in, FixP_out,QType_out);
 for i=1:length(sta.NYQ.accumulate_D)
     sta.NYQ.accumulate_D(i) = sta.NYQ.accumulate_D(i) ...
         + sta.NYQ.coeff(par.GLO.osr * (i - 1) + sta.NYQ.cnt_D + 1) * in;
+    % real resize the accumulates
+    sta.NYQ.accumulate_D(i) = RealRESIZE(sta.NYQ.accumulate_D(i),...
+        {3,29,'s'},QType_out);
 end
 
 % Increment count to represent the counter increasing every clk cycle
@@ -32,16 +35,22 @@ if sta.NYQ.cnt_D >= par.GLO.osr
         % for the case of the last ff
         if i == length(sta.NYQ.temp_D)
             sta.NYQ.temp_D(i) = sta.NYQ.accumulate_D(i+1);
+            % real resize the temp ff
+            sta.NYQ.temp_D(i) = RealRESIZE(sta.NYQ.temp_D(i),...
+                {3,29,'s'},QType_out);
         % for literally every other ff
         else 
             sta.NYQ.temp_D(i) = sta.NYQ.temp_D(i+1) + sta.NYQ.accumulate_D(i+1);
+            % real resize the temp ff
+            sta.NYQ.temp_D(i) = RealRESIZE(sta.NYQ.temp_D(i),...
+                {3,29,'s'},QType_out);
         end 
     end
     
     % The filtered output is equivalent to the first multiplier value
     % plus the values in the enable ffs    
     sta.NYQ.output_DP = sta.NYQ.accumulate_D(1) + sta.NYQ.temp_D(1);
-    
+
     % Clear MAC flip flops
     for i=1:length(sta.NYQ.accumulate_D)
         sta.NYQ.accumulate_D(i) = 0;
@@ -56,7 +65,7 @@ out = sta.NYQ.output_DP;
 out = out/8;
 
 % Resize the output
-out = RealRESIZE(out, FixP_out,QType_out);
+out = RealRESIZE(out, FixP_out, QType_out);
 % out = RealRESIZE(out, {3,21,'s'}, QType_out);
 
 end
