@@ -17,6 +17,9 @@ QType_out = 'WrpTrc_NoWarn'; % we wrap and truncate
 FixP_ff = {0,32,'s'};
 QType_ff = 'WrpTrc_NoWarn';
 
+% it is not a valid output unless counter > OSR
+sta.NYQ.Valid_DO = 0;
+
 % Resize the input
 sta.NYQ.Sample_D = RealRESIZE(sta.AMP.Out_DO, FixP_out,QType_out);
 
@@ -69,15 +72,11 @@ if sta.NYQ.Cnt_D >= par.GLO.OSR_DI
     for i=1:length(sta.NYQ.accumulate_D)
         sta.NYQ.accumulate_D(i) = 0;
     end
+
+    % valid output
+    sta.NYQ.Valid_DO = 1;
     
 end
-
-% check whether there is a new sample at the output
-if sta.NYQ.Sample_D == sta.NYQ.Out_DO
-    sta.NYQ.Valid_DO = 0;
-else 
-    sta.NYQ.Valid_DO = 1;
-end 
 
 % Resize the output
 sta.NYQ.Out_DO = RealRESIZE(sta.NYQ.Out_DO, FixP_out, QType_out);
