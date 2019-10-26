@@ -41,6 +41,7 @@ sta.NYQ.Cnt_D = sta.NYQ.Cnt_D + 1;
 if sta.NYQ.Cnt_D >= par.GLO.OSR_DI
     
     % Reset the counter
+    % THIS SHOULD BE UNCOMMENTED IF YOU AREN'T CHECKING PERFORMANCE
     % sta.NYQ.Cnt_D = 0;
     
     % Every time the counter overflows, each temp ff should take the value
