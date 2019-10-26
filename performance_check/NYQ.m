@@ -9,8 +9,6 @@ function sta = NYQ(par,sta)
 % The output is sta.NYQ.Out_DO 
 % ===================================================================
 
-
-
 FixP_out = {0,23,'s'}; % {I,F,'s'} where 's' is signed
 QType_out = 'WrpTrc_NoWarn'; % we wrap and truncate
 
@@ -91,12 +89,18 @@ sta.NYQ.last_n = [sta.NYQ.Sample_D, sta.NYQ.last_n(1:end-1)];
 if sta.NYQ.Cnt_D >= par.GLO.OSR_DI
     % sum up the vector from the conv and square and put into the S matrix
     sta.NYQ.S =  [sta.NYQ.S, ...
-        sum(conv(sta.NYQ.last_n , sta.NYQ.coeff)).^2];
+        sum(filter(sta.NYQ.coeff, sta.NYQ.denom, sta.NYQ.last_n)).^2];
+    sta.NYQ.filt_out = [sta.NYQ.filt_out,...
+        sum(filter(sta.NYQ.coeff, sta.NYQ.denom, sta.NYQ.last_n))];
     % sum up the vector from the conv, subtract with the output we got and then 
     % square it and put in matrix
     sta.NYQ.performance_checker = [sta.NYQ.performance_checker, ...
-        (sta.NYQ.Out_DO - sum(conv(sta.NYQ.last_n , sta.NYQ.coeff))).^2];
+        (sta.NYQ.Out_DO - sum(filter(sta.NYQ.coeff, sta.NYQ.denom, sta.NYQ.last_n))).^2];
     sta.NYQ.Cnt_D = 0;
+    disp("conv");
+    disp(sum(filter(sta.NYQ.coeff, sta.NYQ.denom, sta.NYQ.last_n)));
+    disp("output");
+    disp(sta.NYQ.Out_DO);
 end
 end
  
