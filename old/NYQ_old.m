@@ -16,26 +16,37 @@ function [sta,out] = NYQ(par,sta,in)
 
 
 FixP_out = {0,23,'s'}; % {I,F,'s'} where 's' is signed
-QType_out = 'WrpTrc_NoWarn'; % we wrap and truncate
+QType_out = 'WrpTrc'; % we wrap and truncate
 
-sta.NYQ.a_D = sta.NYQ.a_D + sta.NYQ.coeff(sta.NYQ.cnt_D + 1) * in;
+in = RealRESIZE(in, FixP_out, QType_out);
 
-sta.NYQ.b_D = sta.NYQ.b_D + sta.NYQ.coeff(par.GLO.osr + sta.NYQ.cnt_D + 1) * in;
+% add most recent input to buffer
+sta.NYQ.past = [in; sta.NYQ.past];    
 
-%increment count
-sta.NYQ.cnt_D = sta.NYQ.cnt_D + 1;
-
-%only output every Kth value where K is the oversampling ratio
-if sta.NYQ.cnt_D>=par.GLO.osr
-    sta.NYQ.cnt_D = 0;
-    % output filtered sample
-    sta.NYQ.output_DP = sta.NYQ.a_D + sta.NYQ.temp_D;
-    %clear MAC flip flops
-    sta.NYQ.temp_D = sta.NYQ.b_D;
-    sta.NYQ.a_D = 0;
-    sta.NYQ.b_D = 0;
+%clip the last value in buffer when it gets full.
+if length(sta.NYQ.past) > length(sta.NYQ.coeff)
+    sta.NYQ.past(end) = [];
 end
 
-out = sta.NYQ.output_DP;
+n = length(sta.NYQ.coeff)/par.GLO.osr;
+
+for i = 1:n
+    a = sta.NYQ.coeff(i) * sta.NYQ.past(i);
+    sta.NYQ.new_output = sta.NYQ.new_output + a;
+end
+
+%increment count
+sta.NYQ.cnt = sta.NYQ.cnt + 1;
+
+%only output every Kth value where K is the oversampling ratio
+if sta.NYQ.cnt>=par.GLO.osr
+    sta.NYQ.cnt = 0;
+    % output filtered sample
+    sta.NYQ.old_output = sta.NYQ.new_output;
+    %clear new output
+    sta.NYQ.new_output = 0;
+end
+
+out = RealRESIZE(sta.NYQ.old_output, FixP_out, QType_out);
 
 end
