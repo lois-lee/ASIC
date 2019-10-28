@@ -1,0 +1,5 @@
+x
+-0.191275954246521
+
+
+{% comment %} NYQ_Out_DO {% endcomment %}

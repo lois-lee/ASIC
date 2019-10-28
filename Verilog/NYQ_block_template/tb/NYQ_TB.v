@@ -1,14 +1,14 @@
 /*
- * EXA_TB.v
- * EXA block testbench
+ * NYQ_TB.v
+ * NYQ block testbench
  *
- * Author: Oscar Castaneda
- * Last update: Oct 22, 2019
+ * 
+ * Last update: Oct 27, 2019
  */
  
 `timescale 1ns / 1ps
 
-module EXA_TB();
+module NYQ_TB();
 
  localparam CLK_PERIOD = 1.0; // Clock period in ns
  localparam IN_DELAY   = 0.2; // Delay after clock edge that testbench signals take to reach DUT pins 
@@ -35,11 +35,11 @@ module EXA_TB();
  reg                   WrEn_S;
  reg  [ADDR_WIDTH-1:0] Addr_D;
  reg  [MEM_WIDTH-1:0]  PAR_In_D;
- reg  [IN_WIDTH-1:0]   EXA_In_D;
- wire [OUT_WIDTH-1:0]  EXA_Out_D;
- reg  [OUT_WIDTH-1:0]  EXA_Out_DE;
+ reg  [IN_WIDTH-1:0]   NYQ_In_D;
+ wire [OUT_WIDTH-1:0]  NYQ_Out_D;
+ reg  [OUT_WIDTH-1:0]  NYQ_Out_DE;
  
- EXA #(
+ NYQ #(
    .ADDR_WIDTH( ADDR_WIDTH ),
    .MEM_WIDTH ( MEM_WIDTH  ),
    .IN_WIDTH  ( IN_WIDTH   ),
@@ -51,8 +51,8 @@ module EXA_TB();
    .WrEn_SI    ( WrEn_S    ),
    .Addr_DI    ( Addr_D    ),
    .PAR_In_DI  ( PAR_In_D  ),
-   .EXA_In_DI  ( EXA_In_D  ),
-   .EXA_Out_DO ( EXA_Out_D )
+   .NYQ_In_DI  ( NYQ_In_D  ),
+   .NYQ_Out_DO ( NYQ_Out_D )
  );
  
  //Clock generation
@@ -67,10 +67,10 @@ module EXA_TB();
    //Wait for the input delay
    #(IN_DELAY) begin end 
    //Prepare stimuli file
-   fileIn = $fopen("../tb/EXA_in.txt","r");
+   fileIn = $fopen("../tb/NYQ_in.txt","r");
    //Read file on a per cycle basis
    while(!$feof(fileIn)) begin
-     recIn = $fscanf(fileIn, "%d %d %d %d %d\n", Rst_RB, WrEn_S, Addr_D, PAR_In_D, EXA_In_D);
+     recIn = $fscanf(fileIn, "%d %d %d %d %d\n", Rst_RB, WrEn_S, Addr_D, PAR_In_D, NYQ_In_DI);
 	 #CLK_PERIOD begin end
    end
    //Close file
@@ -84,15 +84,15 @@ module EXA_TB();
    //Wait for the output delay
    #(OUT_DELAY) begin end 
    //Prepare expected output file
-   fileOut = $fopen("../tb/EXA_out.txt","r");
+   fileOut = $fopen("../tb/NYQ_out.txt","r");
    //Read file on a per cycle basis
    while(!$feof(fileOut)) begin
-     recOut = $fscanf(fileOut, "%d\n", EXA_Out_DE);
+     recOut = $fscanf(fileOut, "%d\n", NYQ_Out_DE);
      //For each signal, we compare the expected output with the one obtained
-     //EXA_Out_DO
-     if(&EXA_Out_DE !== 1'bX) begin
-       if(EXA_Out_D !== EXA_Out_DE) begin
-         $display("[", $time, "] EXA_Out_DO :: Value %d Expected %d",EXA_Out_D,EXA_Out_DE);
+     //NYQ_Out_DO
+     if(&NYQ_Out_DE !== 1'bX) begin
+       if(NYQ_Out_D !== NYQ_Out_DE) begin
+         $display("[", $time, "] NYQ_Out_DO :: Value %d Expected %d",NYQ_Out_D, NYQ_Out_DE);
          error = error + 1;
        end
      end
