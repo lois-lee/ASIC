@@ -2,21 +2,21 @@
 {\fonttbl\f0\fmodern\fcharset0 Courier;}
 {\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
 {\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
-\margl1440\margr1440\vieww28600\viewh17500\viewkind0
+\margl1440\margr1440\vieww28600\viewh17040\viewkind0
 \deftab720
 \pard\pardeftab720\sl280\partightenfactor0
 
 \f0\fs24 \cf2 \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 /* ================================================================================\
+/* ================================================================================\
 // Counter: Counter for NYQ Block\
 // Author: Tomi Kalejaiye\
 // Date: 10/25/2019\
 // Project: SynTech\
 // ---- Description ---------------------------------------------------------------\
-// A simple counter.\
+// A simple counter that goes from 0d to 7d then wraps around.\
 //\
 // ---- Input/Output specifications -----------------------------------------------\
-// Cnt_Out_DO	counter output [10bit]\
+// Cnt_Out_DO	counter output [3bit]\
 // ================================================================================ */\
 \
 module counter    (\
@@ -24,15 +24,15 @@ module counter    (\
 input                       Clk_CI,  // Clock signal\
 input                       Rst_RBI, // Asynchronous active low reset\
 \
-output \cf2 \outl0\strokewidth0 reg [9:0] Cnt_Out_DO // Counter value output\cf2 \outl0\strokewidth0 \strokec2 \
+output reg [3:0] Cnt_Out_DO // Counter value output\
 );\
 \
 //\'97-Logic\'97-\
-always @(\cf2 \outl0\strokewidth0 Clk_CI\cf2 \outl0\strokewidth0 \strokec2 )\
-if (\cf2 \outl0\strokewidth0 Rst_RBI\cf2 \outl0\strokewidth0 \strokec2 ) begin\
-  \cf2 \outl0\strokewidth0 Cnt_Out_DO\cf2 \outl0\strokewidth0 \strokec2  <= 9\'92b0 ;\
+always @(Clk_CI)\
+if (Rst_RBI) begin\
+  Cnt_Out_DO <= 3\'92b0 ;\
 end else begin\
-  \cf2 \outl0\strokewidth0 Cnt_Out_DO\cf2 \outl0\strokewidth0 \strokec2  <= \cf2 \outl0\strokewidth0 Cnt_Out_DO\cf2 \outl0\strokewidth0 \strokec2  + 1;\
+  Cnt_Out_DO <= Cnt_Out_DO + 1;\
 end\
 \
 endmodule \
