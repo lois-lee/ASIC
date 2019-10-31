@@ -37,7 +37,6 @@ module NYQ
   input	        [MEM_WIDTH-1:0]  PAR_In_DI,  // Parameter input (written from external interface)
 
   // ---- The following signals are NYQ block specific.
-  input                          LoadFlag_DI, //Flag that is high when we are loading coefficients
   input         [IN_WIDTH-1:0]   NYQ_In_DI,  // Input to the block (block can read from other block's output states)
   output signed [OUT_WIDTH-1:0]  NYQ_Out_DO,  // Output of the block (state). Use signed, whenever you are dealing with samples
   output                         NYQ_Valid_DO 
