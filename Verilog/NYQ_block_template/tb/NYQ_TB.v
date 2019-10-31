@@ -36,11 +36,12 @@ module NYQ_TB();
  reg                   Rst_RB;
  reg                   WrEn_S;
  reg  [ADDR_WIDTH-1:0] Addr_D;
-//  LOIS HERE THIS PARAM
+
  reg  [MEM_WIDTH-1:0]  PAR_In_D;
  reg  [IN_WIDTH-1:0]   NYQ_In_D;
  wire [OUT_WIDTH-1:0]  NYQ_Out_D;
  reg  [OUT_WIDTH-1:0]  NYQ_Out_DE;
+ 
  
  NYQ #(
    .ADDR_WIDTH( ADDR_WIDTH ),
@@ -73,9 +74,8 @@ module NYQ_TB();
    fileIn = $fopen("../tb/NYQ_in.txt","r");
    //Read file on a per cycle basis
    while(!$feof(fileIn)) begin
-    // LOIS HERE WE WANT PAR_IN_D the params so no need to read in
-    // recIn = $fscanf(fileIn, "%d %d %d %d %d\n", Rst_RB, WrEn_S, Addr_D, PAR_In_D, NYQ_In_DI);
-     recIn = $fscanf(fileIn, "%d %d %d %d\n", Rst_RB, WrEn_S, Addr_D, NYQ_In_DI);
+    recIn = $fscanf(fileIn, "%d %d %d %d %d\n", Rst_RB, WrEn_S, Addr_D, PAR_In_D, NYQ_In_DI);
+    
 	 #CLK_PERIOD begin end
    end
    //Close file
