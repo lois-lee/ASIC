@@ -10,6 +10,7 @@
 // ---- Input/Output specifications -----------------------------------------------
 // NYQ_In_DI	sample input 	[24bit]
 // NYQ_Out_DO	sample output 	[24bit]
+// NYQ_Valid_DO signal which is HIGH to indicate valid signal [1bit]
 // ================================================================================ */
 
 
@@ -19,11 +20,11 @@
 module NYQ
 #(
   // ---- The following parameters are the same for all blocks
-  parameter ADDR_WIDTH = 5,  // number of entries in the parameter memory is equal to 2^(ADDR_WIDTH)
+  parameter ADDR_WIDTH = 9,  // number of entries in the parameter memory is equal to 2^(ADDR_WIDTH)
   parameter MEM_WIDTH = 32,  // word length of each memory entry to store parameters
   // ---- the following parameters are NYQ block specific (you can add or remove inputs and outputs)
-  parameter FILT_WIDTH = 32, // width of full filter
-  parameter COEFF_WIDTH = 32, // width of each coefficient
+  //parameter FILT_WIDTH = 32, // width of full filter
+  //parameter COEFF_WIDTH = 32, // width of each coefficient
   parameter IN_WIDTH = 24,   // width of block inputs
   parameter OUT_WIDTH = 24   // width of block outputs
 )
@@ -36,8 +37,10 @@ module NYQ
   input	        [MEM_WIDTH-1:0]  PAR_In_DI,  // Parameter input (written from external interface)
 
   // ---- The following signals are NYQ block specific.
+  input                          LoadFlag_DI, //Flag that is high when we are loading coefficients
   input         [IN_WIDTH-1:0]   NYQ_In_DI,  // Input to the block (block can read from other block's output states)
-  output signed [OUT_WIDTH-1:0]  NYQ_Out_DO  // Output of the block (state). Use signed, whenever you are dealing with samples
+  output signed [OUT_WIDTH-1:0]  NYQ_Out_DO,  // Output of the block (state). Use signed, whenever you are dealing with samples
+  output                         NYQ_Valid_DO 
 );
 
 /* --------------------------------------------------------------------------------
@@ -58,7 +61,9 @@ reg [MEM_WIDTH-1:0] parameter_memory [0:MEM_DEPTH-1];
 
 // ---- NYQ block specific wires and registers
 
-reg [COEFF_WIDTH-1:0] NYQ_Filter_D [0:FILT_WIDTH-1];    // Filter stored in memory
+//reg [COEFF_WIDTH-1:0] NYQ_Filter_D [0:FILT_WIDTH-1];    // Filter stored in memory
+
+
 
 NYQ_En_D;
 NYQ_Clr_D;
@@ -106,6 +111,13 @@ counter
   .Cnt_Out_DO (NYQ_Cnt_D )  // Output of counter is connected to state register
 );
 
+//Set valid signal when counter wraps around back to 0.
+always @(NYQ_Cnt_D)
+begin
+  if ( NYQ_Cnt_D == 3'b000) begin
+    NYQ_Valid_DO = 0'b1;
+  end 
+end
 
 // 1st MAC module
 MAC #(
@@ -116,7 +128,7 @@ MAC_1
   .Clk_CI  ( Clk_CI       ),
   .Rst_RBI ( Rst_RBI     ),
   .Clr_SI ( NYQ_Clr_D         ),
-  .In0_DI ( NYQ_Filter_D[NYQ_Cnt_D] ), // Take the coefficient to be multiplied
+  .In0_DI ( parameter_memory[NYQ_Cnt_D] ), // Take the coefficient to be multiplied
   .In1_DI ( NYQ_In_DI            ), // Input signal
   .Out_DO ( NYQ_MACOut_D1              )  // Output of MAC is connected to state register
 );
@@ -144,7 +156,7 @@ MAC_2
   .Clk_CI  ( Clk_CI       ),
   .Rst_RBI ( Rst_RBI     ),
   .Clr_SI ( NYQ_Clr_D         ),
-  .In0_DI ( NYQ_Filter_D[NYQ_Cnt_D + 8] ), // Take the coefficient to be multiplied
+  .In0_DI ( parameter_memory[NYQ_Cnt_D + 8] ), // Take the coefficient to be multiplied
   .In1_DI ( NYQ_In_DI            ), // Input signal
   .Out_DO ( NYQ_MACOut_D2             )  // Output of MAC is connected to state register
 );
@@ -171,7 +183,7 @@ MAC_3
   .Clk_CI  ( Clk_CI       ),
   .Rst_RBI ( Rst_RBI     ),
   .Clr_SI ( NYQ_Clr_D         ),
-  .In0_DI ( NYQ_Filter_D[NYQ_Cnt_D + 16] ), // Take the coefficient to be multiplied
+  .In0_DI ( parameter_memory[NYQ_Cnt_D + 16] ), // Take the coefficient to be multiplied
   .In1_DI ( NYQ_In_DI            ), // Input signal
   .Out_DO ( NYQ_MACOut_D3              )  // Output of MAC is connected to state register
 );
@@ -199,12 +211,12 @@ MAC_4
   .Clk_CI  ( Clk_CI       ),
   .Rst_RBI ( Rst_RBI     ),
   .Clr_SI ( NYQ_Clr_D         ),
-  .In0_DI ( NYQ_Filter_D[NYQ_Cnt_D + 24] ), // Take the coefficient to be multiplied
+  .In0_DI ( parameter_memory[NYQ_Cnt_D + 24] ), // Take the coefficient to be multiplied
   .In1_DI ( NYQ_In_DI            ), // Input signal
   .Out_DO ( NYQ_MACOut_D4              )  // Output of MAC is connected to state register
 );
 
-// 4th temp flip flop
+// 4th temp flip flop (out flip flop)
 FF #(
   .DATA_WIDTH ( OUT_WIDTH )
 )
