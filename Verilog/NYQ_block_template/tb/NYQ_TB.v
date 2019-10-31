@@ -1,9 +1,9 @@
 /*
  * NYQ_TB.v
  * NYQ block testbench
- *
+ * Last modified by : Lois Lee
  * 
- * Last update: Oct 27, 2019
+ * Last update: Oct 30, 2019
  */
  
 `timescale 1ns / 1ps
@@ -17,6 +17,8 @@ module NYQ_TB();
  localparam MEM_WIDTH = 32;   // Number of bits for memory words
  localparam IN_WIDTH = 24;    // Number of bits for module inputs
  localparam OUT_WIDTH = 24;   // Number of bits for module outputs
+
+//  LOIS LOAD THE COEFF PARAMETERS
  
  localparam CLK_PERIOD_HALF = CLK_PERIOD/2; 
  
@@ -34,6 +36,7 @@ module NYQ_TB();
  reg                   Rst_RB;
  reg                   WrEn_S;
  reg  [ADDR_WIDTH-1:0] Addr_D;
+//  LOIS HERE THIS PARAM
  reg  [MEM_WIDTH-1:0]  PAR_In_D;
  reg  [IN_WIDTH-1:0]   NYQ_In_D;
  wire [OUT_WIDTH-1:0]  NYQ_Out_D;
@@ -70,7 +73,9 @@ module NYQ_TB();
    fileIn = $fopen("../tb/NYQ_in.txt","r");
    //Read file on a per cycle basis
    while(!$feof(fileIn)) begin
-     recIn = $fscanf(fileIn, "%d %d %d %d %d\n", Rst_RB, WrEn_S, Addr_D, PAR_In_D, NYQ_In_DI);
+    // LOIS HERE WE WANT PAR_IN_D the params so no need to read in
+    // recIn = $fscanf(fileIn, "%d %d %d %d %d\n", Rst_RB, WrEn_S, Addr_D, PAR_In_D, NYQ_In_DI);
+     recIn = $fscanf(fileIn, "%d %d %d %d\n", Rst_RB, WrEn_S, Addr_D, NYQ_In_DI);
 	 #CLK_PERIOD begin end
    end
    //Close file
