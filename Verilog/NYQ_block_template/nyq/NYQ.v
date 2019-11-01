@@ -1,7 +1,7 @@
 /* ================================================================================
 // NYQ: Nyquist filter block for ECE 5746 Applied Digital ASIC Design
 // Author: Tomi Kalejaiye
-// Date: 10/27/2019
+// Modified by lois on 11/01/2019
 // Project: SynTech
 // ---- Description ---------------------------------------------------------------
 // Please describe your block here:
@@ -108,12 +108,17 @@ counter counter_1
   .Cnt_Out_DO (NYQ_Cnt_D )  // Output of counter is connected to state register
 );
 
+initial begin
+  NYQ_Cnt_D = 1'b0;
+end
+
 //Set valid signal when counter wraps around back to 0.
 always @(NYQ_Cnt_D)
 begin
-  if ( NYQ_Cnt_D == 3'b111) begin
-  assign NYQ_Valid_DO = 0'b1;
-  end 
+  if ( NYQ_Cnt_D == 3'b111) 
+    NYQ_Valid_DO = 1'b1;
+  else 
+    NYQ_Valid_DO = 1'b0;
 end
 
 // 1st MAC module
