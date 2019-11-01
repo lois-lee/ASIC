@@ -19,7 +19,7 @@ module MUX2
 (
   input  [WIDTH-1:0] In0_DI,
   input  [WIDTH-1:0] In1_DI,
-  input              Selector_SI,
+  input              Sel_SI,
   output [WIDTH-1:0] Out_DO
 );
 
