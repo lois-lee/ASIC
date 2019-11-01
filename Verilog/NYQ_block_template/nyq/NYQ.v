@@ -113,7 +113,7 @@ counter
 //Set valid signal when counter wraps around back to 0.
 always @(NYQ_Cnt_D)
 begin
-  if ( NYQ_Cnt_D == 3'b0) begin
+  if ( NYQ_Cnt_D == 3'b111) begin
     NYQ_Valid_DO = 0'b1;
   end 
 end
