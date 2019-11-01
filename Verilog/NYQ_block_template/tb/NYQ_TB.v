@@ -74,7 +74,7 @@ module NYQ_TB();
    fileIn = $fopen("../tb/NYQ_in.txt","r");
    //Read file on a per cycle basis
    while(!$feof(fileIn)) begin
-    recIn = $fscanf(fileIn, "%d %d %d %d %d\n", Rst_RB, WrEn_S, Addr_D, PAR_In_D, NYQ_In_DI);
+    recIn = $fscanf(fileIn, "%d %d %d %d %d\n", Rst_RB, WrEn_S, Addr_D, PAR_In_D, NYQ_In_D);
     
 	 #CLK_PERIOD begin end
    end

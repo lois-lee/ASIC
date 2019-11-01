@@ -39,7 +39,7 @@ module NYQ
   // ---- The following signals are NYQ block specific.
   input         [IN_WIDTH-1:0]   NYQ_In_DI,  // Input to the block (block can read from other block's output states)
   output signed [OUT_WIDTH-1:0]  NYQ_Out_DO,  // Output of the block (state). Use signed, whenever you are dealing with samples
-  output                         NYQ_Valid_DO
+  output     reg                 NYQ_Valid_DO
 );
 
 /* --------------------------------------------------------------------------------
@@ -64,9 +64,7 @@ reg [MEM_WIDTH-1:0] parameter_memory [0:MEM_DEPTH-1];
 
 
 
-// NYQ_En_D;
-NYQ_Clr_D;
-NYQ_Cnt_D;
+wire [2:0] NYQ_Cnt_D;
 
 
 wire        [OUT_WIDTH-1:0]NYQ_MACOut_D1;    // Signal that holds output from MAC1 unit.
@@ -103,7 +101,7 @@ end                                        // end the memory control block
 
 
 //Counter module
-counter 
+counter counter_1
 (
   .Clk_CI  ( Clk_CI       ),
   .Rst_RBI ( Rst_RBI     ),
@@ -114,7 +112,7 @@ counter
 always @(NYQ_Cnt_D)
 begin
   if ( NYQ_Cnt_D == 3'b111) begin
-    NYQ_Valid_DO = 0'b1;
+  assign NYQ_Valid_DO = 0'b1;
   end 
 end
 
@@ -126,7 +124,7 @@ MAC_1
 (
   .Clk_CI  ( Clk_CI       ),
   .Rst_RBI ( Rst_RBI     ),
-  .Clr_SI ( NYQ_Clr_D      ),
+  .Clr_SI ( NYQ_Valid_DO      ),
   .WrEn_SI ( !WrEn_SI     ),
   .In0_DI ( parameter_memory[NYQ_Cnt_D] ), // Take the coefficient to be multiplied
   .In1_DI ( NYQ_In_DI            ), // Input signal
@@ -141,7 +139,7 @@ FF_1
 (
   .Clk_CI  ( Clk_CI       ),
   .Rst_RBI ( Rst_RBI      ),
-  .WrEn_SI ( NYQ_En_D        ),
+  .WrEn_SI ( NYQ_Valid_DO        ),
   .D_DI    ( NYQ_MACOut_D1 ),
   .Q_DO    ( NYQ_Temp_D1   )
 );
@@ -155,7 +153,7 @@ MAC_2
 (
   .Clk_CI  ( Clk_CI       ),
   .Rst_RBI ( Rst_RBI     ),
-  .Clr_SI ( NYQ_Clr_D         ),
+  .Clr_SI ( NYQ_Valid_DO         ),
   .WrEn_SI ( !WrEn_SI     ),
   .In0_DI ( parameter_memory[NYQ_Cnt_D + 8] ), // Take the coefficient to be multiplied
   .In1_DI ( NYQ_In_DI            ), // Input signal
@@ -170,7 +168,7 @@ FF_2
 (
   .Clk_CI  ( Clk_CI       ),
   .Rst_RBI ( Rst_RBI      ),
-  .WrEn_SI ( NYQ_En_D        ),
+  .WrEn_SI ( NYQ_Valid_DO       ),
   .D_DI    ( NYQ_MACOut_D2 + NYQ_Temp_D1 ),
   .Q_DO    ( NYQ_Temp_D2   )
 );
@@ -183,7 +181,7 @@ MAC_3
 (
   .Clk_CI  ( Clk_CI       ),
   .Rst_RBI ( Rst_RBI     ),
-  .Clr_SI ( NYQ_Clr_D         ),
+  .Clr_SI ( NYQ_Valid_DO         ),
   .WrEn_SI ( !WrEn_SI     ),
   .In0_DI ( parameter_memory[NYQ_Cnt_D + 16] ), // Take the coefficient to be multiplied
   .In1_DI ( NYQ_In_DI            ), // Input signal
@@ -198,7 +196,7 @@ FF_3
 (
   .Clk_CI  ( Clk_CI       ),
   .Rst_RBI ( Rst_RBI      ),
-  .WrEn_SI ( NYQ_En_D        ),
+  .WrEn_SI ( NYQ_Valid_DO        ),
   .D_DI    ( NYQ_MACOut_D3 + NYQ_Temp_D2 ),
   .Q_DO    ( NYQ_Temp_D3   )
 );
@@ -212,7 +210,7 @@ MAC_4
 (
   .Clk_CI  ( Clk_CI       ),
   .Rst_RBI ( Rst_RBI     ),
-  .Clr_SI ( NYQ_Clr_D         ),
+  .Clr_SI ( NYQ_Valid_DO         ),
   .WrEn_SI ( !WrEn_SI     ),
   .In0_DI ( parameter_memory[NYQ_Cnt_D + 24] ), // Take the coefficient to be multiplied
   .In1_DI ( NYQ_In_DI            ), // Input signal
@@ -227,7 +225,7 @@ FF_4
 (
   .Clk_CI  ( Clk_CI       ),
   .Rst_RBI ( Rst_RBI      ),
-  .WrEn_SI ( NYQ_En_D        ),
+  .WrEn_SI ( NYQ_Valid_DO        ),
   .D_DI    ( NYQ_MACOut_D4 + NYQ_Temp_D3 ),
   .Q_DO    ( NYQ_Out_DO   )
 );
