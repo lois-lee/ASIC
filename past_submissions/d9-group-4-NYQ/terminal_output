@@ -1,0 +1,1638 @@
+Last login: Fri Nov  1 11:53:46 on ttys000
+(base) dhcp-nyc-1525:~ lois$ cd documents/ASIC/ASIC/Verilog/NYQ_block_template/
+(base) dhcp-nyc-1525:NYQ_block_template lois$ sftp ll556@vip-brg.ece.cornell.edu
+ll556@vip-brg.ece.cornell.edu's password: 
+Connected to ll556@vip-brg.ece.cornell.edu.
+sftp> ls
+NYQ                       NYQ_block_template        a                         
+b                         nyq                       nyq_1                     
+synopsys_cache_M-2016.12  tutoial                   tutorial                  
+work                      
+sftp> mkdir c
+sftp> ls
+NYQ                       NYQ_block_template        a                         
+b                         c                         nyq                       
+nyq_1                     synopsys_cache_M-2016.12  tutoial                   
+tutorial                  work                      
+sftp> cd c
+sftp> put -r *
+Uploading ece5746-syn.zip to /home/ece5746/ll556/c/ece5746-syn.zip
+ece5746-syn.zip                               100% 2115   263.4KB/s   00:00    
+Uploading modelsim/ to /home/ece5746/ll556/c/modelsim
+Entering modelsim/
+modelsim/wave.do                              100%  878   132.5KB/s   00:00    
+modelsim/transcript                           100% 5984   967.5KB/s   00:00    
+Entering modelsim/work
+modelsim/work/_lib.qdb                        100%   48KB   2.3MB/s   00:00    
+modelsim/work/_vmake                          100%   29     5.1KB/s   00:00    
+modelsim/work/_lib1_0.qtl                     100%  107KB   4.8MB/s   00:00    
+modelsim/work/_lib1_0.qdb                     100%   32KB   4.0MB/s   00:00    
+modelsim/work/_info                           100% 1439   397.4KB/s   00:00    
+modelsim/work/_lib1_0.qpg                     100%  112KB   5.4MB/s   00:00    
+modelsim/vsim.wlf                             100% 1168KB  14.6MB/s   00:00    
+Uploading nyq/ to /home/ece5746/ll556/c/nyq
+Entering nyq/
+nyq/FF.v                                      100% 1161   214.4KB/s   00:00    
+nyq/MAC.v                                     100%  466    84.3KB/s   00:00    
+nyq/NYQ.v                                     100% 8571     1.2MB/s   00:00    
+nyq/MUX2.v                                    100%  840   157.0KB/s   00:00    
+nyq/counter.v                                 100%  891   156.1KB/s   00:00    
+Uploading syn/ to /home/ece5746/ll556/c/syn
+Entering syn/
+syn/.synopsys_dc.setup                        100%   28     3.7KB/s   00:00    
+syn/synopsys_dc.setup                         100%   28     4.3KB/s   00:00    
+Entering syn/scripts
+syn/scripts/syn_setup.tcl                     100% 3670   834.1KB/s   00:00    
+Entering syn/outputs
+Entering syn/reports
+Uploading tb/ to /home/ece5746/ll556/c/tb
+Entering tb/
+tb/NYQ_in.txt                                 100%   25KB   3.6MB/s   00:00    
+tb/transcript                                 100%  313    54.0KB/s   00:00    
+tb/NYQ_out.txt                                100%   15KB   2.5MB/s   00:00    
+tb/NYQ_TB.v                                   100% 2992   777.1KB/s   00:00    
+tb/asic.py                                    100%   49KB   3.4MB/s   00:00    
+Uploading transcript to /home/ece5746/ll556/c/transcript
+transcript                                    100%   23     4.1KB/s   00:00    
+sftp> ls
+ece5746-syn.zip     modelsim            nyq                 syn                 
+tb                  transcript          
+sftp> ^Z
+[1]+  Stopped                 sftp ll556@vip-brg.ece.cornell.edu
+(base) dhcp-nyc-1525:NYQ_block_template lois$ ssh -Y ll556@vip-brg.ece.cornell.edu
+ll556@vip-brg.ece.cornell.edu's password: 
+Last login: Fri Nov  1 11:55:42 2019 from dhcp-nyc-1525.redrover.cornell.edu
+ModuleCmd_Load.c(213):ERROR:105: Unable to locate a modulefile for 'synopsys-dc-2016'
+[ll556@vip-brg ~]$ cd c
+[ll556@vip-brg c]$ cd syn
+[ll556@vip-brg syn]$ module load synopsys-dc-2016.12
+[ll556@vip-brg syn]$ dc_shell-xg-t -output_log_file dc_syn.log
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+                 Version M-2016.12 for linux64 - Nov 21, 2016 
+
+                    Copyright (c) 1988 - 2016 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+Initializing...
+dc_shell> analyze -library work -format verilog ../nyq/NYQ.v
+Running PRESTO HDLC
+Compiling source file ../nyq/NYQ.v
+Warning:  ../nyq/NYQ.v:111: The statements in initial blocks are ignored. (VER-281)
+Presto compilation completed successfully.
+Loading db file '/work/global/brg/install/adk-pkgs/saed-90nm/pkgs/SAED_EDK90nm_01252011/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models/saed90nm_typ.db'
+Loading db file '/opt/synopsys/M-2016.12/synopsys-dc-M-2016.12/libraries/syn/dw_foundation.sldb'
+Loading db file '/opt/synopsys/M-2016.12/synopsys-dc-M-2016.12/libraries/syn/dft_jtag.sldb'
+Loading db file '/opt/synopsys/M-2016.12/synopsys-dc-M-2016.12/libraries/syn/dft_lbist.sldb'
+Loading db file '/opt/synopsys/M-2016.12/synopsys-dc-M-2016.12/libraries/syn/dft_mbist.sldb'
+Loading db file '/opt/synopsys/M-2016.12/synopsys-dc-M-2016.12/libraries/syn/standard.sldb'
+1
+dc_shell> analyze -library work -format verilog ../nyq/FF.v
+Running PRESTO HDLC
+Compiling source file ../nyq/FF.v
+Presto compilation completed successfully.
+1
+dc_shell> analyze -library work -format verilog ../nyq/MAC.v
+Running PRESTO HDLC
+Compiling source file ../nyq/MAC.v
+Warning:  ../nyq/MAC.v:22: the undeclared symbol 'Out_D0' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ../nyq/MAC.v:22: the undeclared symbol 'In0_D1' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ../nyq/MAC.v:22: the undeclared symbol 'In1_D1' assumed to have the default net type, which is 'wire'. (VER-936)
+
+Presto compilation completed successfully.
+1
+dc_shell> 
+dc_shell> analyze -library work -format verilog ../nyq/counter.v
+Running PRESTO HDLC
+Compiling source file ../nyq/counter.v
+Presto compilation completed successfully.
+1
+dc_shell> elaborate NYQ -library work
+Loading db file '/opt/synopsys/M-2016.12/synopsys-dc-M-2016.12/libraries/syn/gtech.db'
+  Loading link library 'saed90nm_typ'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+
+Inferred memory devices in process
+	in routine NYQ line 85 in file
+		'../nyq/NYQ.v'.
+================================================================================
+|    Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+================================================================================
+| parameter_memory_reg | Flip-flop | 16384 |  Y  | N  | Y  | N  | N  | N  | N  |
+================================================================================
+Statistics for MUX_OPs
+======================================================
+| block name/line  | Inputs | Outputs | # sel inputs |
+======================================================
+|     NYQ/129      |  512   |   32    |      9       |
+======================================================
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'NYQ'.
+Information: Building the design 'counter'. (HDL-193)
+
+Inferred memory devices in process
+	in routine counter line 22 in file
+		'../nyq/counter.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   Cnt_Out_DO_reg    | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Error: Width mismatch on port 'Cnt_Out_DO' of reference to 'counter' in 'NYQ'. (LINK-3)
+Information: Building the design 'MAC' instantiated from design 'NYQ' with
+	the parameters "WIDTH=24". (HDL-193)
+Presto compilation completed successfully.
+Error: Width mismatch on port 'In0_DI' of reference to 'MAC' in 'NYQ'. (LINK-3)
+Error: Unable to match ports of cell MAC_1 ('MAC') to 'MAC_WIDTH24'. (LINK-25)
+Information: Building the design 'FF' instantiated from design 'NYQ' with
+	the parameters "DATA_WIDTH=24". (HDL-193)
+
+Inferred memory devices in process
+	in routine FF_DATA_WIDTH24 line 28 in file
+		'../nyq/FF.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      Q_DO_reg       | Flip-flop |  24   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Error: Width mismatch on port 'In0_DI' of reference to 'MAC' in 'NYQ'. (LINK-3)
+Error: Unable to match ports of cell MAC_2 ('MAC') to 'MAC_WIDTH24'. (LINK-25)
+Error: Width mismatch on port 'In0_DI' of reference to 'MAC' in 'NYQ'. (LINK-3)
+Error: Unable to match ports of cell MAC_3 ('MAC') to 'MAC_WIDTH24'. (LINK-25)
+Error: Width mismatch on port 'In0_DI' of reference to 'MAC' in 'NYQ'. (LINK-3)
+Error: Unable to match ports of cell MAC_4 ('MAC') to 'MAC_WIDTH24'. (LINK-25)
+1
+create_clock Clk_CI -period 6.0
+1
+dc_shell> create_clock Clk_CI -period 6.0
+1
+dc_shell> set_clock_transition 0.2 [get_clocks Clk _CI]
+Error: extra positional option '_CI' (CMD-012)
+dc_shell> set_clock_transition 0.2 [get_clocks Clk_CI]
+1
+dc_shell> set_driving_cell -library saed90nm_typ -lib_cell INVX4 -pin ZN [all_inputs]
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+1
+dc_shell> set_load 0.01 [all_outputs]
+1
+dc_shell> 
+dc_shell> compile_ultra -no autoungroup
+Error: ambiguous option '-no' (CMD-011)
+Error: extra positional option 'autoungroup' (CMD-012)
+dc_shell> compile_ultra -no_autoungroup
+Information: Performing power optimization. (PWR-850)
+Analyzing: "/work/global/brg/install/adk-pkgs/saed-90nm/pkgs/SAED_EDK90nm_01252011/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models/saed90nm_typ.db"
+Library analysis succeeded.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | M-2016.12-DWBB_201612.0 |     *     |
+| Licensed DW Building Blocks        | M-2016.12-DWBB_201612.0 |     *     |
+| dft_jtag.sldb                      | M-2016.12-DWBB_201612.0 |     *     |
+| dft_lbist.sldb                     | M-2016.12-DWBB_201612.0 |     *     |
+| dft_mbist.sldb                     | M-2016.12-DWBB_201612.0 |     *     |
+============================================================================
+
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+Information: There are 159 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+Information: Uniquified 4 instances of design 'FF_DATA_WIDTH24'. (OPT-1056)
+  Simplifying Design 'NYQ'
+
+Error: Width mismatch on port 'Cnt_Out_DO' of reference to 'counter' in 'NYQ'. (LINK-3)
+Warning: Unable to resolve reference 'counter' in 'NYQ'. (LINK-5)
+Error: Width mismatch on port 'In0_DI' of reference to 'MAC' in 'NYQ'. (LINK-3)
+Error: Unable to match ports of cell MAC_1 ('MAC') to 'MAC_WIDTH24'. (LINK-25)
+Error: Width mismatch on port 'In0_DI' of reference to 'MAC' in 'NYQ'. (LINK-3)
+Error: Unable to match ports of cell MAC_2 ('MAC') to 'MAC_WIDTH24'. (LINK-25)
+Error: Width mismatch on port 'In0_DI' of reference to 'MAC' in 'NYQ'. (LINK-3)
+Error: Unable to match ports of cell MAC_3 ('MAC') to 'MAC_WIDTH24'. (LINK-25)
+Error: Width mismatch on port 'In0_DI' of reference to 'MAC' in 'NYQ'. (LINK-3)
+Error: Unable to match ports of cell MAC_4 ('MAC') to 'MAC_WIDTH24'. (LINK-25)
+Loaded alib file './alib-52/saed90nm_typ.db.alib'
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'NYQ'
+ Implement Synthetic for 'NYQ'.
+  Processing 'FF_DATA_WIDTH24_0'
+Error: Width mismatch on port 'Cnt_Out_DO' of reference to 'counter' in 'NYQ'. (LINK-3)
+Warning: Unable to resolve reference 'counter' in 'NYQ'. (LINK-5)
+Error: Width mismatch on port 'In0_DI' of reference to 'MAC' in 'NYQ'. (LINK-3)
+Error: Unable to match ports of cell MAC_1 ('MAC') to 'MAC_WIDTH24'. (LINK-25)
+Error: Width mismatch on port 'In0_DI' of reference to 'MAC' in 'NYQ'. (LINK-3)
+Error: Unable to match ports of cell MAC_2 ('MAC') to 'MAC_WIDTH24'. (LINK-25)
+Error: Width mismatch on port 'In0_DI' of reference to 'MAC' in 'NYQ'. (LINK-3)
+Error: Unable to match ports of cell MAC_3 ('MAC') to 'MAC_WIDTH24'. (LINK-25)
+Error: Width mismatch on port 'In0_DI' of reference to 'MAC' in 'NYQ'. (LINK-3)
+Error: Unable to match ports of cell MAC_4 ('MAC') to 'MAC_WIDTH24'. (LINK-25)
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Constant Register Removal
+  -----------------------------------
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+  Global Optimization (Phase 31)
+  Selecting critical implementations
+  Mapping 'NYQ_DW01_add_0'
+  Mapping 'NYQ_DW01_add_1'
+  Mapping 'NYQ_DW01_add_2'
+  Mapping 'NYQ_DW01_add_3'
+  Mapping 'NYQ_DW01_add_4'
+  Mapping 'NYQ_DW01_add_5'
+  Mapping 'NYQ_DW01_add_6'
+Information: Added key list 'DesignWare' to design 'NYQ'. (DDB-72)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Isolate Ports
+  -----------------------
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Delay Optimization
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:01:13  859662.0     53.28    1915.3     399.5                           4459836416.0000
+    0:01:13  859769.0     52.67    1874.7     399.5                           4460882944.0000
+    0:01:13  859769.0     52.67    1874.7     399.5                           4460882944.0000
+    0:01:14  859780.9     52.65    1874.2     399.5                           4460980224.0000
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:01:24  858725.7     51.19    1776.7     399.5                           4455843328.0000
+    0:01:26  858701.7     51.19    1776.7     399.5                           4455230464.0000
+    0:01:26  858701.7     51.19    1776.7     399.5                           4455230464.0000
+    0:01:26  858701.7     51.19    1776.7     399.5                           4455230464.0000
+    0:01:26  858701.7     51.19    1776.7     399.5                           4455230464.0000
+    0:01:26  858701.7     51.19    1776.7     399.5                           4455230464.0000
+    0:01:26  858701.7     51.19    1776.7     399.5                           4455230464.0000
+    0:01:26  858701.7     51.19    1776.7     399.5                           4455230464.0000
+    0:01:26  858701.7     51.19    1776.7     399.5                           4455230464.0000
+    0:01:28  859953.3     23.71     772.8     399.5                           4464158720.0000
+    0:01:28  859953.3     23.71     772.8     399.5                           4464158720.0000
+    0:01:28  859953.3     23.71     772.8     399.5                           4464158720.0000
+    0:01:28  859953.3     23.71     772.8     399.5                           4464158720.0000
+    0:01:28  859953.3     23.71     772.8     399.5                           4464158720.0000
+    0:01:28  859953.3     23.71     772.8     399.5                           4464158720.0000
+    0:01:28  859953.3     23.71     772.8     399.5                           4464158720.0000
+    0:01:28  859953.3     23.71     772.8     399.5                           4464158720.0000
+    0:01:28  859953.3     23.71     772.8     399.5                           4464158720.0000
+    0:01:28  859953.3     23.71     772.8     399.5                           4464158720.0000
+    0:01:28  859953.3     23.71     772.8     399.5                           4464158720.0000
+
+
+  Beginning Design Rule Fixing  (min_capacitance)  (max_transition)  (max_capacitance)
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:01:28  859953.3     23.71     772.8     399.5                           4464158720.0000
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+  Global Optimization (Phase 34)
+    0:01:34  860039.9     23.47     751.6     245.6                           4465946112.0000
+    0:01:34  860062.0     23.34     746.9     245.6                           4466784256.0000
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:01:34  860062.0     23.34     746.9     245.6                           4466784256.0000
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+  Global Optimization (Phase 43)
+  Global Optimization (Phase 44)
+  Global Optimization (Phase 45)
+  Global Optimization (Phase 46)
+    0:01:40  859984.6     23.25     743.9     245.6                           4464478720.0000
+    0:01:40  859984.6     23.25     743.9     245.6                           4464478720.0000
+    0:01:40  859984.6     23.25     743.9     245.6                           4464478720.0000
+    0:01:41  859984.6     23.25     743.9     245.6                           4464478720.0000
+    0:01:41  859984.6     23.25     743.9     245.6                           4464478720.0000
+    0:01:41  859984.6     23.25     743.9     245.6                           4464478720.0000
+    0:01:42  859984.6     23.25     743.9     245.6                           4464478720.0000
+    0:01:42  859984.6     23.25     743.9     245.6                           4464478720.0000
+    0:01:42  859984.6     23.25     743.9     245.6                           4464478720.0000
+    0:01:42  859984.6     23.25     743.9     245.6                           4464478720.0000
+    0:01:42  859984.6     23.25     743.9     245.6                           4464478720.0000
+    0:01:42  859984.6     23.25     743.9     245.6                           4464478720.0000
+    0:01:42  859984.6     23.25     743.9     245.6                           4464478720.0000
+    0:01:42  859984.6     23.25     743.9     245.6                           4464478720.0000
+    0:01:42  859984.6     23.25     743.9     245.6                           4464478720.0000
+    0:01:42  859984.6     23.25     743.9     245.6                           4464478720.0000
+    0:01:42  859984.6     23.25     743.9     245.6                           4464478720.0000
+    0:01:42  859984.6     23.25     743.9     245.6                           4464478720.0000
+    0:01:42  859984.6     23.25     743.9     245.6                           4464478720.0000
+    0:01:42  859984.6     23.25     743.9     245.6                           4464478720.0000
+    0:01:42  859984.6     23.25     743.9     245.6                           4464478720.0000
+    0:01:42  859984.6     23.25     743.9     245.6                           4464478720.0000
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:01:43  859984.6     23.25     743.9     245.6                           4464478720.0000
+    0:01:45  859918.3     23.25     744.0     245.6                           4464565248.0000
+    0:01:45  859918.3     23.25     744.0     245.6                           4464565248.0000
+    0:01:45  859918.3     23.25     744.0     245.6                           4464565248.0000
+    0:01:47  859918.3     23.25     744.0     245.6                           4464047104.0000
+    0:01:57  859950.5     23.20     736.2     245.6                           4466906112.0000
+    0:01:57  860055.6     23.19     745.0     245.6                           4467679744.0000
+    0:01:58  860055.6     23.19     745.0     245.6                           4467679744.0000
+    0:01:58  860055.6     23.19     745.0     245.6                           4467679744.0000
+    0:01:58  859993.8     23.19     745.0     245.6                           4465203712.0000
+Loading db file '/work/global/brg/install/adk-pkgs/saed-90nm/pkgs/SAED_EDK90nm_01252011/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models/saed90nm_typ.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Warning: Design 'NYQ' contains 7 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+     Net 'NYQ_Cnt_D[2]': 1029 load(s), 0 driver(s), 1 inout(s)
+     Net 'NYQ_Cnt_D[1]': 4103 load(s), 0 driver(s), 1 inout(s)
+     Net 'NYQ_Cnt_D[0]': 4111 load(s), 0 driver(s), 1 inout(s)
+     Net 'n22903': 1696 load(s), 1 driver(s)
+     Net 'net16648': 14345 load(s), 1 driver(s)
+     Net 'FF_2/Clk_CI': 16480 load(s), 1 driver(s), 5 inout(s)
+     Net 'FF_2/Rst_RBI': 2136 load(s), 1 driver(s), 5 inout(s)
+Error: Width mismatch on port 'Cnt_Out_DO' of reference to 'counter' in 'NYQ'. (LINK-3)
+Warning: Unable to resolve reference 'counter' in 'NYQ'. (LINK-5)
+Error: Width mismatch on port 'In0_DI' of reference to 'MAC' in 'NYQ'. (LINK-3)
+Error: Unable to match ports of cell MAC_1 ('MAC') to 'MAC_WIDTH24'. (LINK-25)
+Error: Width mismatch on port 'In0_DI' of reference to 'MAC' in 'NYQ'. (LINK-3)
+Error: Unable to match ports of cell MAC_2 ('MAC') to 'MAC_WIDTH24'. (LINK-25)
+Error: Width mismatch on port 'In0_DI' of reference to 'MAC' in 'NYQ'. (LINK-3)
+Error: Unable to match ports of cell MAC_3 ('MAC') to 'MAC_WIDTH24'. (LINK-25)
+Error: Width mismatch on port 'In0_DI' of reference to 'MAC' in 'NYQ'. (LINK-3)
+Error: Unable to match ports of cell MAC_4 ('MAC') to 'MAC_WIDTH24'. (LINK-25)
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated black box outputs. (PWR-428)
+1
+dc_shell> check design
+Error: ambiguous command 'check' matched 15 commands:
+	(check_bindings, check_block_abstraction, check_bsd ...) (CMD-006)
+dc_shell> check_design
+Error: Width mismatch on port 'Cnt_Out_DO' of reference to 'counter' in 'NYQ'. (LINK-3)
+Warning: Unable to resolve reference 'counter' in 'NYQ'. (LINK-5)
+Error: Width mismatch on port 'In0_DI' of reference to 'MAC' in 'NYQ'. (LINK-3)
+Error: Unable to match ports of cell MAC_1 ('MAC') to 'MAC_WIDTH24'. (LINK-25)
+Error: Width mismatch on port 'In0_DI' of reference to 'MAC' in 'NYQ'. (LINK-3)
+Error: Unable to match ports of cell MAC_2 ('MAC') to 'MAC_WIDTH24'. (LINK-25)
+Error: Width mismatch on port 'In0_DI' of reference to 'MAC' in 'NYQ'. (LINK-3)
+Error: Unable to match ports of cell MAC_3 ('MAC') to 'MAC_WIDTH24'. (LINK-25)
+Error: Width mismatch on port 'In0_DI' of reference to 'MAC' in 'NYQ'. (LINK-3)
+Error: Unable to match ports of cell MAC_4 ('MAC') to 'MAC_WIDTH24'. (LINK-25)
+ 
+****************************************
+check_design summary:
+Version:     M-2016.12
+Date:        Fri Nov  1 12:08:08 2019
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                     26
+    Multiply driven inputs (LINT-6)                                26
+
+Tristate                                                          133
+    A tristate bus has a non tri-state driver (LINT-34)           133
+--------------------------------------------------------------------------------
+
+Warning: In design 'NYQ', input port 'Clk_CI' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'Rst_RBI' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[23]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[22]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[21]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[20]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[19]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[18]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[17]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[16]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[15]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[14]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[13]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[12]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[11]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[10]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[9]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[8]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[7]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[6]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[5]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[4]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[3]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[2]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[1]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', input port 'NYQ_In_DI[0]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'NYQ', three-state bus '_9_net_[0]' has non three-state driver 'U23006/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[1]' has non three-state driver 'U23007/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[2]' has non three-state driver 'U23008/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[3]' has non three-state driver 'U23009/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[4]' has non three-state driver 'U23010/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[5]' has non three-state driver 'U23011/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[6]' has non three-state driver 'U23012/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[7]' has non three-state driver 'U23013/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[8]' has non three-state driver 'U23014/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[9]' has non three-state driver 'U23015/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[10]' has non three-state driver 'U23016/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[11]' has non three-state driver 'U23017/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[12]' has non three-state driver 'U23018/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[13]' has non three-state driver 'U23019/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[14]' has non three-state driver 'U23020/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[15]' has non three-state driver 'U23021/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[16]' has non three-state driver 'U23022/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[17]' has non three-state driver 'U23023/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[18]' has non three-state driver 'U23024/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[19]' has non three-state driver 'U23025/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[20]' has non three-state driver 'U23026/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[21]' has non three-state driver 'U23027/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[22]' has non three-state driver 'U23028/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[23]' has non three-state driver 'U23029/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[24]' has non three-state driver 'U23030/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[25]' has non three-state driver 'U23031/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[26]' has non three-state driver 'U23032/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[27]' has non three-state driver 'U23033/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[28]' has non three-state driver 'U23034/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[29]' has non three-state driver 'U23035/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[30]' has non three-state driver 'U23036/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_9_net_[31]' has non three-state driver 'U23037/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_8_net_' has non three-state driver 'U22941/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[0]' has non three-state driver 'U22974/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[1]' has non three-state driver 'U22975/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[2]' has non three-state driver 'U22976/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[3]' has non three-state driver 'U22977/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[4]' has non three-state driver 'U22978/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[5]' has non three-state driver 'U22979/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[6]' has non three-state driver 'U22980/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[7]' has non three-state driver 'U22981/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[8]' has non three-state driver 'U22982/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[9]' has non three-state driver 'U22983/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[10]' has non three-state driver 'U22984/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[11]' has non three-state driver 'U22985/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[12]' has non three-state driver 'U22986/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[13]' has non three-state driver 'U22987/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[14]' has non three-state driver 'U22988/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[15]' has non three-state driver 'U22989/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[16]' has non three-state driver 'U22990/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[17]' has non three-state driver 'U22991/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[18]' has non three-state driver 'U22992/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[19]' has non three-state driver 'U22993/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[20]' has non three-state driver 'U22994/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[21]' has non three-state driver 'U22995/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[22]' has non three-state driver 'U22996/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[23]' has non three-state driver 'U22997/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[24]' has non three-state driver 'U22998/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[25]' has non three-state driver 'U22999/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[26]' has non three-state driver 'U23000/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[27]' has non three-state driver 'U23001/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[28]' has non three-state driver 'U23002/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[29]' has non three-state driver 'U23003/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[30]' has non three-state driver 'U23004/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_6_net_[31]' has non three-state driver 'U23005/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_5_net_' has non three-state driver 'U22940/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[0]' has non three-state driver 'U22942/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[1]' has non three-state driver 'U22943/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[2]' has non three-state driver 'U22944/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[3]' has non three-state driver 'U22945/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[4]' has non three-state driver 'U22946/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[5]' has non three-state driver 'U22947/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[6]' has non three-state driver 'U22948/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[7]' has non three-state driver 'U22949/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[8]' has non three-state driver 'U22950/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[9]' has non three-state driver 'U22951/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[10]' has non three-state driver 'U22952/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[11]' has non three-state driver 'U22953/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[12]' has non three-state driver 'U22954/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[13]' has non three-state driver 'U22955/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[14]' has non three-state driver 'U22956/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[15]' has non three-state driver 'U22957/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[16]' has non three-state driver 'U22958/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[17]' has non three-state driver 'U22959/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[18]' has non three-state driver 'U22960/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[19]' has non three-state driver 'U22961/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[20]' has non three-state driver 'U22962/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[21]' has non three-state driver 'U22963/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[22]' has non three-state driver 'U22964/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[23]' has non three-state driver 'U22965/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[24]' has non three-state driver 'U22966/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[25]' has non three-state driver 'U22967/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[26]' has non three-state driver 'U22968/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[27]' has non three-state driver 'U22969/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[28]' has non three-state driver 'U22970/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[29]' has non three-state driver 'U22971/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[30]' has non three-state driver 'U22972/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_3_net_[31]' has non three-state driver 'U22973/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_2_net_' has non three-state driver 'U22939/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[0]' has non three-state driver 'U17636/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[1]' has non three-state driver 'U17807/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[2]' has non three-state driver 'U17978/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[3]' has non three-state driver 'U18149/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[4]' has non three-state driver 'U18320/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[5]' has non three-state driver 'U18491/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[6]' has non three-state driver 'U18662/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[7]' has non three-state driver 'U18833/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[8]' has non three-state driver 'U19004/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[9]' has non three-state driver 'U19175/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[10]' has non three-state driver 'U19346/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[11]' has non three-state driver 'U19517/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[12]' has non three-state driver 'U19688/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[13]' has non three-state driver 'U19859/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[14]' has non three-state driver 'U20030/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[15]' has non three-state driver 'U20201/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[16]' has non three-state driver 'U20372/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[17]' has non three-state driver 'U20543/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[18]' has non three-state driver 'U20714/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[19]' has non three-state driver 'U20885/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[20]' has non three-state driver 'U21056/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[21]' has non three-state driver 'U21227/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[22]' has non three-state driver 'U21398/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[23]' has non three-state driver 'U21569/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[24]' has non three-state driver 'U21740/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[25]' has non three-state driver 'U21911/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[26]' has non three-state driver 'U22082/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[27]' has non three-state driver 'U22253/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[28]' has non three-state driver 'U22424/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[29]' has non three-state driver 'U22595/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[30]' has non three-state driver 'U22766/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_1_net_[31]' has non three-state driver 'U22937/Q'. (LINT-34)
+Warning: In design 'NYQ', three-state bus '_0_net_' has non three-state driver 'U22938/ZN'. (LINT-34)
+Warning: In design 'NYQ', three-state bus 'NYQ_Valid_DO' has non three-state driver 'C65755/Q'. (LINT-34)
+1
+dc_shell> report_timing -max_paths 5 > ./reports/timing_max.rpt
+dc_shell> report_timing -delay min -max_paths 5 > ./reports/timing_min.rpt
+dc_shell> report_area -hierarchy > ./reports/area.rpt
+dc_shell> report_power -hierarchy > ./reports/power.rpt
+dc_shell> ls
+.		    alib-52	 default.svf	reports		   work
+..		    command.log  filenames.log	scripts
+.synopsys_dc.setup  dc_syn.log	 outputs	synopsys_dc.setup
+dc_shell> cd reports
+dc_shell> ls
+.  ..  area.rpt  power.rpt  timing_max.rpt  timing_min.rpt
+dc_shell> cat area.rpt
+Error: unknown command 'cat' (CMD-005)
+dc_shell> 
+[1]+  Stopped                 dc_shell-xg-t -output_log_file dc_syn.log
+[ll556@vip-brg syn]$ ls
+alib-52      dc_syn.log   filenames.log  reports  synopsys_dc.setup
+command.log  default.svf  outputs        scripts  work
+[ll556@vip-brg syn]$ cd reports
+[ll556@vip-brg reports]$ ls
+area.rpt  power.rpt  timing_max.rpt  timing_min.rpt
+[ll556@vip-brg reports]$ cat area.rpt
+ 
+****************************************
+Report : area
+Design : NYQ
+Version: M-2016.12
+Date   : Fri Nov  1 12:08:32 2019
+****************************************
+
+Library(s) Used:
+
+    saed90nm_typ (File: /work/global/brg/install/adk-pkgs/saed-90nm/pkgs/SAED_EDK90nm_01252011/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models/saed90nm_typ.db)
+
+Number of ports:                          297
+Number of nets:                         41471
+Number of cells:                        41105
+Number of combinational cells:          24615
+Number of sequential cells:             16486
+Number of macros/black boxes:               0
+Number of buf/inv:                       1372
+Number of references:                      32
+
+Combinational area:             328414.012888
+Buf/Inv area:                     7617.024196
+Noncombinational area:          531579.810150
+Macro/Black Box area:                0.000000
+Net Interconnect area:          277957.769002
+
+Total cell area:                859993.823039
+Total area:                    1137951.592041
+
+Information: This design contains black box (unknown) components. (RPT-8)
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area              Local cell area
+                                  --------------------  -------------------------------- 
+Hierarchical cell                 Absolute     Percent  Combi-       Noncombi-    Black-
+                                  Total        Total    national     national     boxes   Design
+--------------------------------  -----------  -------  -----------  -----------  ------  -----------------
+NYQ                               859993.8230    100.0  327278.6017  528482.3125  0.0000  NYQ
+FF_1                                1057.9968      0.1     282.0096     775.9872  0.0000  FF_DATA_WIDTH24_3
+FF_2                                1057.0752      0.1     283.8528     773.2224  0.0000  FF_DATA_WIDTH24_2
+FF_3                                1050.6240      0.1     276.4800     774.1440  0.0000  FF_DATA_WIDTH24_1
+FF_4                                1067.2128      0.1     293.0688     774.1440  0.0000  FF_DATA_WIDTH24_0
+--------------------------------  -----------  -------  -----------  -----------  ------  -----------------
+Total                                                   328414.0129  531579.8102  0.0000
+
+1
+[ll556@vip-brg reports]$ ****************************************
+-bash: area.rpt: command not found
+[ll556@vip-brg reports]$ Report : area
+        1137951.592041
+
+Information: This design contains black box (unknown) components. (RPT-8)
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area              Local cell area
+                                  --------------------  -------------------------------- 
+Hierarchical cell                 Absolute     Percent  Combi-       Noncombi-    Black-
+                                  Total        Total    national     national     boxes   Design
+--------------------------------  -----------  -------  -----------  -----------  ------  -----------------
+NYQ                               859993.8230    100.0  327278.6017  528482.3125  0.0000  NYQ
+FF_1                                1057.9968      0.1     282.0096     775.9872  0.0000  FF_DATA_WIDTH24_3
+FF_2                                1057.0752      0.1     283.8528     773.2224  0.0000  FF_DATA_WIDTH24_2
+FF_3                                1050.6240      0.1     276.4800     774.1440  0.00-bash: Report: command not found
+[ll556@vip-brg reports]$ Design : NYQ
+-bash: Design: command not found
+[ll556@vip-brg reports]$ Version: M-2016.12
+-bash: Version:: command not found
+[ll556@vip-brg reports]$ Date   : Fri Nov  1 12:08:32 2019
+00  FF_DATA_WIDTH24_1
+FF_4                                1067.2128      0.1     293.0688     774.1440  0.0000  FF_DATA_WIDTH24_0
+--------------------------------  -----------  -------  -----------  -----------  ------  -----------------
+Total                                                   328414.0129  531579.8102  0.0000
+
+-bash: Date: command not found
+[ll556@vip-brg reports]$ ****************************************
+-bash: area.rpt: command not found
+[ll556@vip-brg reports]$ 
+[ll556@vip-brg reports]$ Library(s) Used:
+-bash: syntax error near unexpected token `s'
+[ll556@vip-brg reports]$ 
+[ll556@vip-brg reports]$     saed90nm_typ (File: /work/global/brg/install/adk-pkgs/saed-90nm/pkgs/SAED_EDK90nm_01252011/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models/saed90nm_typ.db)
+-bash: syntax error near unexpected token `File:'
+[ll556@vip-brg reports]$ 
+[ll556@vip-brg reports]$ Number of ports:                          297
+-bash: Number: command not found
+[ll556@vip-brg reports]$ Number of nets:                         41471
+-bash: Number: command not found
+[ll556@vip-brg reports]$ Number of cells:                        41105
+-bash: Number: command not found
+[ll556@vip-brg reports]$ Number of combinational cells:          24615
+-bash: Number: command not found
+[ll556@vip-brg reports]$ Number of sequential cells:             16486
+-bash: Number: command not found
+[ll556@vip-brg reports]$ Number of macros/black boxes:               0
+-bash: Number: command not found
+[ll556@vip-brg reports]$ Number of buf/inv:                       1372
+-bash: Number: command not found
+[ll556@vip-brg reports]$ Number of references:                      32
+-bash: Number: command not found
+[ll556@vip-brg reports]$ 
+[ll556@vip-brg reports]$ Combinational area:             328414.012888
+-bash: Combinational: command not found
+[ll556@vip-brg reports]$ Buf/Inv area:                     7617.024196
+-bash: Buf/Inv: No such file or directory
+[ll556@vip-brg reports]$ Noncombinational area:          531579.810150
+-bash: Noncombinational: command not found
+[ll556@vip-brg reports]$ Macro/Black Box area:                0.000000
+-bash: Macro/Black: No such file or directory
+[ll556@vip-brg reports]$ Net Interconnect area:          277957.769002
+-bash: Net: command not found
+[ll556@vip-brg reports]$ 
+[ll556@vip-brg reports]$ Total cell area:                859993.823039
+-bash: Total: command not found
+[ll556@vip-brg reports]$ Total area:                    1137951.592041
+-bash: Total: command not found
+[ll556@vip-brg reports]$ 
+[ll556@vip-brg reports]$ Information: This design contains black box (unknown) components. (RPT-8)
+-bash: syntax error near unexpected token `('
+[ll556@vip-brg reports]$ 
+[ll556@vip-brg reports]$ Hierarchical area distribution
+-bash: Hierarchical: command not found
+[ll556@vip-brg reports]$ ------------------------------
+-bash: ------------------------------: command not found
+[ll556@vip-brg reports]$ 
+[ll556@vip-brg reports]$                                   Global cell area              Local cell area
+-bash: Global: command not found
+[ll556@vip-brg reports]$                                   --------------------  -------------------------------- 
+-bash: --------------------: command not found
+[ll556@vip-brg reports]$ Hierarchical cell                 Absolute     Percent  Combi-       Noncombi-    Black-
+-bash: Hierarchical: command not found
+[ll556@vip-brg reports]$                                   Total        Total    national     national     boxes   Design
+-bash: Total: command not found
+[ll556@vip-brg reports]$ --------------------------------  -----------  -------  -----------  -----------  ------  -----------------
+-bash: --------------------------------: command not found
+[ll556@vip-brg reports]$ NYQ                               859993.8230    100.0  327278.6017  528482.3125  0.0000  NYQ
+-bash: NYQ: command not found
+[ll556@vip-brg reports]$ FF_1                                1057.9968      0.1     282.0096     775.9872  0.0000  FF_DATA_WIDTH24_3
+-bash: FF_1: command not found
+[ll556@vip-brg reports]$ FF_2                                1057.0752      0.1     283.8528     773.2224  0.0000  FF_DATA_WIDTH24_2
+-bash: FF_2: command not found
+[ll556@vip-brg reports]$ FF_3                                1050.6240      0.1     276.4800     774.1440  0.0000  FF_DATA_WIDTH24_1
+-bash: FF_3: command not found
+[ll556@vip-brg reports]$ FF_4                                1067.2128      0.1     293.0688     774.1440  0.0000  FF_DATA_WIDTH24_0
+-bash: FF_4: command not found
+[ll556@vip-brg reports]$ --------------------------------  -----------  -------  -----------  -----------  ------  -----------------
+-bash: --------------------------------: command not found
+[ll556@vip-brg reports]$ Total                                                   328414.0129  531579.8102  0.0000
+-bash: Total: command not found
+[ll556@vip-brg reports]$ 
+[ll556@vip-brg reports]$ ls
+area.rpt  power.rpt  timing_max.rpt  timing_min.rpt
+[ll556@vip-brg reports]$ cat power.rpt
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : NYQ
+Version: M-2016.12
+Date   : Fri Nov  1 12:08:36 2019
+****************************************
+
+
+Library(s) Used:
+
+    saed90nm_typ (File: /work/global/brg/install/adk-pkgs/saed-90nm/pkgs/SAED_EDK90nm_01252011/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models/saed90nm_typ.db)
+
+
+Operating Conditions: TYPICAL   Library: saed90nm_typ
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+NYQ                    1000000           saed90nm_typ
+FF_DATA_WIDTH24_3      8000              saed90nm_typ
+FF_DATA_WIDTH24_0      8000              saed90nm_typ
+FF_DATA_WIDTH24_1      8000              saed90nm_typ
+FF_DATA_WIDTH24_2      8000              saed90nm_typ
+
+
+Global Operating Voltage = 1.2  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+NYQ                                     549.006 6.96e+04 3.97e+09 7.41e+04 100.0
+  FF_4 (FF_DATA_WIDTH24_0)                2.035  121.059 6.31e+06  129.398   0.2
+  FF_3 (FF_DATA_WIDTH24_1)                4.618  119.495 5.47e+06  129.581   0.2
+  FF_2 (FF_DATA_WIDTH24_2)                4.009  119.434 5.54e+06  128.984   0.2
+  FF_1 (FF_DATA_WIDTH24_3)                2.214  115.289 5.55e+06  123.052   0.2
+1
+[ll556@vip-brg reports]$ ls
+area.rpt  power.rpt  timing_max.rpt  timing_min.rpt
+[ll556@vip-brg reports]$ cat timing_max.rpt
+Information: Updating design information... (UID-85)
+Warning: Design 'NYQ' contains 7 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 5
+Design : NYQ
+Version: M-2016.12
+Date   : Fri Nov  1 12:08:25 2019
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: TYPICAL   Library: saed90nm_typ
+Wire Load Model Mode: enclosed
+
+  Startpoint: FF_3/Q_DO_reg[1]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: FF_4/Q_DO_reg[23]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                1000000               saed90nm_typ
+  FF_DATA_WIDTH24_0  8000                  saed90nm_typ
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk_CI (rise edge)                 0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FF_3/Q_DO_reg[1]/CLK (DFFARX1)           0.00 #     0.00 r
+  FF_3/Q_DO_reg[1]/Q (DFFARX1)             0.21       0.21 r
+  FF_3/Q_DO[1] (FF_DATA_WIDTH24_1)         0.00       0.21 r
+  U23063/Q (OR2X1)                         1.00       1.21 r
+  U23147/Q (AO22X1)                        0.57       1.78 r
+  U23246/Q (OA21X1)                        0.56       2.33 r
+  U23139/Q (AO21X2)                        0.66       2.99 r
+  U23257/Q (OA21X1)                        0.56       3.55 r
+  U23195/Q (AO21X2)                        0.66       4.20 r
+  U23247/Q (OA21X1)                        0.56       4.76 r
+  U23126/Q (AO21X2)                        0.66       5.42 r
+  U23250/Q (OA21X1)                        0.56       5.98 r
+  U23196/Q (AO21X2)                        0.66       6.63 r
+  U23254/Q (OA21X1)                        0.56       7.19 r
+  U23140/Q (AO21X2)                        0.66       7.85 r
+  U23256/Q (OA21X1)                        0.56       8.40 r
+  U23143/Q (AO21X2)                        0.66       9.06 r
+  U23245/Q (OA21X1)                        0.56       9.62 r
+  U23138/Q (AO21X2)                        0.66      10.27 r
+  U23249/Q (OA21X1)                        0.56      10.83 r
+  U23142/Q (AO21X2)                        0.66      11.49 r
+  U23244/Q (OA21X1)                        0.56      12.04 r
+  U23137/Q (AO21X2)                        0.66      12.70 r
+  U23248/Q (OA21X1)                        0.56      13.26 r
+  U23141/Q (AO21X2)                        0.66      13.91 r
+  U23253/Q (OA21X1)                        0.56      14.47 r
+  U23144/Q (AO21X2)                        0.66      15.13 r
+  U23260/Q (OA21X1)                        0.56      15.68 r
+  U23203/Q (AO21X2)                        0.66      16.34 r
+  U23252/Q (OA21X1)                        0.56      16.90 r
+  U23199/Q (AO21X2)                        0.66      17.56 r
+  U23259/Q (OA21X1)                        0.56      18.11 r
+  U23202/Q (AO21X2)                        0.66      18.77 r
+  U23251/Q (OA21X1)                        0.56      19.33 r
+  U23198/Q (AO21X2)                        0.66      19.98 r
+  U23258/Q (OA21X1)                        0.56      20.54 r
+  U23201/Q (AO21X2)                        0.66      21.20 r
+  U23225/Q (OA21X1)                        0.56      21.75 r
+  U23197/Q (AO21X2)                        0.66      22.41 r
+  U23226/Q (OA21X1)                        0.56      22.97 r
+  U23200/Q (AO21X2)                        0.66      23.62 r
+  U23255/Q (OA21X1)                        0.56      24.18 r
+  U23206/Q (AO21X2)                        0.66      24.84 r
+  U23224/Q (OA21X1)                        0.56      25.39 r
+  U23205/Q (AO21X2)                        0.66      26.05 r
+  U23294/Q (OA21X1)                        0.56      26.61 r
+  U23204/Q (AO21X2)                        0.66      27.26 r
+  U23352/Q (XOR2X1)                        1.05      28.32 r
+  FF_4/D_DI[23] (FF_DATA_WIDTH24_0)        0.00      28.32 r
+  FF_4/U2/Q (MUX21X2)                      0.77      29.09 r
+  FF_4/Q_DO_reg[23]/D (DFFARX1)            0.04      29.13 r
+  data arrival time                                  29.13
+
+  clock Clk_CI (rise edge)                 6.00       6.00
+  clock network delay (ideal)              0.00       6.00
+  FF_4/Q_DO_reg[23]/CLK (DFFARX1)          0.00       6.00 r
+  library setup time                      -0.06       5.94
+  data required time                                  5.94
+  -----------------------------------------------------------
+  data required time                                  5.94
+  data arrival time                                 -29.13
+  -----------------------------------------------------------
+  slack (VIOLATED)                                  -23.19
+
+
+  Startpoint: FF_2/Q_DO_reg[1]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: FF_3/Q_DO_reg[23]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                1000000               saed90nm_typ
+  FF_DATA_WIDTH24_1  8000                  saed90nm_typ
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk_CI (rise edge)                 0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FF_2/Q_DO_reg[1]/CLK (DFFARX1)           0.00 #     0.00 r
+  FF_2/Q_DO_reg[1]/Q (DFFARX1)             0.21       0.21 r
+  FF_2/Q_DO[1] (FF_DATA_WIDTH24_2)         0.00       0.21 r
+  U23119/Q (OR2X1)                         0.99       1.19 r
+  U23125/Q (AO22X1)                        0.57       1.76 r
+  U23264/Q (OA21X1)                        0.56       2.32 r
+  U23155/Q (AO21X2)                        0.66       2.98 r
+  U23267/Q (OA21X1)                        0.56       3.53 r
+  U23153/Q (AO21X2)                        0.66       4.19 r
+  U23271/Q (OA21X1)                        0.56       4.75 r
+  U23148/Q (AO21X2)                        0.66       5.40 r
+  U23268/Q (OA21X1)                        0.56       5.96 r
+  U23152/Q (AO21X2)                        0.66       6.62 r
+  U23233/Q (OA21X1)                        0.56       7.17 r
+  U23115/Q (AO21X2)                        0.66       7.83 r
+  U23266/Q (OA21X1)                        0.56       8.39 r
+  U23151/Q (AO21X2)                        0.66       9.05 r
+  U23270/Q (OA21X1)                        0.56       9.60 r
+  U23116/Q (AO21X2)                        0.66      10.26 r
+  U23265/Q (OA21X1)                        0.56      10.82 r
+  U23150/Q (AO21X2)                        0.66      11.47 r
+  U23232/Q (OA21X1)                        0.56      12.03 r
+  U23117/Q (AO21X2)                        0.66      12.69 r
+  U23230/Q (OA21X1)                        0.56      13.25 r
+  U23149/Q (AO21X2)                        0.66      13.90 r
+  U23228/Q (OA21X1)                        0.56      14.46 r
+  U23154/Q (AO21X2)                        0.66      15.12 r
+  U23305/Q (OA21X1)                        0.56      15.68 r
+  U23163/Q (AO21X2)                        0.66      16.33 r
+  U23263/Q (OA21X1)                        0.56      16.89 r
+  U23160/Q (AO21X2)                        0.66      17.55 r
+  U23274/Q (OA21X1)                        0.56      18.10 r
+  U23162/Q (AO21X2)                        0.66      18.76 r
+  U23269/Q (OA21X1)                        0.56      19.32 r
+  U23157/Q (AO21X2)                        0.66      19.97 r
+  U23273/Q (OA21X1)                        0.56      20.53 r
+  U23161/Q (AO21X2)                        0.66      21.19 r
+  U23229/Q (OA21X1)                        0.56      21.74 r
+  U23156/Q (AO21X2)                        0.66      22.40 r
+  U23231/Q (OA21X1)                        0.56      22.96 r
+  U23164/Q (AO21X2)                        0.66      23.61 r
+  U23272/Q (OA21X1)                        0.56      24.17 r
+  U23158/Q (AO21X2)                        0.66      24.83 r
+  U23227/Q (OA21X1)                        0.56      25.39 r
+  U23159/Q (AO21X2)                        0.66      26.04 r
+  U23304/Q (OA21X1)                        0.56      26.60 r
+  U23114/Q (AO21X2)                        0.66      27.26 r
+  U23331/Q (XOR2X1)                        1.05      28.31 r
+  FF_3/D_DI[23] (FF_DATA_WIDTH24_1)        0.00      28.31 r
+  FF_3/U4/Q (MUX21X1)                      0.76      29.07 r
+  FF_3/Q_DO_reg[23]/D (DFFARX1)            0.04      29.11 r
+  data arrival time                                  29.11
+
+  clock Clk_CI (rise edge)                 6.00       6.00
+  clock network delay (ideal)              0.00       6.00
+  FF_3/Q_DO_reg[23]/CLK (DFFARX1)          0.00       6.00 r
+  library setup time                      -0.06       5.94
+  data required time                                  5.94
+  -----------------------------------------------------------
+  data required time                                  5.94
+  data arrival time                                 -29.11
+  -----------------------------------------------------------
+  slack (VIOLATED)                                  -23.17
+
+
+  Startpoint: FF_1/Q_DO_reg[1]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: FF_2/Q_DO_reg[23]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                1000000               saed90nm_typ
+  FF_DATA_WIDTH24_2  8000                  saed90nm_typ
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk_CI (rise edge)                 0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FF_1/Q_DO_reg[1]/CLK (DFFARX1)           0.00 #     0.00 r
+  FF_1/Q_DO_reg[1]/Q (DFFARX1)             0.21       0.21 r
+  FF_1/Q_DO[1] (FF_DATA_WIDTH24_3)         0.00       0.21 r
+  U23120/Q (OR2X1)                         1.00       1.21 r
+  U23145/Q (AO22X1)                        0.59       1.80 r
+  U23283/Q (OA21X1)                        0.56       2.35 r
+  U23132/Q (AO21X2)                        0.66       3.01 r
+  U23285/Q (OA21X1)                        0.56       3.57 r
+  U23165/Q (AO21X2)                        0.66       4.22 r
+  U23279/Q (OA21X1)                        0.56       4.78 r
+  U23131/Q (AO21X2)                        0.66       5.44 r
+  U23284/Q (OA21X1)                        0.56       5.99 r
+  U23136/Q (AO21X2)                        0.66       6.65 r
+  U23239/Q (OA21X1)                        0.56       7.21 r
+  U23130/Q (AO21X2)                        0.66       7.86 r
+  U23242/Q (OA21X1)                        0.56       8.42 r
+  U23135/Q (AO21X2)                        0.66       9.08 r
+  U23238/Q (OA21X1)                        0.56       9.63 r
+  U23129/Q (AO21X2)                        0.66      10.29 r
+  U23240/Q (OA21X1)                        0.56      10.85 r
+  U23133/Q (AO21X2)                        0.66      11.51 r
+  U23237/Q (OA21X1)                        0.56      12.06 r
+  U23122/Q (AO21X2)                        0.66      12.72 r
+  U23241/Q (OA21X1)                        0.56      13.28 r
+  U23134/Q (AO21X2)                        0.66      13.93 r
+  U23235/Q (OA21X1)                        0.56      14.49 r
+  U23166/Q (AO21X2)                        0.66      15.15 r
+  U23314/Q (OA21X1)                        0.56      15.70 r
+  U23173/Q (AO21X2)                        0.66      16.36 r
+  U23282/Q (OA21X1)                        0.56      16.92 r
+  U23169/Q (AO21X2)                        0.66      17.57 r
+  U23286/Q (OA21X1)                        0.56      18.13 r
+  U23172/Q (AO21X2)                        0.66      18.79 r
+  U23281/Q (OA21X1)                        0.56      19.34 r
+  U23168/Q (AO21X2)                        0.66      20.00 r
+  U23280/Q (OA21X1)                        0.56      20.56 r
+  U23171/Q (AO21X2)                        0.66      21.21 r
+  U23236/Q (OA21X1)                        0.56      21.77 r
+  U23167/Q (AO21X2)                        0.66      22.43 r
+  U23243/Q (OA21X1)                        0.56      22.99 r
+  U23170/Q (AO21X2)                        0.66      23.64 r
+  U23287/Q (OA21X1)                        0.56      24.20 r
+  U23175/Q (AO21X2)                        0.66      24.86 r
+  U23234/Q (OA21X1)                        0.56      25.41 r
+  U23174/Q (AO21X2)                        0.66      26.07 r
+  U23061/QN (OAI21X2)                      0.55      26.63 f
+  U23060/QN (OAI21X2)                      0.49      27.11 r
+  U23350/Q (XOR2X1)                        1.05      28.17 r
+  FF_2/D_DI[23] (FF_DATA_WIDTH24_2)        0.00      28.17 r
+  FF_2/U3/Q (MUX21X2)                      0.77      28.94 r
+  FF_2/Q_DO_reg[23]/D (DFFARX1)            0.04      28.98 r
+  data arrival time                                  28.98
+
+  clock Clk_CI (rise edge)                 6.00       6.00
+  clock network delay (ideal)              0.00       6.00
+  FF_2/Q_DO_reg[23]/CLK (DFFARX1)          0.00       6.00 r
+  library setup time                      -0.06       5.94
+  data required time                                  5.94
+  -----------------------------------------------------------
+  data required time                                  5.94
+  data arrival time                                 -28.98
+  -----------------------------------------------------------
+  slack (VIOLATED)                                  -23.04
+
+
+  Startpoint: FF_3/Q_DO_reg[1]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: FF_4/Q_DO_reg[22]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                1000000               saed90nm_typ
+  FF_DATA_WIDTH24_0  8000                  saed90nm_typ
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk_CI (rise edge)                 0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FF_3/Q_DO_reg[1]/CLK (DFFARX1)           0.00 #     0.00 r
+  FF_3/Q_DO_reg[1]/Q (DFFARX1)             0.21       0.21 r
+  FF_3/Q_DO[1] (FF_DATA_WIDTH24_1)         0.00       0.21 r
+  U23063/Q (OR2X1)                         1.00       1.21 r
+  U23147/Q (AO22X1)                        0.57       1.78 r
+  U23246/Q (OA21X1)                        0.56       2.33 r
+  U23139/Q (AO21X2)                        0.66       2.99 r
+  U23257/Q (OA21X1)                        0.56       3.55 r
+  U23195/Q (AO21X2)                        0.66       4.20 r
+  U23247/Q (OA21X1)                        0.56       4.76 r
+  U23126/Q (AO21X2)                        0.66       5.42 r
+  U23250/Q (OA21X1)                        0.56       5.98 r
+  U23196/Q (AO21X2)                        0.66       6.63 r
+  U23254/Q (OA21X1)                        0.56       7.19 r
+  U23140/Q (AO21X2)                        0.66       7.85 r
+  U23256/Q (OA21X1)                        0.56       8.40 r
+  U23143/Q (AO21X2)                        0.66       9.06 r
+  U23245/Q (OA21X1)                        0.56       9.62 r
+  U23138/Q (AO21X2)                        0.66      10.27 r
+  U23249/Q (OA21X1)                        0.56      10.83 r
+  U23142/Q (AO21X2)                        0.66      11.49 r
+  U23244/Q (OA21X1)                        0.56      12.04 r
+  U23137/Q (AO21X2)                        0.66      12.70 r
+  U23248/Q (OA21X1)                        0.56      13.26 r
+  U23141/Q (AO21X2)                        0.66      13.91 r
+  U23253/Q (OA21X1)                        0.56      14.47 r
+  U23144/Q (AO21X2)                        0.66      15.13 r
+  U23260/Q (OA21X1)                        0.56      15.68 r
+  U23203/Q (AO21X2)                        0.66      16.34 r
+  U23252/Q (OA21X1)                        0.56      16.90 r
+  U23199/Q (AO21X2)                        0.66      17.56 r
+  U23259/Q (OA21X1)                        0.56      18.11 r
+  U23202/Q (AO21X2)                        0.66      18.77 r
+  U23251/Q (OA21X1)                        0.56      19.33 r
+  U23198/Q (AO21X2)                        0.66      19.98 r
+  U23258/Q (OA21X1)                        0.56      20.54 r
+  U23201/Q (AO21X2)                        0.66      21.20 r
+  U23225/Q (OA21X1)                        0.56      21.75 r
+  U23197/Q (AO21X2)                        0.66      22.41 r
+  U23226/Q (OA21X1)                        0.56      22.97 r
+  U23200/Q (AO21X2)                        0.66      23.62 r
+  U23255/Q (OA21X1)                        0.56      24.18 r
+  U23206/Q (AO21X2)                        0.66      24.84 r
+  U23224/Q (OA21X1)                        0.56      25.39 r
+  U23205/Q (AO21X2)                        0.66      26.05 r
+  U23056/Z (NBUFFX2)                       0.79      26.84 r
+  U23353/Q (XOR3X1)                        1.07      27.91 r
+  FF_4/D_DI[22] (FF_DATA_WIDTH24_0)        0.00      27.91 r
+  FF_4/U4/Q (MUX21X1)                      0.82      28.73 r
+  FF_4/Q_DO_reg[22]/D (DFFARX1)            0.04      28.76 r
+  data arrival time                                  28.76
+
+  clock Clk_CI (rise edge)                 6.00       6.00
+  clock network delay (ideal)              0.00       6.00
+  FF_4/Q_DO_reg[22]/CLK (DFFARX1)          0.00       6.00 r
+  library setup time                      -0.06       5.94
+  data required time                                  5.94
+  -----------------------------------------------------------
+  data required time                                  5.94
+  data arrival time                                 -28.76
+  -----------------------------------------------------------
+  slack (VIOLATED)                                  -22.82
+
+
+  Startpoint: FF_2/Q_DO_reg[1]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: FF_3/Q_DO_reg[22]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                1000000               saed90nm_typ
+  FF_DATA_WIDTH24_1  8000                  saed90nm_typ
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk_CI (rise edge)                 0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FF_2/Q_DO_reg[1]/CLK (DFFARX1)           0.00 #     0.00 r
+  FF_2/Q_DO_reg[1]/Q (DFFARX1)             0.21       0.21 r
+  FF_2/Q_DO[1] (FF_DATA_WIDTH24_2)         0.00       0.21 r
+  U23119/Q (OR2X1)                         0.99       1.19 r
+  U23125/Q (AO22X1)                        0.57       1.76 r
+  U23264/Q (OA21X1)                        0.56       2.32 r
+  U23155/Q (AO21X2)                        0.66       2.98 r
+  U23267/Q (OA21X1)                        0.56       3.53 r
+  U23153/Q (AO21X2)                        0.66       4.19 r
+  U23271/Q (OA21X1)                        0.56       4.75 r
+  U23148/Q (AO21X2)                        0.66       5.40 r
+  U23268/Q (OA21X1)                        0.56       5.96 r
+  U23152/Q (AO21X2)                        0.66       6.62 r
+  U23233/Q (OA21X1)                        0.56       7.17 r
+  U23115/Q (AO21X2)                        0.66       7.83 r
+  U23266/Q (OA21X1)                        0.56       8.39 r
+  U23151/Q (AO21X2)                        0.66       9.05 r
+  U23270/Q (OA21X1)                        0.56       9.60 r
+  U23116/Q (AO21X2)                        0.66      10.26 r
+  U23265/Q (OA21X1)                        0.56      10.82 r
+  U23150/Q (AO21X2)                        0.66      11.47 r
+  U23232/Q (OA21X1)                        0.56      12.03 r
+  U23117/Q (AO21X2)                        0.66      12.69 r
+  U23230/Q (OA21X1)                        0.56      13.25 r
+  U23149/Q (AO21X2)                        0.66      13.90 r
+  U23228/Q (OA21X1)                        0.56      14.46 r
+  U23154/Q (AO21X2)                        0.66      15.12 r
+  U23305/Q (OA21X1)                        0.56      15.68 r
+  U23163/Q (AO21X2)                        0.66      16.33 r
+  U23263/Q (OA21X1)                        0.56      16.89 r
+  U23160/Q (AO21X2)                        0.66      17.55 r
+  U23274/Q (OA21X1)                        0.56      18.10 r
+  U23162/Q (AO21X2)                        0.66      18.76 r
+  U23269/Q (OA21X1)                        0.56      19.32 r
+  U23157/Q (AO21X2)                        0.66      19.97 r
+  U23273/Q (OA21X1)                        0.56      20.53 r
+  U23161/Q (AO21X2)                        0.66      21.19 r
+  U23229/Q (OA21X1)                        0.56      21.74 r
+  U23156/Q (AO21X2)                        0.66      22.40 r
+  U23231/Q (OA21X1)                        0.56      22.96 r
+  U23164/Q (AO21X2)                        0.66      23.61 r
+  U23272/Q (OA21X1)                        0.56      24.17 r
+  U23158/Q (AO21X2)                        0.66      24.83 r
+  U23227/Q (OA21X1)                        0.56      25.39 r
+  U23159/Q (AO21X2)                        0.66      26.04 r
+  U23050/Z (NBUFFX2)                       0.79      26.83 r
+  U23332/Q (XOR3X1)                        1.07      27.90 r
+  FF_3/D_DI[22] (FF_DATA_WIDTH24_1)        0.00      27.90 r
+  FF_3/U6/Q (MUX21X1)                      0.82      28.72 r
+  FF_3/Q_DO_reg[22]/D (DFFARX1)            0.04      28.75 r
+  data arrival time                                  28.75
+
+  clock Clk_CI (rise edge)                 6.00       6.00
+  clock network delay (ideal)              0.00       6.00
+  FF_3/Q_DO_reg[22]/CLK (DFFARX1)          0.00       6.00 r
+  library setup time                      -0.06       5.94
+  data required time                                  5.94
+  -----------------------------------------------------------
+  data required time                                  5.94
+  data arrival time                                 -28.75
+  -----------------------------------------------------------
+  slack (VIOLATED)                                  -22.82
+
+
+1
+[ll556@vip-brg reports]$ ls
+area.rpt  power.rpt  timing_max.rpt  timing_min.rpt
+[ll556@vip-brg reports]$ cat timing_min.rpt
+ 
+****************************************
+Report : timing
+        -path full
+        -delay min
+        -max_paths 5
+Design : NYQ
+Version: M-2016.12
+Date   : Fri Nov  1 12:08:29 2019
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: TYPICAL   Library: saed90nm_typ
+Wire Load Model Mode: enclosed
+
+  Startpoint: FF_1/Q_DO_reg[1]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: FF_1/Q_DO_reg[1]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                1000000               saed90nm_typ
+  FF_DATA_WIDTH24_3  8000                  saed90nm_typ
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk_CI (rise edge)                 0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FF_1/Q_DO_reg[1]/CLK (DFFARX1)           0.00 #     0.00 r
+  FF_1/Q_DO_reg[1]/QN (DFFARX1)            0.16       0.16 r
+  FF_1/U2/ZN (INVX0)                       0.06       0.22 f
+  FF_1/U28/Q (MUX21X1)                     0.10       0.32 f
+  FF_1/Q_DO_reg[1]/D (DFFARX1)             0.03       0.34 f
+  data arrival time                                   0.34
+
+  clock Clk_CI (rise edge)                 0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FF_1/Q_DO_reg[1]/CLK (DFFARX1)           0.00       0.00 r
+  library hold time                        0.01       0.01
+  data required time                                  0.01
+  -----------------------------------------------------------
+  data required time                                  0.01
+  data arrival time                                  -0.34
+  -----------------------------------------------------------
+  slack (MET)                                         0.33
+
+
+  Startpoint: FF_1/Q_DO_reg[0]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: FF_1/Q_DO_reg[0]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                1000000               saed90nm_typ
+  FF_DATA_WIDTH24_3  8000                  saed90nm_typ
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk_CI (rise edge)                 0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FF_1/Q_DO_reg[0]/CLK (DFFARX1)           0.00 #     0.00 r
+  FF_1/Q_DO_reg[0]/QN (DFFARX1)            0.16       0.16 r
+  FF_1/U5/ZN (INVX0)                       0.06       0.22 f
+  FF_1/U6/Q (MUX21X1)                      0.10       0.32 f
+  FF_1/Q_DO_reg[0]/D (DFFARX1)             0.03       0.34 f
+  data arrival time                                   0.34
+
+  clock Clk_CI (rise edge)                 0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FF_1/Q_DO_reg[0]/CLK (DFFARX1)           0.00       0.00 r
+  library hold time                        0.01       0.01
+  data required time                                  0.01
+  -----------------------------------------------------------
+  data required time                                  0.01
+  data arrival time                                  -0.34
+  -----------------------------------------------------------
+  slack (MET)                                         0.33
+
+
+  Startpoint: FF_2/Q_DO_reg[1]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: FF_2/Q_DO_reg[1]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                1000000               saed90nm_typ
+  FF_DATA_WIDTH24_2  8000                  saed90nm_typ
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk_CI (rise edge)                 0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FF_2/Q_DO_reg[1]/CLK (DFFARX1)           0.00 #     0.00 r
+  FF_2/Q_DO_reg[1]/QN (DFFARX1)            0.16       0.16 r
+  FF_2/U4/ZN (INVX0)                       0.06       0.22 f
+  FF_2/U28/Q (MUX21X1)                     0.10       0.32 f
+  FF_2/Q_DO_reg[1]/D (DFFARX1)             0.03       0.34 f
+  data arrival time                                   0.34
+
+  clock Clk_CI (rise edge)                 0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FF_2/Q_DO_reg[1]/CLK (DFFARX1)           0.00       0.00 r
+  library hold time                        0.01       0.01
+  data required time                                  0.01
+  -----------------------------------------------------------
+  data required time                                  0.01
+  data arrival time                                  -0.34
+  -----------------------------------------------------------
+  slack (MET)                                         0.33
+
+
+  Startpoint: FF_3/Q_DO_reg[1]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: FF_3/Q_DO_reg[1]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                1000000               saed90nm_typ
+  FF_DATA_WIDTH24_1  8000                  saed90nm_typ
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk_CI (rise edge)                 0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FF_3/Q_DO_reg[1]/CLK (DFFARX1)           0.00 #     0.00 r
+  FF_3/Q_DO_reg[1]/QN (DFFARX1)            0.16       0.16 r
+  FF_3/U2/ZN (INVX0)                       0.06       0.22 f
+  FF_3/U27/Q (MUX21X1)                     0.10       0.32 f
+  FF_3/Q_DO_reg[1]/D (DFFARX1)             0.03       0.34 f
+  data arrival time                                   0.34
+
+  clock Clk_CI (rise edge)                 0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FF_3/Q_DO_reg[1]/CLK (DFFARX1)           0.00       0.00 r
+  library hold time                        0.01       0.01
+  data required time                                  0.01
+  -----------------------------------------------------------
+  data required time                                  0.01
+  data arrival time                                  -0.34
+  -----------------------------------------------------------
+  slack (MET)                                         0.33
+
+
+  Startpoint: FF_4/Q_DO_reg[0]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: FF_4/Q_DO_reg[0]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                1000000               saed90nm_typ
+  FF_DATA_WIDTH24_0  8000                  saed90nm_typ
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk_CI (rise edge)                 0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FF_4/Q_DO_reg[0]/CLK (DFFARX1)           0.00 #     0.00 r
+  FF_4/Q_DO_reg[0]/Q (DFFARX1)             0.22       0.22 f
+  FF_4/U26/Q (MUX21X1)                     0.60       0.82 f
+  FF_4/Q_DO_reg[0]/D (DFFARX1)             0.03       0.85 f
+  data arrival time                                   0.85
+
+  clock Clk_CI (rise edge)                 0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FF_4/Q_DO_reg[0]/CLK (DFFARX1)           0.00       0.00 r
+  library hold time                        0.01       0.01
+  data required time                                  0.01
+  -----------------------------------------------------------
+  data required time                                  0.01
+  data arrival time                                  -0.85
+  -----------------------------------------------------------
+  slack (MET)                                         0.83
+
+
+1
+[ll556@vip-brg reports]$ 
