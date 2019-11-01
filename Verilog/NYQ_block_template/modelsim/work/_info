@@ -1,0 +1,119 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/ece5746/ok93/NYQ_block_template
+vcounter
+!s110 1572576513
+!i10b 1
+!s100 nPM>oUES7f2:<Y>NO?9iK3
+ImOmKL@>k?hE^fW0diD[K33
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 d/home/ok93/NYQ_block_template/modelsim
+Z3 w1572573107
+8../nyq/counter.v
+F../nyq/counter.v
+L0 13
+Z4 OP;L;10.7a;67
+r1
+!s85 0
+31
+!s108 1572576512.000000
+!s107 ../nyq/counter.v|
+!s90 -work|work|../nyq/counter.v|
+!i113 1
+Z5 o-work work
+Z6 tCvgOpt 0
+vFF
+!s110 1572573281
+!i10b 1
+!s100 1zn@GDcb>^c]IZ1HD=aB_2
+I[I<R:aK3lMk:z;mWUh?8C1
+R1
+R0
+R3
+8nyq/FF.v
+Fnyq/FF.v
+L0 14
+R4
+r1
+!s85 0
+31
+!s108 1572573280.000000
+!s107 nyq/FF.v|
+!s90 -work|work|nyq/FF.v|
+!i113 1
+R5
+R6
+n@f@f
+vMAC
+!s110 1572573320
+!i10b 1
+!s100 IEn<h^XJT`60ESF2fSXGa2
+IUdhDQNZRb@MmXdonM1a4Z3
+R1
+R0
+w1572573319
+8nyq/MAC.v
+Fnyq/MAC.v
+L0 4
+R4
+r1
+!s85 0
+31
+!s108 1572573319.000000
+!s107 nyq/MAC.v|
+!s90 -work|work|nyq/MAC.v|
+!i113 1
+R5
+R6
+n@m@a@c
+vNYQ
+!s110 1572577400
+!i10b 1
+!s100 9YXJC:EZL8fVl8G9CAPD53
+ICbM@^NE?b4PUandX]Hz]m1
+R1
+R2
+w1572577364
+8../nyq/NYQ.v
+F../nyq/NYQ.v
+L0 20
+R4
+r1
+!s85 0
+31
+!s108 1572577399.000000
+!s107 ../nyq/NYQ.v|
+!s90 -work|work|../nyq/NYQ.v|
+!i113 1
+R5
+R6
+n@n@y@q
+vNYQ_TB
+!s110 1572577466
+!i10b 1
+!s100 [^@6kL[f1K6hG1V=^GIfF1
+Il8hGXD=1<J;n^;4G_`O>K0
+R1
+R2
+w1572577463
+8../tb/NYQ_TB.v
+F../tb/NYQ_TB.v
+L0 11
+R4
+r1
+!s85 0
+31
+!s108 1572577465.000000
+!s107 ../tb/NYQ_TB.v|
+!s90 -work|work|../tb/NYQ_TB.v|
+!i113 1
+R5
+R6
+n@n@y@q_@t@b
