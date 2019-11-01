@@ -113,7 +113,7 @@ counter
 //Set valid signal when counter wraps around back to 0.
 always @(NYQ_Cnt_D)
 begin
-  if ( NYQ_Cnt_D == 3'b000) begin
+  if ( NYQ_Cnt_D == 3'b0) begin
     NYQ_Valid_DO = 0'b1;
   end 
 end
@@ -126,7 +126,8 @@ MAC_1
 (
   .Clk_CI  ( Clk_CI       ),
   .Rst_RBI ( Rst_RBI     ),
-  .Clr_SI ( NYQ_Clr_D         ),
+  .Clr_SI ( NYQ_Clr_D      ),
+  .WrEn_SI ( !WrEn_SI     ),
   .In0_DI ( parameter_memory[NYQ_Cnt_D] ), // Take the coefficient to be multiplied
   .In1_DI ( NYQ_In_DI            ), // Input signal
   .Out_DO ( NYQ_MACOut_D1              )  // Output of MAC is connected to state register
@@ -155,6 +156,7 @@ MAC_2
   .Clk_CI  ( Clk_CI       ),
   .Rst_RBI ( Rst_RBI     ),
   .Clr_SI ( NYQ_Clr_D         ),
+  .WrEn_SI ( !WrEn_SI     ),
   .In0_DI ( parameter_memory[NYQ_Cnt_D + 8] ), // Take the coefficient to be multiplied
   .In1_DI ( NYQ_In_DI            ), // Input signal
   .Out_DO ( NYQ_MACOut_D2             )  // Output of MAC is connected to state register
@@ -182,6 +184,7 @@ MAC_3
   .Clk_CI  ( Clk_CI       ),
   .Rst_RBI ( Rst_RBI     ),
   .Clr_SI ( NYQ_Clr_D         ),
+  .WrEn_SI ( !WrEn_SI     ),
   .In0_DI ( parameter_memory[NYQ_Cnt_D + 16] ), // Take the coefficient to be multiplied
   .In1_DI ( NYQ_In_DI            ), // Input signal
   .Out_DO ( NYQ_MACOut_D3              )  // Output of MAC is connected to state register
@@ -210,6 +213,7 @@ MAC_4
   .Clk_CI  ( Clk_CI       ),
   .Rst_RBI ( Rst_RBI     ),
   .Clr_SI ( NYQ_Clr_D         ),
+  .WrEn_SI ( !WrEn_SI     ),
   .In0_DI ( parameter_memory[NYQ_Cnt_D + 24] ), // Take the coefficient to be multiplied
   .In1_DI ( NYQ_In_DI            ), // Input signal
   .Out_DO ( NYQ_MACOut_D4              )  // Output of MAC is connected to state register
