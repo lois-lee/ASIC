@@ -19,7 +19,7 @@ FF_1
   .Clk_CI  ( Clk_CI       ),
   .Rst_RBI ( Rst_RBI      ),
   .WrEn_SI ( WrEn_SI        ),
-  .D_DI    ( Clr_SI ? WIDTH'b0 : Out_D0 + (In0_D1*In1_D1) ),
+  .D_DI    ( Clr_SI ? .DATA_WIDTH'b0 : Out_D0 + (In0_D1*In1_D1) ),
   .Q_DO    ( Out_DO   )
 );
 
