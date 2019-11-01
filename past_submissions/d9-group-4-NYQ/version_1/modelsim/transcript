@@ -1,0 +1,63 @@
+# vsim -lib work -voptargs="+acc" NYQ_TB 
+# Start time: 23:14:02 on Oct 31,2019
+# //  ModelSim DE 10.7a Mar 26 2018Linux 3.10.0-1062.4.1.el7.x86_64
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading work.NYQ_TB
+# Loading work.NYQ
+# Loading work.counter
+# Loading work.MAC
+# Loading work.FF
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'DUT'.  Expected 8, found 7.
+#    Time: 0 ps  Iteration: 0  Instance: /NYQ_TB/DUT File: ../tb/NYQ_TB.v Line: 52
+# ** Warning: (vsim-3722) ../tb/NYQ_TB.v(52): [TFMPC] - Missing connection for port 'NYQ_Valid_DO'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (3) for port 'Cnt_Out_DO'. The port definition is at: ../nyq/counter.v(18).
+#    Time: 0 ps  Iteration: 0  Instance: /NYQ_TB/DUT/counter_1 File: ../nyq/NYQ.v Line: 104
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'In0_DI'. The port definition is at: /home/ece5746/ok93/NYQ_block_template/nyq/MAC.v(10).
+#    Time: 0 ps  Iteration: 0  Instance: /NYQ_TB/DUT/MAC_1 File: ../nyq/NYQ.v Line: 123
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (24) for port 'In1_DI'. The port definition is at: /home/ece5746/ok93/NYQ_block_template/nyq/MAC.v(10).
+#    Time: 0 ps  Iteration: 0  Instance: /NYQ_TB/DUT/MAC_1 File: ../nyq/NYQ.v Line: 123
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (24) for port 'Out_DO'. The port definition is at: /home/ece5746/ok93/NYQ_block_template/nyq/MAC.v(11).
+#    Time: 0 ps  Iteration: 0  Instance: /NYQ_TB/DUT/MAC_1 File: ../nyq/NYQ.v Line: 123
+# ** Warning: (vsim-3015) [PCDPC] - Port size (24) does not match connection size (1) for port 'Q_DO'. The port definition is at: /home/ece5746/ok93/NYQ_block_template/nyq/FF.v(25).
+#    Time: 0 ps  Iteration: 0  Instance: /NYQ_TB/DUT/MAC_1/FF_1 File: /home/ece5746/ok93/NYQ_block_template/nyq/MAC.v Line: 17
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'In0_DI'. The port definition is at: /home/ece5746/ok93/NYQ_block_template/nyq/MAC.v(10).
+#    Time: 0 ps  Iteration: 0  Instance: /NYQ_TB/DUT/MAC_2 File: ../nyq/NYQ.v Line: 152
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (24) for port 'In1_DI'. The port definition is at: /home/ece5746/ok93/NYQ_block_template/nyq/MAC.v(10).
+#    Time: 0 ps  Iteration: 0  Instance: /NYQ_TB/DUT/MAC_2 File: ../nyq/NYQ.v Line: 152
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (24) for port 'Out_DO'. The port definition is at: /home/ece5746/ok93/NYQ_block_template/nyq/MAC.v(11).
+#    Time: 0 ps  Iteration: 0  Instance: /NYQ_TB/DUT/MAC_2 File: ../nyq/NYQ.v Line: 152
+# ** Warning: (vsim-3015) [PCDPC] - Port size (24) does not match connection size (1) for port 'Q_DO'. The port definition is at: /home/ece5746/ok93/NYQ_block_template/nyq/FF.v(25).
+#    Time: 0 ps  Iteration: 0  Instance: /NYQ_TB/DUT/MAC_2/FF_1 File: /home/ece5746/ok93/NYQ_block_template/nyq/MAC.v Line: 17
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'In0_DI'. The port definition is at: /home/ece5746/ok93/NYQ_block_template/nyq/MAC.v(10).
+#    Time: 0 ps  Iteration: 0  Instance: /NYQ_TB/DUT/MAC_3 File: ../nyq/NYQ.v Line: 180
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (24) for port 'In1_DI'. The port definition is at: /home/ece5746/ok93/NYQ_block_template/nyq/MAC.v(10).
+#    Time: 0 ps  Iteration: 0  Instance: /NYQ_TB/DUT/MAC_3 File: ../nyq/NYQ.v Line: 180
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (24) for port 'Out_DO'. The port definition is at: /home/ece5746/ok93/NYQ_block_template/nyq/MAC.v(11).
+#    Time: 0 ps  Iteration: 0  Instance: /NYQ_TB/DUT/MAC_3 File: ../nyq/NYQ.v Line: 180
+# ** Warning: (vsim-3015) [PCDPC] - Port size (24) does not match connection size (1) for port 'Q_DO'. The port definition is at: /home/ece5746/ok93/NYQ_block_template/nyq/FF.v(25).
+#    Time: 0 ps  Iteration: 0  Instance: /NYQ_TB/DUT/MAC_3/FF_1 File: /home/ece5746/ok93/NYQ_block_template/nyq/MAC.v Line: 17
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'In0_DI'. The port definition is at: /home/ece5746/ok93/NYQ_block_template/nyq/MAC.v(10).
+#    Time: 0 ps  Iteration: 0  Instance: /NYQ_TB/DUT/MAC_4 File: ../nyq/NYQ.v Line: 209
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (24) for port 'In1_DI'. The port definition is at: /home/ece5746/ok93/NYQ_block_template/nyq/MAC.v(10).
+#    Time: 0 ps  Iteration: 0  Instance: /NYQ_TB/DUT/MAC_4 File: ../nyq/NYQ.v Line: 209
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (24) for port 'Out_DO'. The port definition is at: /home/ece5746/ok93/NYQ_block_template/nyq/MAC.v(11).
+#    Time: 0 ps  Iteration: 0  Instance: /NYQ_TB/DUT/MAC_4 File: ../nyq/NYQ.v Line: 209
+# ** Warning: (vsim-3015) [PCDPC] - Port size (24) does not match connection size (1) for port 'Q_DO'. The port definition is at: /home/ece5746/ok93/NYQ_block_template/nyq/FF.v(25).
+#    Time: 0 ps  Iteration: 0  Instance: /NYQ_TB/DUT/MAC_4/FF_1 File: /home/ece5746/ok93/NYQ_block_template/nyq/MAC.v Line: 17
+do wave.do
+run -a
+# Break key hit
+# Break in Module NYQ at ../nyq/NYQ.v line 88
+# End time: 23:46:27 on Oct 31,2019, Elapsed time: 0:32:25
+# Errors: 0, Warnings: 19
