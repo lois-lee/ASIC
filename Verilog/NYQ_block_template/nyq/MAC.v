@@ -1,14 +1,26 @@
 //When EN=1, out <= out+a*b
 //When clear = 1, out <= clear_value
 
-module MAC(EN, a, b, clear_value, clear, out, clk, rst_b);
-	input a, b, EN, clear, clear_value, clk, rst_b;
-	output out;
-	reg [23:0] out;
-	wire [23:0] a, b, clear_value;
-	always@(posedge clk or negedge rst_b)
-	if (!rst_b)
-	out <= 0;
-	else
-	out <= clear ? clear_value : (EN ? out+a*b: out);
+module MAC
+#(
+  parameter WIDTH = 24   // width of block outputs
+)
+
+(
+  input Clk_CI, Rst_RBI, Clr_SI, WrEn_SI, In0_DI, In1_DI,
+  output Out_DO
+);
+
+FF #(
+    .DATA_WIDTH ( WIDTH )
+)
+FF_1
+(
+  .Clk_CI  ( Clk_CI       ),
+  .Rst_RBI ( Rst_RBI      ),
+  .WrEn_SI ( WrEn_SI        ),
+  .D_DI    ( Clr_SI ? WIDTH'b0 : Out_D0 + (In0_D1*In1_D1) ),
+  .Q_DO    ( Out_DO   )
+);
+
 endmodule
