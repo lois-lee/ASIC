@@ -20,8 +20,8 @@
 module NYQ
 #(
   // ---- The following parameters are the same for all blocks
-  parameter ADDR_WIDTH = 9,  // number of entries in the parameter memory is equal to 2^(ADDR_WIDTH)
-  parameter MEM_WIDTH = 32,  // word length of each memory entry to store parameters
+  parameter ADDR_WIDTH = 5,  // number of entries in the parameter memory is equal to 2^(ADDR_WIDTH)
+  parameter MEM_WIDTH = 24,  // word length of each memory entry to store parameters
   // ---- the following parameters are NYQ block specific (you can add or remove inputs and outputs)
   //parameter FILT_WIDTH = 32, // width of full filter
   //parameter COEFF_WIDTH = 32, // width of each coefficient
@@ -57,6 +57,10 @@ reg [MEM_WIDTH-1:0] parameter_memory [0:MEM_DEPTH-1];
 // Define the internal wires, regs and all other variables of your module
 // -------------------------------------------------------------------------------- */
 
+localparam NUM_MACS = 4;
+
+//The max width of anything in the MAC unit.
+localparam MAC_WIDTH = 2*MEM_WIDTH + MEM_DEPTH/NUM_MACS;
 
 // ---- NYQ block specific wires and registers
 
@@ -67,14 +71,15 @@ reg [MEM_WIDTH-1:0] parameter_memory [0:MEM_DEPTH-1];
 wire [2:0] NYQ_Cnt_D;
 
 
-wire        [OUT_WIDTH-1:0]NYQ_MACOut_D1;    // Signal that holds output from MAC1 unit.
-wire        [OUT_WIDTH-1:0]NYQ_MACOut_D2;    // Signal that holds output from MAC2 unit.
-wire        [OUT_WIDTH-1:0]NYQ_MACOut_D3;    // Signal that holds output from MAC3 unit.
-wire        [OUT_WIDTH-1:0]NYQ_MACOut_D4;    // Signal that holds output from MAC4 unit.
+wire        [MAC_WIDTH-1:0]NYQ_MACOut_D1;    // Signal that holds output from MAC1 unit.
+wire        [MAC_WIDTH-1:0]NYQ_MACOut_D2;    // Signal that holds output from MAC2 unit.
+wire        [MAC_WIDTH-1:0]NYQ_MACOut_D3;    // Signal that holds output from MAC3 unit.
+wire        [MAC_WIDTH-1:0]NYQ_MACOut_D4;    // Signal that holds output from MAC4 unit.
 
-wire        [OUT_WIDTH-1:0] NYQ_Temp_D1;      // Signal that holds output from MAC2 + MAC1 unit.
-wire        [OUT_WIDTH-1:0] NYQ_Temp_D2;      // Signal that holds output from MAC3 + MAC2 unit.
-wire        [OUT_WIDTH-1:0] NYQ_Temp_D3;      // Signal that holds output from MAC4 + MAC3 unit.
+wire        [MAC_WIDTH-1:0] NYQ_Temp_D1;      // Signal that holds output from MAC1 unit.
+wire        [MAC_WIDTH-1:0] NYQ_Temp_D2;      // Signal that holds output from MAC2 + MAC1 unit.
+wire        [MAC_WIDTH-1:0] NYQ_Temp_D3;      // Signal that holds output from MAC3 + MAC2 unit.
+wire        [MAC_WIDTH-1:0] NYQ_Temp_D4;      // Signal that holds output from MAC4 + MAC3 unit.
 
 
 /* --------------------------------------------------------------------------------
@@ -123,7 +128,7 @@ end
 
 // 1st MAC module
 MAC #(
-  .WIDTH ( OUT_WIDTH )
+  .WIDTH ( MAC_WIDTH )
 )
 MAC_1
 (
@@ -138,7 +143,7 @@ MAC_1
 
 // 1st temp flip flop
 FF #(
-  .DATA_WIDTH ( OUT_WIDTH )
+  .DATA_WIDTH ( MAC_WIDTH )
 )
 FF_1
 (
@@ -152,7 +157,7 @@ FF_1
 
 // 2nd MAC module
 MAC #(
-  .WIDTH ( OUT_WIDTH )
+  .WIDTH ( MAC_WIDTH )
 )
 MAC_2
 (
@@ -167,7 +172,7 @@ MAC_2
 
 // 2nd temp flip flop
 FF #(
-  .DATA_WIDTH ( OUT_WIDTH )
+  .DATA_WIDTH ( MAC_WIDTH )
 )
 FF_2
 (
@@ -180,7 +185,7 @@ FF_2
 
 // 3rd MAC module
 MAC #(
-  .WIDTH ( OUT_WIDTH )
+  .WIDTH ( MAC_WIDTH )
 )
 MAC_3
 (
@@ -195,7 +200,7 @@ MAC_3
 
 // 3rd temp flip flop
 FF #(
-  .DATA_WIDTH ( OUT_WIDTH )
+  .DATA_WIDTH ( MAC_WIDTH )
 )
 FF_3
 (
@@ -209,7 +214,7 @@ FF_3
 
 // 4th MAC module
 MAC #(
-  .WIDTH ( OUT_WIDTH )
+  .WIDTH ( MAC_WIDTH )
 )
 MAC_4
 (
@@ -224,7 +229,7 @@ MAC_4
 
 // 4th temp flip flop (out flip flop)
 FF #(
-  .DATA_WIDTH ( OUT_WIDTH )
+  .DATA_WIDTH ( MAC_WIDTH )
 )
 FF_4
 (
@@ -232,8 +237,10 @@ FF_4
   .Rst_RBI ( Rst_RBI      ),
   .WrEn_SI ( NYQ_Valid_DO        ),
   .D_DI    ( NYQ_MACOut_D4 + NYQ_Temp_D3 ),
-  .Q_DO    ( NYQ_Out_DO   )
+  .Q_DO    ( NYQ_Temp_D4   )
 );
+
+NYQ_Out_D0 = NYQ_Temp_D4[MAC_WIDTH-1:MAC_WIDTH-(MEM_WIDTH-1)];
 
 
 /* --------------------------------------------------------------------------------

@@ -1,6 +1,8 @@
 //When EN=1, out <= out+a*b
 //When clear = 1, out <= clear_value
 
+//Out width should be in1_width + in2_width + (1 for every addition)
+
 module MAC
 #(
   parameter WIDTH = 24   // width of block outputs
@@ -19,7 +21,7 @@ FF_1
   .Clk_CI  ( Clk_CI       ),
   .Rst_RBI ( Rst_RBI      ),
   .WrEn_SI ( WrEn_SI        ),
-  .D_DI    ( Clr_SI ? 24'b0 : Out_D0 + (In0_D1*In1_D1) ),
+  .D_DI    ( Clr_SI ? {WIDTH{1'b0}} : Out_D0 + (In0_D1*In1_D1) ),
   .Q_DO    ( Out_DO   )
 );
 

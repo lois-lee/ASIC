@@ -14,7 +14,7 @@ module NYQ_TB();
  localparam IN_DELAY   = 0.2; // Delay after clock edge that testbench signals take to reach DUT pins 
  localparam OUT_DELAY  = 0.8; // Delay after clock edge that DUT outputs take to change
  localparam ADDR_WIDTH = 5;   // Number of bits for address
- localparam MEM_WIDTH = 32;   // Number of bits for memory words
+ localparam MEM_WIDTH = 24;   // Number of bits for memory words
  localparam IN_WIDTH = 24;    // Number of bits for module inputs
  localparam OUT_WIDTH = 24;   // Number of bits for module outputs
 
