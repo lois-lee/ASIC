@@ -12,7 +12,7 @@ function sta = NYQ(par,sta)
     FixP_out = {0,23,'s'}; % {I,F,'s'} where 's' is signed
     QType_out = 'WrpTrc_NoWarn'; % we wrap and truncate
     
-    FixP_ff = {0,32,'s'};
+    FixP_ff = {0,23,'s'};
     QType_ff = 'WrpTrc_NoWarn';
     
     % it is not a valid output unless counter > OSR
@@ -30,7 +30,7 @@ function sta = NYQ(par,sta)
             sta.NYQ.Sample_D ;
         % real resize the accumulates
         sta.NYQ.accumulate_D(i) = RealRESIZE(sta.NYQ.accumulate_D(i),...
-            {3,29,'s'},QType_out);
+            {0,23,'s'},QType_out);
     end
     
     % Increment count to represent the counter increasing every clk cycle
@@ -51,7 +51,7 @@ function sta = NYQ(par,sta)
                 sta.NYQ.temp_D(i) = sta.NYQ.accumulate_D(i+1);
                 % real resize the temp ff
                 sta.NYQ.temp_D(i) = RealRESIZE(sta.NYQ.temp_D(i),...
-                    {3,29,'s'},QType_out);
+                    {0,23,'s'},QType_out);
             % for literally every other ff
             else 
                 % using RealADD with the types defined above for ff
@@ -81,6 +81,11 @@ function sta = NYQ(par,sta)
     
     % Resize the output
     sta.NYQ.Out_DO = RealRESIZE(sta.NYQ.Out_DO, FixP_out, QType_out);
+    if sta.NYQ.inputs(1) ~= 0
+       %disp("Accumulate = " + sta.NYQ.accumulate_D(1) + "\n");
+        %disp("Input = " + sta.NYQ.inputs(1) + " at length " + length(sta.NYQ.inputs));
+        %disp("Sample = " + sta.NYQ.Sample_D);
+    end
     sta.NYQ.outputs = [sta.NYQ.Out_DO,sta.NYQ.outputs];   
     % =========================================================================
     % ================         PERFORMANCE CHECKER          =================== 

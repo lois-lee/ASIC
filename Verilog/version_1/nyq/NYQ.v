@@ -34,12 +34,12 @@ module NYQ
   input                          Rst_RBI,    // Asynchronous active low reset
   input                          WrEn_SI,    // Active high write enable
   input         [ADDR_WIDTH-1:0] Addr_DI,    // Address of the parameter in the memory
-  input	        [MEM_WIDTH-1:0]  PAR_In_DI,  // Parameter input (written from external interface)
+  input	 signed  [MEM_WIDTH-1:0]  PAR_In_DI,  // Parameter input (written from external interface)
 
   // ---- The following signals are NYQ block specific.
-  input         [IN_WIDTH-1:0]   NYQ_In_DI,  // Input to the block (block can read from other block's output states)
+  input  signed [IN_WIDTH-1:0]   NYQ_In_DI,  // Input to the block (block can read from other block's output states)
   output signed [OUT_WIDTH-1:0]  NYQ_Out_DO,  // Output of the block (state). Use signed, whenever you are dealing with samples
-  output     reg                 NYQ_Valid_DO
+  output        reg              NYQ_Valid_DO
 );
 
 /* --------------------------------------------------------------------------------
@@ -50,7 +50,7 @@ localparam MEM_DEPTH = (1 << ADDR_WIDTH);   // You can have at most 2^ADD_WIDTH 
 integer i;                                  // temporary variable
 // ---- Defines block parameter memory that can be written from the outside of your module
 // ---- Creates a register array (memory) to hold the parameter of the block
-reg [MEM_WIDTH-1:0] parameter_memory [0:MEM_DEPTH-1];
+reg  signed [MEM_WIDTH-1:0] parameter_memory [0:MEM_DEPTH-1];
 
 /* --------------------------------------------------------------------------------
 // Internal parameters and signals/variables declaration that are block specific
@@ -71,15 +71,23 @@ localparam MAC_WIDTH = 2*MEM_WIDTH + MEM_DEPTH/NUM_MACS;
 wire [2:0] NYQ_Cnt_D;
 
 
-wire        [MAC_WIDTH-1:0]NYQ_MACOut_D1;    // Signal that holds output from MAC1 unit.
-wire        [MAC_WIDTH-1:0]NYQ_MACOut_D2;    // Signal that holds output from MAC2 unit.
-wire        [MAC_WIDTH-1:0]NYQ_MACOut_D3;    // Signal that holds output from MAC3 unit.
-wire        [MAC_WIDTH-1:0]NYQ_MACOut_D4;    // Signal that holds output from MAC4 unit.
+wire  signed    [MAC_WIDTH-1:0]NYQ_MACOut_D1;    // Output signal from MAC1 unit.
+wire  signed    [MAC_WIDTH-1:0]NYQ_MACOut_D2;    // Output signal from MAC2 unit.
+wire  signed    [MAC_WIDTH-1:0]NYQ_MACOut_D3;    // Output signal from MAC3 unit.
+wire  signed    [MAC_WIDTH-1:0]NYQ_MACOut_D4;    // Output signal from MAC4 unit.
 
-wire        [MAC_WIDTH-1:0] NYQ_Temp_D1;      // Signal that holds output from MAC1 unit.
-wire        [MAC_WIDTH-1:0] NYQ_Temp_D2;      // Signal that holds output from MAC2 + MAC1 unit.
-wire        [MAC_WIDTH-1:0] NYQ_Temp_D3;      // Signal that holds output from MAC3 + MAC2 unit.
-wire        [MAC_WIDTH-1:0] NYQ_Temp_D4;      // Signal that holds output from MAC4 + MAC3 unit.
+wire  signed    [MAC_WIDTH-1:0] NYQ_SUM1_D;      // Input signal into FF2 that holds sum of MAC2 unit and FF1.
+wire  signed    [MAC_WIDTH-1:0] NYQ_SUM2_D;      // Input signal into FF3 that holds sum of of MAC3 unit and FF2.
+wire  signed    [MAC_WIDTH-1:0] NYQ_SUM3_D;      // Input signal into FF4 that holds sum of of MAC4 unit and FF3
+
+wire  signed    [MAC_WIDTH-1:0] NYQ_Temp_D1;        // Output signal from FF1.
+wire  signed    [MAC_WIDTH-1:0] NYQ_Temp_D2;      // Output signal from FF2.
+wire  signed    [MAC_WIDTH-1:0] NYQ_Temp_D3;      // Outout signal from FF3.
+wire  signed    [MAC_WIDTH-1:0] NYQ_Temp_D4;      // Output signal from FF4.
+
+
+
+reg   signed    [MAC_WIDTH-1:MAC_WIDTH-(MEM_WIDTH-1)] NYQ_OutInternal_DO;
 
 
 /* --------------------------------------------------------------------------------
@@ -112,19 +120,6 @@ counter counter_1
   .Rst_RBI ( Rst_RBI     ),
   .Cnt_Out_DO (NYQ_Cnt_D )  // Output of counter is connected to state register
 );
-
-initial begin
-  NYQ_Cnt_D = 1'b0;
-end
-
-//Set valid signal when counter wraps around back to 0.
-always @(NYQ_Cnt_D)
-begin
-  if ( NYQ_Cnt_D == 3'b111) 
-    NYQ_Valid_DO = 1'b1;
-  else 
-    NYQ_Valid_DO = 1'b0;
-end
 
 // 1st MAC module
 MAC #(
@@ -170,6 +165,7 @@ MAC_2
   .Out_DO ( NYQ_MACOut_D2             )  // Output of MAC is connected to state register
 );
 
+assign NYQ_SUM1_D =  NYQ_MACOut_D2 + NYQ_Temp_D1;
 // 2nd temp flip flop
 FF #(
   .DATA_WIDTH ( MAC_WIDTH )
@@ -179,7 +175,7 @@ FF_2
   .Clk_CI  ( Clk_CI       ),
   .Rst_RBI ( Rst_RBI      ),
   .WrEn_SI ( NYQ_Valid_DO       ),
-  .D_DI    ( NYQ_MACOut_D2 + NYQ_Temp_D1 ),
+  .D_DI    ( NYQ_SUM1_D ),
   .Q_DO    ( NYQ_Temp_D2   )
 );
 
@@ -198,6 +194,7 @@ MAC_3
   .Out_DO ( NYQ_MACOut_D3              )  // Output of MAC is connected to state register
 );
 
+assign NYQ_SUM2_D =  NYQ_MACOut_D3 + NYQ_Temp_D2;
 // 3rd temp flip flop
 FF #(
   .DATA_WIDTH ( MAC_WIDTH )
@@ -207,7 +204,7 @@ FF_3
   .Clk_CI  ( Clk_CI       ),
   .Rst_RBI ( Rst_RBI      ),
   .WrEn_SI ( NYQ_Valid_DO        ),
-  .D_DI    ( NYQ_MACOut_D3 + NYQ_Temp_D2 ),
+  .D_DI    ( NYQ_SUM2_D ),
   .Q_DO    ( NYQ_Temp_D3   )
 );
 
@@ -227,6 +224,7 @@ MAC_4
   .Out_DO ( NYQ_MACOut_D4              )  // Output of MAC is connected to state register
 );
 
+assign NYQ_SUM3_D =  NYQ_MACOut_D4 + NYQ_Temp_D3;
 // 4th temp flip flop (out flip flop)
 FF #(
   .DATA_WIDTH ( MAC_WIDTH )
@@ -236,12 +234,26 @@ FF_4
   .Clk_CI  ( Clk_CI       ),
   .Rst_RBI ( Rst_RBI      ),
   .WrEn_SI ( NYQ_Valid_DO        ),
-  .D_DI    ( NYQ_MACOut_D4 + NYQ_Temp_D3 ),
+  .D_DI    ( NYQ_SUM3_D ),
   .Q_DO    ( NYQ_Temp_D4   )
 );
 
-NYQ_Out_D0 = NYQ_Temp_D4[MAC_WIDTH-1:MAC_WIDTH-(MEM_WIDTH-1)];
+//Set valid signal when counter wraps around back to 0, and change output.
+always @(NYQ_Cnt_D)
+begin
+  if ( NYQ_Cnt_D == 3'b111) 
+    begin
+      NYQ_Valid_DO <= 1'b1;
+      NYQ_OutInternal_DO <= NYQ_Temp_D4;
+    end
+  else 
+    begin
+      NYQ_Valid_DO <= 1'b0;
+      NYQ_OutInternal_DO <= NYQ_OutInternal_DO;
+    end
+end
 
+assign NYQ_Out_DO = NYQ_OutInternal_DO;
 
 /* --------------------------------------------------------------------------------
 // Done!

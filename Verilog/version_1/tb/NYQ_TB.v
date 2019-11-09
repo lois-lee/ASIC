@@ -37,10 +37,12 @@ module NYQ_TB();
  reg                   WrEn_S;
  reg  [ADDR_WIDTH-1:0] Addr_D;
 
- reg  [MEM_WIDTH-1:0]  PAR_In_D;
- reg  [IN_WIDTH-1:0]   NYQ_In_D;
- wire [OUT_WIDTH-1:0]  NYQ_Out_D;
- reg  [OUT_WIDTH-1:0]  NYQ_Out_DE;
+ reg  signed [MEM_WIDTH-1:0]  PAR_In_D;
+ reg  signed [IN_WIDTH-1:0]   NYQ_In_D;
+ wire signed [OUT_WIDTH-1:0]  NYQ_Out_D;
+ //reg                   NYQ_Valid_DO;
+
+ reg  signed [OUT_WIDTH-1:0]  NYQ_Out_DE;
  
  
  NYQ #(
@@ -57,6 +59,7 @@ module NYQ_TB();
    .PAR_In_DI  ( PAR_In_D  ),
    .NYQ_In_DI  ( NYQ_In_D  ),
    .NYQ_Out_DO ( NYQ_Out_D )
+   //.NYQ_Valid_DO (NYQ_Valid_D)
  );
  
  //Clock generation

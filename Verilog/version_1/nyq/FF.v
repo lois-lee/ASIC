@@ -20,9 +20,9 @@ module FF
   input                       Rst_RBI, // Asynchronous active low reset
   input                       WrEn_SI, // Active High Write enable
 
-  input      [DATA_WIDTH-1:0] D_DI,    // Input data to FF
+  input      signed [DATA_WIDTH-1:0] D_DI,    // Input data to FF
    
-  output reg [DATA_WIDTH-1:0] Q_DO     // Output data of FF
+  output reg signed [DATA_WIDTH-1:0] Q_DO     // Output data of FF
 );
 
 always @(posedge Clk_CI or negedge Rst_RBI)
