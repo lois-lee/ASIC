@@ -5,18 +5,19 @@
 coeff = zeros(1, length(sta.NYQ.coeff));
 inputs = zeros(1, length(sta.NYQ.inputs));
 outputs = zeros(1, length(sta.NYQ.outputs));
+bitshift = 23;
 
 % sta.NYQ.coeff
 for i=1:length(sta.NYQ.coeff)
-    coeff(i) = floor(sta.NYQ.coeff(i) .* (2^23));
+    coeff(i) = floor(sta.NYQ.coeff(end - i+1) .* (2^bitshift));
 end
 % sta.NYQ.inputs
 for i=1:length(sta.NYQ.inputs)
-    inputs(i) = floor(sta.NYQ.inputs(i) .* (2^23));
+    inputs(i) = floor(sta.NYQ.inputs(end - i+1) .* (2^bitshift));
 end
 % sta.NYQ.outputs
 for i=1:length(sta.NYQ.outputs)
-    outputs(i) = floor(sta.NYQ.outputs(i) .* (2^23));
+    outputs(i) = floor(sta.NYQ.outputs(end - i+1) .* (2^bitshift));
 end
 
 % for the number of coeffs
