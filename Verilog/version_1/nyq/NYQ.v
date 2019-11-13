@@ -60,7 +60,7 @@ reg  signed [MEM_WIDTH-1:0] parameter_memory [0:MEM_DEPTH-1];
 localparam NUM_MACS = 4;
 
 //The max width of anything in the MAC unit.
-localparam MAC_WIDTH = 2*MEM_WIDTH + MEM_DEPTH/NUM_MACS;
+localparam MAC_WIDTH = OUT_WIDTH;
 
 // ---- NYQ block specific wires and registers
 
