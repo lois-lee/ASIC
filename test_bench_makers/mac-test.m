@@ -46,6 +46,8 @@ for tt=1:1000
     sum_D = RealADD(product_D, accumulate_D, FixP_out, QType_out);
     Out_DO_lst = [Out_DO_lst, sum_D .* (2^bitshift)];
     
+    accumulate_D = 0;
+    
 end
 fclose(fileID);
 
