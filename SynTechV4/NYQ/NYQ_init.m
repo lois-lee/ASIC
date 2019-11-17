@@ -5,7 +5,7 @@
 function [par,sta] = NYQ_init(par,sta)
 
 
-FixP_out = {2,30,'s'}; % {I,F,'s'} where 's' is signed
+FixP_out = {0,23,'s'}; % {I,F,'s'} where 's' is signed
 QType_out = 'WrpTrc_NoWarn'; % we wrap and truncate 
 
 
