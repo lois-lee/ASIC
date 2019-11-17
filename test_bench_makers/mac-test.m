@@ -21,9 +21,11 @@ accumulate_D = 0;
 
 
 fileID = fopen('MAC_in.txt','w');
-for tt=1:1000
+for tt=1:100
 
     for i = 1:sta.GLO.OSR_DO-1
+        % In0_DI = .02;
+        % In1_DI = .03;
         In0_DI = rand(1);
         In1_DI = rand(1);
         
@@ -34,6 +36,9 @@ for tt=1:1000
         
         product_D = RealMULT(In0_DI, In1_DI, FixP_out, QType_out);
         sum_D = RealADD(product_D, accumulate_D, FixP_out, QType_out);
+        
+        accumulate_D = sum_D;
+        disp(accumulate_D);
         Out_DO_lst = [Out_DO_lst, sum_D .* (2^bitshift)];
     end
     In0_DI = rand(1);
@@ -49,7 +54,7 @@ for tt=1:1000
     Out_DO_lst = [Out_DO_lst, sum_D .* (2^bitshift)];
     
     accumulate_D = 0;
-    
+    disp(accumulate_D);
 end
 fclose(fileID);
 
