@@ -8,9 +8,9 @@ QType_out = 'WrpTrc_NoWarn'; % we wrap and truncate
 
 Out_DO_lst = [];
 bitshift = 23;
-product_D; 
-sum_D;
-accumulate_D;
+product_D = 0; 
+sum_D = 0;
+accumulate_D = 0;
 
 
 % INPUTS:
@@ -20,13 +20,14 @@ accumulate_D;
 % Out_DO
 
 
-fileID = fopen('MAC_out.txt','w');
+fileID = fopen('MAC_in.txt','w');
 for tt=1:1000
 
     for i = 1:sta.GLO.OSR_DO-1
         In0_DI = rand(1);
         In1_DI = rand(1);
         
+        % Rst_RB, Clr_SI, WrEn_SI,In0_DI,In1_DI
         formatSpec_input = '1 0 0 %d %d \n';
         fprintf(fileID,formatSpec_input, In0_DI.* (2^bitshift),...
             In1_DI.* (2^bitshift));
@@ -38,6 +39,7 @@ for tt=1:1000
     In0_DI = rand(1);
     In1_DI = rand(1);
     
+    % Rst_RB, Clr_SI, WrEn_SI,In0_DI,In1_DI
     formatSpec_input = '1 0 0 %d %d \n';
     fprintf(fileID,formatSpec_input, In0_DI.* (2^bitshift), ...
         In1_DI.* (2^bitshift));
