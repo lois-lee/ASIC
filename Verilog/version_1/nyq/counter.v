@@ -14,15 +14,16 @@ module counter    (
 
 input                       Clk_CI,  // Clock signal
 input                       Rst_RBI, // Asynchronous active low reset
+input                       WrEn_SI,
 
 output reg [2:0] Cnt_Out_DO  // Counter value output
 );
 
 //—-Logic—-
-always @(posedge Clk_CI)
+always @(posedge Clk_CI or negedge Rst_RBI)
 if (!Rst_RBI) begin
   Cnt_Out_DO <= 3'b111;
-end else begin
+end else if (WrEn_SI) begin
   Cnt_Out_DO <= Cnt_Out_DO - 1;
 end
 
