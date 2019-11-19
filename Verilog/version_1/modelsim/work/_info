@@ -9,13 +9,13 @@ z2
 cModel Technology
 d/home/ece5746/ok93/NYQ_block_template
 vcounter
-!s110 1573242554
+!s110 1573942069
 !i10b 1
-!s100 @m?`hj3LhH?_icelLXK3l3
-I<5Pe>R_eKnm1DFVm<hfhY1
+!s100 WQhO4<TmP_KV2[j<oFUD60
+I>`oja4Ye@R2Al0HShB6iV3
 Z0 VDg1SIo80bB@j0V0VzS_@n1
-Z1 d/home/ok93/Verilog/version_1/modelsim
-w1573242549
+Z1 d/home/ece5746/ok93/Verilog/version_1/modelsim
+w1573942046
 8../nyq/counter.v
 F../nyq/counter.v
 L0 13
@@ -23,20 +23,20 @@ Z2 OP;L;10.7a;67
 r1
 !s85 0
 31
-!s108 1573242553.000000
+!s108 1573942068.000000
 !s107 ../nyq/counter.v|
 !s90 -work|work|../nyq/counter.v|
 !i113 1
 Z3 o-work work
 Z4 tCvgOpt 0
 vFF
-!s110 1573250888
+!s110 1574036862
 !i10b 1
-!s100 nHd=GV8`d3g6Vb>W3gJRV1
-IH;>4nW@^CXl7OZ<88BQ;n3
+!s100 1zn@GDcb>^c]IZ1HD=aB_2
+ImPVnL@FhXm<_Z_O?TeSGC3
 R0
 R1
-w1573250749
+w1574036521
 8../nyq/FF.v
 F../nyq/FF.v
 L0 14
@@ -44,7 +44,7 @@ R2
 r1
 !s85 0
 31
-!s108 1573250887.000000
+!s108 1574036861.000000
 !s107 ../nyq/FF.v|
 !s90 -work|work|../nyq/FF.v|
 !i113 1
@@ -52,13 +52,13 @@ R3
 R4
 n@f@f
 vMAC
-!s110 1573259137
+!s110 1574129595
 !i10b 1
-!s100 l^3c5Q>d^Aa:aYVJMb1[G0
-IQO_7TZIV1OKPaPomQS>Wc0
+!s100 H0lVh`ckKQda_O37eM^@W1
+IIUAIn`gNG_NZR@YlA0LSN3
 R0
 R1
-w1573259137
+w1574128189
 8../nyq/MAC.v
 F../nyq/MAC.v
 L0 6
@@ -66,7 +66,7 @@ R2
 r1
 !s85 0
 31
-!s108 1573259136.000000
+!s108 1574129594.000000
 !s107 ../nyq/MAC.v|
 !s90 -work|work|../nyq/MAC.v|
 !i113 1
@@ -74,13 +74,13 @@ R3
 R4
 n@m@a@c
 vNYQ
-!s110 1573259090
+!s110 1574143323
 !i10b 1
-!s100 `5GA7j<Din:eR5]S0`fM40
-Iz=R9?ZEoDhK]QYDYhHZFA0
+!s100 d[SO0C[P8_i7^]Y[jLVT43
+IJzF7K]1Ic2nGbk_?STRmL3
 R0
 R1
-w1573257712
+w1574143286
 8../nyq/NYQ.v
 F../nyq/NYQ.v
 L0 20
@@ -88,7 +88,7 @@ R2
 r1
 !s85 0
 31
-!s108 1573259089.000000
+!s108 1574143322.000000
 !s107 ../nyq/NYQ.v|
 !s90 -work|work|../nyq/NYQ.v|
 !i113 1
@@ -96,13 +96,13 @@ R3
 R4
 n@n@y@q
 vNYQ_TB
-!s110 1573268400
+!s110 1574144753
 !i10b 1
-!s100 ed5Pk=zV1a[NbHlHSGBin3
-I:m7K`WfU6@E`D[]M7XC7k1
+!s100 d]llF>f=fEzM7lMR`P=ZR1
+IL]K29mk=]]0o_naP^^<cg0
 R0
 R1
-w1573249855
+w1574144735
 8../tb/NYQ_TB.v
 F../tb/NYQ_TB.v
 L0 11
@@ -110,7 +110,7 @@ R2
 r1
 !s85 0
 31
-!s108 1573268399.000000
+!s108 1574144752.000000
 !s107 ../tb/NYQ_TB.v|
 !s90 -work|work|../tb/NYQ_TB.v|
 !i113 1

@@ -13,7 +13,7 @@ module NYQ_TB();
  localparam CLK_PERIOD = 1.0; // Clock period in ns
  localparam IN_DELAY   = 0.2; // Delay after clock edge that testbench signals take to reach DUT pins 
  localparam OUT_DELAY  = 0.8; // Delay after clock edge that DUT outputs take to change
- localparam ADDR_WIDTH = 5;   // Number of bits for address
+ localparam ADDR_WIDTH = 6;   // Number of bits for address
  localparam MEM_WIDTH = 24;   // Number of bits for memory words
  localparam IN_WIDTH = 24;    // Number of bits for module inputs
  localparam OUT_WIDTH = 24;   // Number of bits for module outputs
@@ -37,13 +37,13 @@ module NYQ_TB();
  reg                   WrEn_S;
  reg  [ADDR_WIDTH-1:0] Addr_D;
 
- reg  signed [MEM_WIDTH-1:0]  PAR_In_D;
- reg  signed [IN_WIDTH-1:0]   NYQ_In_D;
- wire signed [OUT_WIDTH-1:0]  NYQ_Out_D;
+ reg   [MEM_WIDTH-1:0]  PAR_In_D;
+ reg   [IN_WIDTH-1:0]   NYQ_In_D;
+ wire  [OUT_WIDTH-1:0]  NYQ_Out_D;
  //reg                   NYQ_Valid_DO;
 
- reg  signed [OUT_WIDTH-1:0]  NYQ_Out_DE;
- 
+ reg   [OUT_WIDTH-1:0]  NYQ_Out_DE;
+
  
  NYQ #(
    .ADDR_WIDTH( ADDR_WIDTH ),
@@ -74,7 +74,7 @@ module NYQ_TB();
    //Wait for the input delay
    #(IN_DELAY) begin end 
    //Prepare stimuli file
-   fileIn = $fopen("../tb/NYQ_in.txt","r");
+   fileIn = $fopen("../tb/NYQ_in_step.txt","r");
    //Read file on a per cycle basis
    while(!$feof(fileIn)) begin
     recIn = $fscanf(fileIn, "%d %d %d %d %d\n", Rst_RB, WrEn_S, Addr_D, PAR_In_D, NYQ_In_D);
@@ -92,7 +92,7 @@ module NYQ_TB();
    //Wait for the output delay
    #(OUT_DELAY) begin end 
    //Prepare expected output file
-   fileOut = $fopen("../tb/NYQ_out.txt","r");
+   fileOut = $fopen("../tb/NYQ_out_step.txt","r");
    //Read file on a per cycle basis
    while(!$feof(fileOut)) begin
      recOut = $fscanf(fileOut, "%d\n", NYQ_Out_DE);
