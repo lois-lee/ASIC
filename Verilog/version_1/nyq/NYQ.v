@@ -39,7 +39,7 @@ module NYQ
   // ---- The following signals are NYQ block specific.
   input  signed [IN_WIDTH-1:0]   NYQ_In_DI,  // Input to the block (block can read from other block's output states)
   output signed [OUT_WIDTH-1:0]  NYQ_Out_DO,  // Output of the block (state). Use signed, whenever you are dealing with samples
-  output        reg              NYQ_Valid_DO
+  output                         NYQ_Valid_DO
 );
 
 /* --------------------------------------------------------------------------------
@@ -89,7 +89,7 @@ wire signed    [MAC_WIDTH-1:0] NYQ_Temp_D3;      // Outout signal from FF3.
 
 
 
-reg signed    [OUT_WIDTH-1:0] NYQ_OutInternal_DO;
+wire signed    [OUT_WIDTH-1:0] NYQ_OutInternal_DO;
 
 
 /* --------------------------------------------------------------------------------
@@ -212,7 +212,6 @@ FF_3
   .Q_DO    ( NYQ_Temp_D3   )
 );
 
-
 // 4th MAC module
 MAC #(
   .WIDTH ( MAC_WIDTH )
@@ -231,22 +230,20 @@ MAC_4
 assign NYQ_SUM3_D =  NYQ_MACOut_D4 + NYQ_Temp_D3;
 
 assign NYQ_MAC_Clr = NYQ_Cnt_D == 3'b111;
+assign NYQ_Valid_DO = NYQ_Cnt_D == 3'b000;
+
 //Set valid signal when counter wraps around back to 0, and change output.
-always @(NYQ_Cnt_D or posedge Clk_CI or negedge Rst_RBI)
-begin
-  if (~Rst_RBI)
-    NYQ_OutInternal_DO = 0;
-  else if ( NYQ_Cnt_D == 3'b0) 
-    begin
-      NYQ_Valid_DO <= 1'b1;
-      NYQ_OutInternal_DO <= NYQ_SUM3_D;
-    end
-  else 
-    begin
-      NYQ_Valid_DO <= 1'b0;
-      NYQ_OutInternal_DO <= NYQ_OutInternal_DO;
-    end
-end
+FF #(
+  .DATA_WIDTH ( OUT_WIDTH )
+)
+FF_4
+(
+  .Clk_CI  ( Clk_CI       ),
+  .Rst_RBI ( Rst_RBI      ),
+  .WrEn_SI ( NYQ_Cnt_D == 3'b0        ),
+  .D_DI    ( NYQ_SUM3_D ),
+  .Q_DO    ( NYQ_OutInternal_DO   )
+);
 
 assign NYQ_Out_DO = NYQ_OutInternal_DO;
 

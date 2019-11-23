@@ -1,0 +1,1391 @@
+dc_shell> list_designs
+Warning: No designs to list. (UID-275)
+0
+dc_shell> analyze -library work -format verilog ../src/FF.v
+Running PRESTO HDLC
+Compiling source file ../src/FF.v
+Presto compilation completed successfully.
+Loading db file '/work/global/brg/install/adk-pkgs/saed-90nm/pkgs/SAED_EDK90nm_01252011/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models/saed90nm_typ.db'
+Loading db file '/opt/synopsys/M-2016.12/synopsys-dc-M-2016.12/libraries/syn/dw_foundation.sldb'
+Loading db file '/opt/synopsys/M-2016.12/synopsys-dc-M-2016.12/libraries/syn/dft_jtag.sldb'
+Loading db file '/opt/synopsys/M-2016.12/synopsys-dc-M-2016.12/libraries/syn/dft_lbist.sldb'
+Loading db file '/opt/synopsys/M-2016.12/synopsys-dc-M-2016.12/libraries/syn/dft_mbist.sldb'
+Loading db file '/opt/synopsys/M-2016.12/synopsys-dc-M-2016.12/libraries/syn/standard.sldb'
+1
+dc_shell> elaborate RegisteredAdd -library work
+Loading db file '/opt/synopsys/M-2016.12/synopsys-dc-M-2016.12/libraries/syn/gtech.db'
+  Loading link library 'saed90nm_typ'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'RegisteredAdd'.
+Information: Building the design 'FF' instantiated from design 'RegisteredAdd' with
+        the parameters "DATA_WIDTH=12". (HDL-193)
+
+Inferred memory devices in process
+        in routine FF_DATA_WIDTH12 line 23 in file
+                '../src/FF.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      Q_DO_reg       | Flip-flop |  12   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'FF' instantiated from design 'RegisteredAdd' with
+        the parameters "DATA_WIDTH=1". (HDL-193)
+
+Inferred memory devices in process
+        in routine FF_DATA_WIDTH1 line 23 in file
+                '../src/FF.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      Q_DO_reg       | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'Add' instantiated from design 'RegisteredAdd' with
+        the parameters "DATA_WIDTH=12". (HDL-193)
+Presto compilation completed successfully.
+1
+dc_shell> list_designs
+Add_DATA_WIDTH12        FF_DATA_WIDTH12
+FF_DATA_WIDTH1          RegisteredAdd (*)
+1
+dc_shell> elaborate RegisteredAdd -library work -param DATA WIDTH=>16
+Error: extra positional option 'WIDTH=>16' (CMD-012)
+dc_shell> elaborate RegisteredAdd -library work -param DATA_WIDTH=>16
+Running PRESTO HDLC
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'RegisteredAdd_DATA_WIDTH16'.
+Information: Building the design 'FF' instantiated from design 'RegisteredAdd_DATA_WIDTH16' with
+        the parameters "DATA_WIDTH=16". (HDL-193)
+
+Inferred memory devices in process
+        in routine FF_DATA_WIDTH16 line 23 in file
+                '../src/FF.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      Q_DO_reg       | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'Add' instantiated from design 'RegisteredAdd_DATA_WIDTH16' with
+        the parameters "DATA_WIDTH=16". (HDL-193)
+Presto compilation completed successfully.
+1
+dc_shell> current_design RegisteredAdd_DATA_WIDTH16
+Current design is 'RegisteredAdd_DATA_WIDTH16'.
+{RegisteredAdd_DATA_WIDTH16}
+dc_shell> create_clock Clk_CI -period 6.0
+1
+dc_shell> set_clock_transition 0.2 [get_clocks Clk_CI]
+1
+dc_shell> set_input_delay 0.2 -clock Clk_CI [remove_from_collection [all_inputs] [get_ports Clk_CI]]
+1
+dc_shell> 
+dc_shell> set_driving_cell -library saed90nm_typ -lib_cell INVX4 -pin ZN [all_inputs]
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+1
+dc_shell> set_load 0.01 [all_outputs]
+1
+dc_shell> compile_ultra -no_autoungroup
+Information: Performing power optimization. (PWR-850)
+Analyzing: "/work/global/brg/install/adk-pkgs/saed-90nm/pkgs/SAED_EDK90nm_01252011/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models/saed90nm_typ.db"
+Library analysis succeeded.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | M-2016.12-DWBB_201612.0 |     *     |
+| Licensed DW Building Blocks        | M-2016.12-DWBB_201612.0 |     *     |
+| dft_jtag.sldb                      | M-2016.12-DWBB_201612.0 |     *     |
+| dft_lbist.sldb                     | M-2016.12-DWBB_201612.0 |     *     |
+| dft_mbist.sldb                     | M-2016.12-DWBB_201612.0 |     *     |
+============================================================================
+
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+Information: Uniquified 2 instances of design 'FF_DATA_WIDTH1'. (OPT-1056)
+Information: Uniquified 3 instances of design 'FF_DATA_WIDTH16'. (OPT-1056)
+  Simplifying Design 'RegisteredAdd_DATA_WIDTH16'
+
+Loaded alib file './alib-52/saed90nm_typ.db.alib'
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'RegisteredAdd_DATA_WIDTH16'
+  Processing 'FF_DATA_WIDTH16_0'
+  Processing 'Add_DATA_WIDTH16'
+ Implement Synthetic for 'Add_DATA_WIDTH16'.
+  Processing 'FF_DATA_WIDTH1_0'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+Information: Added key list 'DesignWare' to design 'Add_DATA_WIDTH16'. (DDB-72)
+  Mapping Optimization (Phase 1)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Constant Register Removal
+  -----------------------------------
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Isolate Ports
+  -----------------------
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Delay Optimization
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+  Global Optimization (Phase 31)
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+  Global Optimization (Phase 34)
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+    0:00:02    2637.6      0.00       0.0       0.0                           14156906.0000
+Loading db file '/work/global/brg/install/adk-pkgs/saed-90nm/pkgs/SAED_EDK90nm_01252011/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models/saed90nm_typ.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+1
+dc_shell> check_design
+1
+dc_shell> report_timing -max_paths 5 > ./reports/timing max.rpt
+Error: extra positional option '>' (CMD-012)
+Error: extra positional option './reports/timing' (CMD-012)
+Error: extra positional option 'max.rpt' (CMD-012)
+dc_shell> report_timing -max_paths 5 > ./reports/timing_max.rpt
+dc_shell> ls
+.   .synopsys_dc.setup  command.log  default.svf    outputs  scripts
+..  alib-52             dc_syn.log   filenames.log  reports  work
+dc_shell> cd reports
+dc_shell> ls
+.  ..  timing_max.rpt
+dc_shell> nano timing_max.rpt
+Error: unknown command 'nano' (CMD-005)
+dc_shell> more timing_max.rpt
+Error: unknown command 'more' (CMD-005)
+dc_shell> vi timing_max.rpt
+Error: unknown command 'vi' (CMD-005)
+dc_shell> report_timing -delay min -max_paths 5 > ./reports/timing_min.rpt
+Error: could not open output redirect file "./reports/timing_min.rpt" (CMD-015)
+dc_shell> cd ..
+dc_shell> ls
+.   .synopsys_dc.setup  command.log  default.svf    outputs  scripts
+..  alib-52             dc_syn.log   filenames.log  reports  work
+dc_shell> report_timing -delay min -max_paths 5 > ./reports/timing_min.rpt
+dc_shell> report_area -hierarchy > ./reports/area.rpt
+dc_shell> create_clock Clk_CI -period 1.0
+1
+dc_shell> compile_ultra -no_autoungroup
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+  Simplifying Design 'RegisteredAdd_DATA_WIDTH16'
+
+Loaded alib file './alib-52/saed90nm_typ.db.alib'
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'RegisteredAdd_DATA_WIDTH16'
+  Processing 'FF_DATA_WIDTH16_0'
+  Processing 'FF_DATA_WIDTH16_1'
+  Processing 'FF_DATA_WIDTH16_2'
+  Processing 'Add_DATA_WIDTH16'
+  Processing 'FF_DATA_WIDTH1_0'
+  Processing 'FF_DATA_WIDTH1_1'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+  Mapping Optimization (Phase 2)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Constant Register Removal
+  -----------------------------------
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Isolate Ports
+  -----------------------
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Delay Optimization
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:02    3098.4      1.16      15.8       0.0                           17151620.0000
+    0:00:02    3217.3      0.98      15.7       0.0                           17770070.0000
+    0:00:02    3217.3      0.98      15.7       0.0                           17770070.0000
+    0:00:02    3228.4      0.98      15.6       0.0                           17860090.0000
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:00:03    3180.4      0.97      13.1       0.0                           17188886.0000
+    0:00:03    3217.3      0.97      15.0       0.0                           18238698.0000
+    0:00:03    3217.3      0.97      15.0       0.0                           18238698.0000
+    0:00:03    3267.1      0.90      14.5       0.0                           18862362.0000
+    0:00:03    3267.1      0.90      14.5       0.0                           18862362.0000
+    0:00:03    3267.1      0.90      14.5       0.0                           18862362.0000
+    0:00:03    3267.1      0.90      14.5       0.0                           18862362.0000
+    0:00:03    3267.1      0.90      14.5       0.0                           18862362.0000
+    0:00:03    3267.1      0.90      14.5       0.0                           18862362.0000
+    0:00:03    3278.1      0.87      14.2       0.0                           18966314.0000
+    0:00:03    3278.1      0.87      14.2       0.0                           18966314.0000
+    0:00:03    3278.1      0.87      14.2       0.0                           18966314.0000
+    0:00:03    3278.1      0.87      14.2       0.0                           18966314.0000
+    0:00:03    3278.1      0.87      14.2       0.0                           18966314.0000
+    0:00:03    3278.1      0.87      14.2       0.0                           18966314.0000
+    0:00:03    3278.1      0.87      14.2       0.0                           18966314.0000
+    0:00:03    3278.1      0.87      14.2       0.0                           18966314.0000
+    0:00:03    3278.1      0.87      14.2       0.0                           18966314.0000
+    0:00:03    3278.1      0.87      14.2       0.0                           18966314.0000
+    0:00:04    3278.1      0.87      14.2       0.0                           18966314.0000
+    0:00:04    3397.0      0.62      12.2       0.0                           19739292.0000
+    0:00:04    3396.1      0.61      12.2       0.0                           19751170.0000
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:04    3396.1      0.61      12.2       0.0                           19751170.0000
+  Global Optimization (Phase 30)
+  Global Optimization (Phase 31)
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+  Global Optimization (Phase 34)
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+    0:00:04    3294.7      0.61       7.1       0.0                           18335336.0000
+    0:00:04    3294.7      0.61       7.1       0.0                           18335336.0000
+    0:00:04    3294.7      0.61       7.1       0.0                           18335336.0000
+    0:00:04    3295.6      0.61       7.1       0.0                           18392132.0000
+    0:00:04    3295.6      0.61       7.1       0.0                           18392132.0000
+    0:00:04    3295.6      0.61       7.1       0.0                           18392132.0000
+    0:00:04    3295.6      0.61       7.1       0.0                           18392132.0000
+    0:00:04    3295.6      0.61       7.1       0.0                           18392132.0000
+    0:00:04    3295.6      0.61       7.1       0.0                           18392132.0000
+    0:00:04    3295.6      0.61       7.1       0.0                           18392132.0000
+    0:00:04    3295.6      0.61       7.1       0.0                           18392132.0000
+    0:00:04    3303.0      0.60       7.1       0.0                           18472206.0000
+    0:00:04    3303.0      0.60       7.1       0.0                           18472206.0000
+    0:00:05    3303.0      0.60       7.1       0.0                           18472206.0000
+    0:00:05    3303.0      0.60       7.1       0.0                           18472206.0000
+    0:00:05    3303.0      0.60       7.1       0.0                           18472206.0000
+    0:00:05    3303.0      0.60       7.1       0.0                           18472206.0000
+    0:00:05    3303.0      0.60       7.1       0.0                           18472206.0000
+    0:00:05    3303.0      0.60       7.1       0.0                           18472206.0000
+    0:00:05    3303.0      0.60       7.1       0.0                           18472206.0000
+    0:00:05    3303.0      0.60       7.1       0.0                           18472206.0000
+    0:00:05    3303.0      0.60       7.1       0.0                           18472206.0000
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:05    3303.0      0.60       7.1       0.0                           18472206.0000
+    0:00:05    3233.0      0.60       7.3       0.0                           17209136.0000
+    0:00:05    3236.7      0.60       7.3       0.0                           17328720.0000
+    0:00:05    3236.7      0.60       7.3       0.0                           17328720.0000
+    0:00:05    3257.9      0.60       7.3       0.0                           17935634.0000
+    0:00:05    3250.5      0.60       7.5       0.0                           17791396.0000
+    0:00:05    3255.1      0.60       7.5       0.0                           17836170.0000
+    0:00:05    3255.1      0.60       7.5       0.0                           17836170.0000
+    0:00:05    3255.1      0.60       7.5       0.0                           17836170.0000
+    0:00:05    3255.1      0.60       7.5       0.0                           17836170.0000
+    0:00:05    3255.1      0.60       7.5       0.0                           17836170.0000
+    0:00:05    3255.1      0.60       7.5       0.0                           17836170.0000
+    0:00:05    3255.1      0.60       7.5       0.0                           17836170.0000
+    0:00:05    3255.1      0.60       7.5       0.0                           17836170.0000
+    0:00:05    3255.1      0.60       7.5       0.0                           17836170.0000
+    0:00:05    3253.2      0.60       7.5       0.0                           17784592.0000
+Loading db file '/work/global/brg/install/adk-pkgs/saed-90nm/pkgs/SAED_EDK90nm_01252011/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models/saed90nm_typ.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+1
+dc_shell> report_timing -max_paths 5 > ./reports/timing_max_clk1.rpt
+dc_shell> report_area -hierarchy > ./reports/area_clk1.rpt
+dc_shell> create_clock Clk_CI -period 2.0
+1
+dc_shell> compile_ultra -no_autoungroup
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+  Simplifying Design 'RegisteredAdd_DATA_WIDTH16'
+
+Loaded alib file './alib-52/saed90nm_typ.db.alib'
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'Add_DATA_WIDTH16'
+  Processing 'RegisteredAdd_DATA_WIDTH16'
+  Processing 'FF_DATA_WIDTH16_2'
+  Processing 'FF_DATA_WIDTH16_1'
+  Processing 'FF_DATA_WIDTH16_0'
+  Processing 'FF_DATA_WIDTH1_0'
+  Processing 'FF_DATA_WIDTH1_1'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Constant Register Removal
+  -----------------------------------
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Isolate Ports
+  -----------------------
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Delay Optimization
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:01    2958.3      2.69      17.8       0.0                           15531770.0000
+    0:00:02    3152.8      2.25      15.3       0.0                           16862320.0000
+    0:00:02    3152.8      2.25      15.3       0.0                           16862320.0000
+    0:00:02    3155.6      2.25      15.3       0.0                           16822714.0000
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:00:02    3135.3      2.25      15.3       0.0                           16636676.0000
+    0:00:02    3107.6      2.25      15.2       0.0                           16559643.0000
+    0:00:02    3107.6      2.25      15.2       0.0                           16559643.0000
+    0:00:02    3189.7      2.14      14.9       0.0                           17231818.0000
+    0:00:03    3189.7      2.14      14.9       0.0                           17231818.0000
+    0:00:03    3185.0      2.14      14.9       0.0                           17218978.0000
+    0:00:03    3185.0      2.14      14.9       0.0                           17218978.0000
+    0:00:03    3185.0      2.14      14.9       0.0                           17218978.0000
+    0:00:03    3185.0      2.14      14.9       0.0                           17218978.0000
+    0:00:03    3192.4      2.13      14.9       0.0                           17359326.0000
+    0:00:03    3192.4      2.13      14.9       0.0                           17359326.0000
+    0:00:03    3192.4      2.13      14.9       0.0                           17359326.0000
+    0:00:03    3192.4      2.13      14.9       0.0                           17359326.0000
+    0:00:03    3192.4      2.13      14.9       0.0                           17359326.0000
+    0:00:03    3192.4      2.13      14.9       0.0                           17359326.0000
+    0:00:04    3192.4      2.13      14.9       0.0                           17359326.0000
+    0:00:04    3192.4      2.13      14.9       0.0                           17359326.0000
+    0:00:04    3192.4      2.13      14.9       0.0                           17359326.0000
+    0:00:04    3192.4      2.13      14.9       0.0                           17359326.0000
+    0:00:04    3192.4      2.13      14.9       0.0                           17359326.0000
+    0:00:04    3357.4      1.94      13.5       0.0                           20151018.0000
+    0:00:04    3357.4      1.94      13.5       0.0                           20151018.0000
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:04    3357.4      1.94      13.5       0.0                           20151018.0000
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+  Global Optimization (Phase 31)
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+  Global Optimization (Phase 34)
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+    0:00:05    3187.8      1.84      11.7       0.0 SumReg/Q_DO_reg[15]/D     17618242.0000
+    0:00:05    3207.2      1.84      11.7       0.0                           17958438.0000
+    0:00:05    3207.2      1.84      11.7       0.0                           17958438.0000
+    0:00:05    3207.2      1.84      11.7       0.0                           17958438.0000
+    0:00:05    3209.9      1.84      11.8       0.0                           17986876.0000
+    0:00:05    3209.9      1.84      11.8       0.0                           17986876.0000
+    0:00:06    3209.9      1.84      11.8       0.0                           17986876.0000
+    0:00:06    3209.9      1.84      11.8       0.0                           17986876.0000
+    0:00:06    3209.9      1.84      11.8       0.0                           17986876.0000
+    0:00:06    3209.9      1.84      11.8       0.0                           17986876.0000
+    0:00:06    3209.9      1.84      11.8       0.0                           17986876.0000
+    0:00:06    3209.9      1.84      11.8       0.0                           17986876.0000
+    0:00:06    3224.7      1.83      11.7       0.0                           18202590.0000
+    0:00:06    3224.7      1.83      11.7       0.0                           18202590.0000
+    0:00:07    3224.7      1.83      11.7       0.0                           18202590.0000
+    0:00:07    3224.7      1.83      11.7       0.0                           18202590.0000
+    0:00:07    3224.7      1.83      11.7       0.0                           18202590.0000
+    0:00:07    3224.7      1.83      11.7       0.0                           18202590.0000
+    0:00:07    3224.7      1.83      11.7       0.0                           18202590.0000
+    0:00:07    3224.7      1.83      11.7       0.0                           18202590.0000
+    0:00:07    3224.7      1.83      11.7       0.0                           18202590.0000
+    0:00:07    3224.7      1.83      11.7       0.0                           18202590.0000
+    0:00:08    3224.7      1.83      11.7       0.0                           18202590.0000
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:08    3224.7      1.83      11.7       0.0                           18202590.0000
+    0:00:08    3394.3      1.85      11.7       0.0                           20084516.0000
+    0:00:08    3392.4      1.85      11.7       0.0                           20055946.0000
+    0:00:08    3392.4      1.85      11.7       0.0                           20055946.0000
+    0:00:08    3285.5      1.84      11.7       0.0                           18929500.0000
+    0:00:08    3263.4      1.84      11.7       0.0                           18580268.0000
+    0:00:08    3285.5      1.83      11.7       0.0                           19131584.0000
+    0:00:08    3285.5      1.83      11.7       0.0                           19131584.0000
+    0:00:08    3285.5      1.83      11.7       0.0                           19131584.0000
+    0:00:08    3218.2      1.83      11.6       0.0                           18026486.0000
+Loading db file '/work/global/brg/install/adk-pkgs/saed-90nm/pkgs/SAED_EDK90nm_01252011/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models/saed90nm_typ.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+1
+dc_shell> report_area -hierarchy > ./reports/area_clk2.rpt
+dc_shell> report_timing -max_paths 5 > ./reports/timing_max_clk2.rpt
+dc_shell> create_clock Clk_CI -period 3.0
+1
+dc_shell> compile_ultra -no_autoungroup
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+  Simplifying Design 'RegisteredAdd_DATA_WIDTH16'
+
+Loaded alib file './alib-52/saed90nm_typ.db.alib'
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'Add_DATA_WIDTH16'
+  Processing 'RegisteredAdd_DATA_WIDTH16'
+  Processing 'FF_DATA_WIDTH16_2'
+  Processing 'FF_DATA_WIDTH16_1'
+  Processing 'FF_DATA_WIDTH16_0'
+  Processing 'FF_DATA_WIDTH1_0'
+  Processing 'FF_DATA_WIDTH1_1'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Constant Register Removal
+  -----------------------------------
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Isolate Ports
+  -----------------------
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Delay Optimization
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:02    2821.9      1.73       8.2       0.0                           14482303.0000
+    0:00:02    2902.1      1.69       8.4       0.0                           15051349.0000
+    0:00:02    2902.1      1.69       8.4       0.0                           15051349.0000
+    0:00:02    2906.7      1.68       8.3       0.0                           15069476.0000
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:00:02    2873.5      1.68       8.3       0.0                           14921088.0000
+    0:00:02    2873.5      1.68       8.3       0.0                           14921088.0000
+    0:00:02    2873.5      1.68       8.3       0.0                           14921088.0000
+    0:00:02    2873.5      1.68       8.3       0.0                           14921088.0000
+    0:00:02    2873.5      1.68       8.3       0.0                           14921088.0000
+    0:00:02    2873.5      1.68       8.3       0.0                           14921088.0000
+    0:00:02    2873.5      1.68       8.3       0.0                           14921088.0000
+    0:00:02    2873.5      1.68       8.3       0.0                           14921088.0000
+    0:00:02    2873.5      1.68       8.3       0.0                           14921088.0000
+    0:00:03    2898.4      1.66       8.2       0.0                           15496951.0000
+    0:00:03    2898.4      1.66       8.2       0.0                           15496951.0000
+    0:00:03    2898.4      1.66       8.2       0.0                           15496951.0000
+    0:00:03    2898.4      1.66       8.2       0.0                           15496951.0000
+    0:00:03    2898.4      1.66       8.2       0.0                           15496951.0000
+    0:00:03    2898.4      1.66       8.2       0.0                           15496951.0000
+    0:00:03    2898.4      1.66       8.2       0.0                           15496951.0000
+    0:00:03    2898.4      1.66       8.2       0.0                           15496951.0000
+    0:00:03    2898.4      1.66       8.2       0.0                           15496951.0000
+    0:00:03    2898.4      1.66       8.2       0.0                           15496951.0000
+    0:00:03    2898.4      1.66       8.2       0.0                           15496951.0000
+    0:00:03    2917.8      1.66       8.5       0.0                           15837146.0000
+    0:00:03    2917.8      1.66       8.5       0.0                           15837146.0000
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:03    2917.8      1.66       8.5       0.0                           15837146.0000
+  Global Optimization (Phase 31)
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+  Global Optimization (Phase 34)
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+  Global Optimization (Phase 43)
+    0:00:04    3001.7      1.24       6.0       0.0                           16097062.0000
+    0:00:04    3001.7      1.24       6.0       0.0                           16097062.0000
+    0:00:04    3001.7      1.24       6.0       0.0                           16097062.0000
+    0:00:04    2996.1      1.24       6.0       0.0                           16028268.0000
+    0:00:04    2996.1      1.24       6.0       0.0                           16028268.0000
+    0:00:04    2996.1      1.24       6.0       0.0                           16028268.0000
+    0:00:04    2996.1      1.24       6.0       0.0                           16028268.0000
+    0:00:04    2996.1      1.24       6.0       0.0                           16028268.0000
+    0:00:04    2996.1      1.24       6.0       0.0                           16028268.0000
+    0:00:04    2996.1      1.24       6.0       0.0                           16028268.0000
+    0:00:04    2996.1      1.24       6.0       0.0                           16028268.0000
+    0:00:05    3020.1      1.21       5.9       0.0                           16540748.0000
+    0:00:05    3020.1      1.21       5.9       0.0                           16540748.0000
+    0:00:05    3020.1      1.21       5.9       0.0                           16540748.0000
+    0:00:05    3020.1      1.21       5.9       0.0                           16540748.0000
+    0:00:05    3020.1      1.21       5.9       0.0                           16540748.0000
+    0:00:05    3020.1      1.21       5.9       0.0                           16540748.0000
+    0:00:05    3020.1      1.21       5.9       0.0                           16540748.0000
+    0:00:05    3020.1      1.21       5.9       0.0                           16540748.0000
+    0:00:05    3020.1      1.21       5.9       0.0                           16540748.0000
+    0:00:05    3020.1      1.21       5.9       0.0                           16540748.0000
+    0:00:06    3020.1      1.21       5.9       0.0                           16540748.0000
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:06    3020.1      1.21       5.9       0.0                           16540748.0000
+    0:00:06    3125.1      1.23       5.8       0.0                           17328590.0000
+    0:00:06    3125.1      1.23       5.8       0.0                           17328590.0000
+    0:00:06    3125.1      1.23       5.8       0.0                           17328590.0000
+    0:00:06    3047.7      1.22       5.8       0.0                           16724839.0000
+    0:00:06    3019.2      1.22       5.8       0.0                           16419742.0000
+    0:00:06    3041.3      1.21       5.8       0.0                           16874490.0000
+    0:00:06    3041.3      1.21       5.8       0.0                           16874490.0000
+    0:00:06    3041.3      1.21       5.8       0.0                           16874490.0000
+    0:00:06    3008.1      1.21       5.8       0.0                           16448389.0000
+Loading db file '/work/global/brg/install/adk-pkgs/saed-90nm/pkgs/SAED_EDK90nm_01252011/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models/saed90nm_typ.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+1
+dc_shell> report_timing -max_paths 5 > ./reports/timing_max_clk3.rpt
+dc_shell> report_area -hierarchy > ./reports/area_clk3.rpt
+dc_shell> create_clock Clk_CI -period 4.0
+1
+dc_shell> compile_ultra -no_autoungroup
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+  Simplifying Design 'RegisteredAdd_DATA_WIDTH16'
+
+Loaded alib file './alib-52/saed90nm_typ.db.alib'
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'RegisteredAdd_DATA_WIDTH16'
+  Processing 'Add_DATA_WIDTH16'
+  Processing 'FF_DATA_WIDTH16_2'
+  Processing 'FF_DATA_WIDTH16_1'
+  Processing 'FF_DATA_WIDTH16_0'
+  Processing 'FF_DATA_WIDTH1_1'
+  Processing 'FF_DATA_WIDTH1_0'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Constant Register Removal
+  -----------------------------------
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Isolate Ports
+  -----------------------
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Delay Optimization
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:01    2787.8      0.77       2.2       0.0                           14361146.0000
+    0:00:03    2858.8      0.74       2.4       0.0                           14870615.0000
+    0:00:03    2858.8      0.74       2.4       0.0                           14870615.0000
+    0:00:03    2858.8      0.74       2.4       0.0                           14870615.0000
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:00:03    2849.6      0.74       2.3       0.0                           14844938.0000
+    0:00:03    2835.8      0.74       2.3       0.0                           14806422.0000
+    0:00:03    2835.8      0.74       2.3       0.0                           14806422.0000
+    0:00:03    2835.8      0.74       2.3       0.0                           14806422.0000
+    0:00:03    2835.8      0.74       2.3       0.0                           14806422.0000
+    0:00:03    2838.5      0.74       2.3       0.0                           14867478.0000
+    0:00:03    2838.5      0.74       2.3       0.0                           14867478.0000
+    0:00:03    2838.5      0.74       2.3       0.0                           14867478.0000
+    0:00:03    2838.5      0.74       2.3       0.0                           14867478.0000
+    0:00:05    2835.8      0.74       2.3       0.0                           14806422.0000
+    0:00:05    2835.8      0.74       2.3       0.0                           14806422.0000
+    0:00:05    2835.8      0.74       2.3       0.0                           14806422.0000
+    0:00:05    2835.8      0.74       2.3       0.0                           14806422.0000
+    0:00:07    2835.8      0.74       2.3       0.0                           14806422.0000
+    0:00:07    2835.8      0.74       2.3       0.0                           14806422.0000
+    0:00:07    2835.8      0.74       2.3       0.0                           14806422.0000
+    0:00:07    2835.8      0.74       2.3       0.0                           14806422.0000
+    0:00:09    2835.8      0.74       2.3       0.0                           14806422.0000
+    0:00:09    2835.8      0.74       2.3       0.0                           14806422.0000
+    0:00:09    2835.8      0.74       2.3       0.0                           14806422.0000
+    0:00:10    3097.5      0.17       0.4       0.0                           17048760.0000
+    0:00:10    3097.5      0.17       0.4       0.0                           17048760.0000
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:10    3097.5      0.17       0.4       0.0                           17048760.0000
+  Global Optimization (Phase 31)
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+  Global Optimization (Phase 34)
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+    0:00:10    3041.3      0.15       0.3       0.0                           16183506.0000
+    0:00:10    3041.3      0.15       0.3       0.0                           16183506.0000
+    0:00:10    3041.3      0.15       0.3       0.0                           16183506.0000
+    0:00:10    3036.7      0.15       0.3       0.0                           16170667.0000
+    0:00:10    3036.7      0.15       0.3       0.0                           16170667.0000
+    0:00:11    3036.7      0.15       0.3       0.0                           16170667.0000
+    0:00:11    3036.7      0.15       0.3       0.0                           16170667.0000
+    0:00:11    3036.7      0.15       0.3       0.0                           16170667.0000
+    0:00:11    3036.7      0.15       0.3       0.0                           16170667.0000
+    0:00:11    3036.7      0.15       0.3       0.0                           16170667.0000
+    0:00:11    3036.7      0.15       0.3       0.0                           16170667.0000
+    0:00:11    3062.5      0.13       0.3       0.0                           16606376.0000
+    0:00:11    3062.5      0.13       0.3       0.0                           16606376.0000
+    0:00:12    3062.5      0.13       0.3       0.0                           16606376.0000
+    0:00:12    3062.5      0.13       0.3       0.0                           16606376.0000
+    0:00:12    3062.5      0.13       0.3       0.0                           16606376.0000
+    0:00:12    3062.5      0.13       0.3       0.0                           16606376.0000
+    0:00:12    3062.5      0.13       0.3       0.0                           16606376.0000
+    0:00:12    3062.5      0.13       0.3       0.0                           16606376.0000
+    0:00:12    3062.5      0.13       0.3       0.0                           16606376.0000
+    0:00:12    3062.5      0.13       0.3       0.0                           16606376.0000
+    0:00:12    3062.5      0.13       0.3       0.0                           16606376.0000
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:12    3062.5      0.13       0.3       0.0                           16606376.0000
+    0:00:12    3116.9      0.43       1.1       0.0                           17024120.0000
+    0:00:12    3122.4      0.22       0.5       0.0                           16766062.0000
+    0:00:12    3122.4      0.22       0.5       0.0                           16766062.0000
+    0:00:12    3022.8      0.22       0.5       0.0                           15943539.0000
+    0:00:12    2999.8      0.19       0.4       0.0                           15691895.0000
+    0:00:13    3025.6      0.14       0.3       0.0                           16075048.0000
+    0:00:13    3025.6      0.14       0.3       0.0                           16075048.0000
+    0:00:13    3025.6      0.14       0.3       0.0                           16075048.0000
+    0:00:13    2985.1      0.14       0.3       0.0                           15512710.0000
+Loading db file '/work/global/brg/install/adk-pkgs/saed-90nm/pkgs/SAED_EDK90nm_01252011/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models/saed90nm_typ.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+1
+dc_shell> report_area -hierarchy > ./reports/area_clk4.rpt
+dc_shell> report_timing -max_paths 5 > ./reports/timing_max_clk4.rpt
+dc_shell> create_clock Clk_CI -period 5.0
+1
+dc_shell> compile_ultra -no_autoungroup
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+  Simplifying Design 'RegisteredAdd_DATA_WIDTH16'
+
+Loaded alib file './alib-52/saed90nm_typ.db.alib'
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'RegisteredAdd_DATA_WIDTH16'
+  Processing 'Add_DATA_WIDTH16'
+  Processing 'FF_DATA_WIDTH16_2'
+  Processing 'FF_DATA_WIDTH16_1'
+  Processing 'FF_DATA_WIDTH16_0'
+  Processing 'FF_DATA_WIDTH1_0'
+  Processing 'FF_DATA_WIDTH1_1'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Constant Register Removal
+  -----------------------------------
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Isolate Ports
+  -----------------------
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Delay Optimization
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+  Global Optimization (Phase 30)
+  Global Optimization (Phase 31)
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+  Global Optimization (Phase 34)
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+    0:00:01    2759.3      0.00       0.0       0.0                           14228973.0000
+Loading db file '/work/global/brg/install/adk-pkgs/saed-90nm/pkgs/SAED_EDK90nm_01252011/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models/saed90nm_typ.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+1
+dc_shell> report_timing -max_paths 5 > ./reports/timing_max_clk5.rpt
+dc_shell> report_area -hierarchy > ./reports/area_clk5.rpt
+dc_shell> 
+
+Thank you...
