@@ -74,7 +74,7 @@ module NYQ_TB();
    //Wait for the input delay
    #(IN_DELAY) begin end 
    //Prepare stimuli file
-   fileIn = $fopen("../tb/NYQ_in_step.txt","r");
+   fileIn = $fopen("../tb/NYQ_in_rnd.txt","r");
    //Read file on a per cycle basis
    while(!$feof(fileIn)) begin
     recIn = $fscanf(fileIn, "%d %d %d %d %d\n", Rst_RB, WrEn_S, Addr_D, PAR_In_D, NYQ_In_D);
@@ -92,7 +92,7 @@ module NYQ_TB();
    //Wait for the output delay
    #(OUT_DELAY) begin end 
    //Prepare expected output file
-   fileOut = $fopen("../tb/NYQ_out_step.txt","r");
+   fileOut = $fopen("../tb/NYQ_out_rnd.txt","r");
    //Read file on a per cycle basis
    while(!$feof(fileOut)) begin
      recOut = $fscanf(fileOut, "%d\n", NYQ_Out_DE);
