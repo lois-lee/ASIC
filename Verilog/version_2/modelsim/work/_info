@@ -1,0 +1,119 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+d/home/ece5746/ok93/NYQ_block_template
+vcounter
+!s110 1573942069
+!i10b 1
+!s100 WQhO4<TmP_KV2[j<oFUD60
+I>`oja4Ye@R2Al0HShB6iV3
+Z0 VDg1SIo80bB@j0V0VzS_@n1
+Z1 d/home/ece5746/ok93/Verilog/version_1/modelsim
+w1573942046
+8../nyq/counter.v
+F../nyq/counter.v
+L0 13
+Z2 OP;L;10.7a;67
+r1
+!s85 0
+31
+!s108 1573942068.000000
+!s107 ../nyq/counter.v|
+!s90 -work|work|../nyq/counter.v|
+!i113 1
+Z3 o-work work
+Z4 tCvgOpt 0
+vFF
+!s110 1574036862
+!i10b 1
+!s100 1zn@GDcb>^c]IZ1HD=aB_2
+ImPVnL@FhXm<_Z_O?TeSGC3
+R0
+R1
+w1574036521
+8../nyq/FF.v
+F../nyq/FF.v
+L0 14
+R2
+r1
+!s85 0
+31
+!s108 1574036861.000000
+!s107 ../nyq/FF.v|
+!s90 -work|work|../nyq/FF.v|
+!i113 1
+R3
+R4
+n@f@f
+vMAC
+!s110 1574129595
+!i10b 1
+!s100 H0lVh`ckKQda_O37eM^@W1
+IIUAIn`gNG_NZR@YlA0LSN3
+R0
+R1
+w1574128189
+8../nyq/MAC.v
+F../nyq/MAC.v
+L0 6
+R2
+r1
+!s85 0
+31
+!s108 1574129594.000000
+!s107 ../nyq/MAC.v|
+!s90 -work|work|../nyq/MAC.v|
+!i113 1
+R3
+R4
+n@m@a@c
+vNYQ
+!s110 1574529245
+!i10b 1
+!s100 F?fG^8VK]ZS_6J:_BP8ob3
+IV67I1;RAT=L0?zn]8i^^=3
+R0
+R1
+w1574529071
+8../nyq/NYQ.v
+F../nyq/NYQ.v
+L0 20
+R2
+r1
+!s85 0
+31
+!s108 1574529244.000000
+!s107 ../nyq/NYQ.v|
+!s90 -work|work|../nyq/NYQ.v|
+!i113 1
+R3
+R4
+n@n@y@q
+vNYQ_TB
+!s110 1574359609
+!i10b 1
+!s100 h_7e:ZOeb69JE^i?aAfFR2
+IiPNAm`dYWKTLAJWZEcHRT2
+R0
+R1
+w1574359605
+8../tb/NYQ_TB.v
+F../tb/NYQ_TB.v
+L0 11
+R2
+r1
+!s85 0
+31
+!s108 1574359608.000000
+!s107 ../tb/NYQ_TB.v|
+!s90 -work|work|../tb/NYQ_TB.v|
+!i113 1
+R3
+R4
+n@n@y@q_@t@b

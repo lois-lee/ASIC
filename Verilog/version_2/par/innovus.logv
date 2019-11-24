@@ -1,0 +1,38 @@
+[11/20 15:56:02      0s] 
+[11/20 15:56:02      0s] Cadence Innovus(TM) Implementation System.
+[11/20 15:56:02      0s] Copyright 2017 Cadence Design Systems, Inc. All rights reserved worldwide.
+[11/20 15:56:02      0s] 
+[11/20 15:56:02      0s] Version:	v17.13-s098_1, built Thu Feb 8 11:26:22 PST 2018
+[11/20 15:56:02      0s] Options:	-overwrite 
+[11/20 15:56:02      0s] Date:		Wed Nov 20 15:56:02 2019
+[11/20 15:56:02      0s] Host:		vip-brg.ece.cornell.edu (x86_64 w/Linux 3.10.0-1062.4.1.el7.x86_64) (18cores*144cpus*Intel(R) Xeon(R) Gold 6240 CPU @ 2.60GHz 25344KB)
+[11/20 15:56:02      0s] OS:		CentOS Linux release 7.7.1908 (Core)
+[11/20 15:56:02      0s] 
+[11/20 15:56:02      0s] License:
+[11/20 15:56:02      0s] 		invs	Innovus Implementation System	17.1	checkout succeeded
+[11/20 15:56:02      0s] 		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+[11/20 15:56:53     11s] @(#)CDS: Innovus v17.13-s098_1 (64bit) 02/08/2018 11:26 (Linux 2.6.18-194.el5)
+[11/20 15:56:53     11s] @(#)CDS: NanoRoute 17.13-s098_1 NR180117-1602/17_13-UB (database version 2.30, 414.7.1) {superthreading v1.44}
+[11/20 15:56:53     11s] @(#)CDS: AAE 17.13-s036 (64bit) 02/08/2018 (Linux 2.6.18-194.el5)
+[11/20 15:56:53     11s] @(#)CDS: CTE 17.13-s031_1 () Feb  1 2018 09:16:44 ( )
+[11/20 15:56:53     11s] @(#)CDS: SYNTECH 17.13-s011_1 () Jan 14 2018 01:24:42 ( )
+[11/20 15:56:53     11s] @(#)CDS: CPE v17.13-s062
+[11/20 15:56:53     11s] @(#)CDS: IQRC/TQRC 16.1.1-s220 (64bit) Fri Aug  4 09:53:48 PDT 2017 (Linux 2.6.18-194.el5)
+[11/20 15:56:53     11s] @(#)CDS: OA 22.50-p063 Fri Feb  3 19:45:13 2017
+[11/20 15:56:53     11s] @(#)CDS: SGN 10.10-p124 (19-Aug-2014) (64 bit executable)
+[11/20 15:56:53     11s] @(#)CDS: RCDB 11.10
+[11/20 15:56:53     11s] --- Running on vip-brg.ece.cornell.edu (x86_64 w/Linux 3.10.0-1062.4.1.el7.x86_64) (18cores*144cpus*Intel(R) Xeon(R) Gold 6240 CPU @ 2.60GHz 25344KB) ---
+[11/20 15:56:53     11s] Create and set the environment variable TMPDIR to /tmp/innovus_temp_28026_vip-brg.ece.cornell.edu_ok93_l1xRxN.
+
+[11/20 15:56:53     11s] Change the soft stacksize limit to 0.2%RAM (770 mbytes). Set global soft_stack_size_limit to change the value.
+[11/20 15:56:57     12s] 
+[11/20 15:56:57     12s] **INFO:  MMMC transition support version v31-84 
+[11/20 15:56:57     12s] 
+[11/20 15:56:57     12s] <CMD> set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+[11/20 15:56:57     12s] <CMD> suppressMessage ENCEXT-2799
+[11/20 15:56:57     12s] <CMD> win
+[11/20 16:25:58    190s] 
+[11/20 16:25:58    190s] *** Memory Usage v#1 (Current mem = 536.453M, initial mem = 228.641M) ***
+[11/20 16:25:58    190s] *** Message Summary: 0 warning(s), 0 error(s)
+[11/20 16:25:58    190s] 
+[11/20 16:25:58    190s] --- Ending "Innovus" (totcpu=0:03:11, real=0:29:56, mem=536.5M) ---
