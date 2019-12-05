@@ -1,0 +1,30 @@
+# vsim -lib work -voptargs="+acc" NYQ_TB 
+# Start time: 12:08:40 on Nov 23,2019
+# //  ModelSim DE 10.7a Mar 26 2018Linux 3.10.0-1062.4.1.el7.x86_64
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading work.NYQ_TB
+# Loading work.NYQ
+# Loading work.counter
+# Loading work.MAC
+# Loading work.FF
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'DUT'.  Expected 8, found 7.
+#    Time: 0 ps  Iteration: 0  Instance: /NYQ_TB/DUT File: /home/ece5746/ok93/Verilog/version_1/modelsim/../tb/NYQ_TB.v Line: 54
+# ** Warning: (vsim-3722) /home/ece5746/ok93/Verilog/version_1/modelsim/../tb/NYQ_TB.v(54): [TFMPC] - Missing connection for port 'NYQ_Valid_DO'.
+do wave.do
+run -a
+# <<< :D All outputs match the expected results! :D >>>
+# ** Note: $finish    : /home/ece5746/ok93/Verilog/version_1/modelsim/../tb/NYQ_TB.v(113)
+#    Time: 1037800 ps  Iteration: 0  Instance: /NYQ_TB
+# 1
+# Break in Module NYQ_TB at /home/ece5746/ok93/Verilog/version_1/modelsim/../tb/NYQ_TB.v line 113
