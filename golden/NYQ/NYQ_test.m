@@ -22,8 +22,8 @@ response = [];
 for tt=1:1000
 %     sta.AMP.Out_DO = (tt>=104)*0.9;       %%% STEP TEST
 %     sta.AMP.Out_DO = (tt==101)*.9;        %%% IMPULSE TEST
-%     sta.AMP.Out_DO = 2*rand(1)-1;         %%% RANDOM TEST
-	 sta.AMP.Out_DO = sawtooth(tt);        %%% SAWTOOTH TEST
+      sta.AMP.Out_DO = 2*rand(1)-1;         %%% RANDOM TEST
+%	  sta.AMP.Out_DO = sawtooth(tt);        %%% SAWTOOTH TEST
     % real resize this amp output
     sta.AMP.Out_DO =  RealRESIZE(sta.AMP.Out_DO, FixP_out,QType_out);
     stimuli(tt,1) = sta.AMP.Out_DO;
@@ -37,7 +37,7 @@ hold on
 %plot(conv(sta.NYQ.coeff,stimuli),'r-')
 reference = filter(sta.NYQ.coeff,1,stimuli);
 cropped = reference(6:end);
-plot(cropped,'r-')
+plot(cropped.*response(6:end,2),'r-');
 
 %plot(stimuli,'g:');
 hold off
@@ -98,7 +98,7 @@ for i=1:length(sta.NYQ.coeff)
     fprintf(fileID,formatSpec_coeff, c(i), coeff(i));
 end
 
-fprintf(fileID,'1 1 32 1 0 \n');
+fprintf(fileID,'1 1 1024 1 0 \n'); %parametrize here
 
 % load in inputs
 formatSpec_input = '1 0 0 0 %d \n';
