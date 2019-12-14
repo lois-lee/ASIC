@@ -1,0 +1,219 @@
+
+#CPF power intent data
+set ::CPF::AOBufUseCpfPGSpec {0}
+set ::CPF::addDownShifterToTable {0}
+set ::CPF::addIsoToTable {0}
+set ::CPF::addUpShifterToTable {0}
+set ::CPF::alias_commands {source define_library_set define_ecsm_libraries create_analysis_view create_bias_net create_delay_corner create_nominal_condition update_nominal_condition create_operating_condition create_operating_corner create_mode_transition create_power_mode update_power_mode create_power_domain update_power_domain define_always_on_cell define_open_source_input_pin define_power_clamp_cell define_isolation_cell define_level_shifter_cell define_power_switch_cell define_state_retention_cell create_isolation_logic create_level_shifter_logic create_power_switch_logic create_state_retention_logic create_isolation_rule update_isolation_rules create_level_shifter_rule update_level_shifter_rules create_power_switch_rule update_power_switch_rule create_state_retention_rule update_state_retention_rules create_ground_nets create_power_nets create_global_connection create_power_ground_connection identify_always_on_driver identify_power_logic set_cpf_version set_design end_design set_top_design set_macro_model set_floating_ports set_input_voltage_tolerance set_wire_feedthrough_ports end_macro_model set_instance set_scope set_hierarchy_separator set_array_naming_style set_register_naming_style set_power_target set_power_unit set_time_unit set_switching_activity update_delay_corner create_assertion_control set_sim_control assert_illegal_domain_configurations set_power_mode_control_group end_power_mode_control_group get_parameter include identify_secondary_domain set_equivalent_control_pins update_mode_transition define_related_power_pins set_analog_ports set_power_source_reference_pin define_global_cell create_mode create_pad_rule set_diode_ports set_pad_ports define_pad_cell define_power_clamp_pins update_design find_design_objects}
+set ::CPF::allSNetVoltageSet {0}
+array set ::CPF::always_driver {}
+set ::CPF::always_on_libcells {AODFFNARX2 AOINVX4 AOINVX2 AOINVX1 AODFFNARX1 AODFFARX2 AODFFARX1 AOBUFX4 AOBUFX2 AOBUFX1}
+set ::CPF::analog_ports ""
+array set ::CPF::aoNets {clkSpec,cellAoPins {} aoDrv {} clkSpec,aoDrv {} swEnPtrs {} clkSpec,srpgEn {} cellAoPins {} swEnVio {} clkSpec,swEnVio {} pdBufList {} isoEn {} srpgEn {} clkSpec,isoEn {}}
+set ::CPF::applyDefaultGncRules {1}
+set ::CPF::array_naming {[%d]}
+set ::CPF::biasNets ""
+set ::CPF::cacheFunctionNet {1}
+set ::CPF::conflict_commands {create_analysis_view create_delay_corner update_delay_corner set_switching_activity}
+set ::CPF::cpfCommitted {31}
+set ::CPF::cpfLoaded {1}
+set ::CPF::cpfPrefix {CPF}
+set ::CPF::cpf_action {31}
+set ::CPF::cpf_debug {0}
+set ::CPF::cpf_dirlist {src/}
+set ::CPF::cpf_errcnt {0}
+set ::CPF::cpf_errmsg ""
+set ::CPF::cpf_file {${::IMEX::libVar}/cpf/chip.cpf}
+set ::CPF::cpf_flow_library_loading_on {No}
+set ::CPF::cpf_incremental {1}
+array set ::CPF::cpf_inputs {0 {set_cpf_version 1.1
+} 1 {set_hierarchy_separator "/"
+} 2 {set_design ${DESIGNFULL}
+} 3 {set cell_path "/work/global/brg/install/adk-pkgs/saed-90nm/pkgs/SAED_EDK90nm_01252011/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models"
+} 4 define_library_set\ -name\ l_tc\ \\\n\ \ \ -libraries\ \\\n\ \ \ \ \[list\ \${::IMEX::libVar}/mmmc/saed90nm_typ.lib\]\n 5 {create_power_domain -name PD_CORE -default
+} 6 {create_nominal_condition -name NOMINAL     -voltage 1.2 -state on
+} 7 {update_nominal_condition -name NOMINAL     -library_set l_tc
+} 8 {create_power_mode -name PM_NOMINAL -domain_conditions { PD_CORE@NOMINAL } -default
+} 9 {create_power_nets  -nets VDD
+} 10 {create_ground_nets -nets VSS
+} 11 {create_global_connection -net VDD -pins VDD
+} 12 {create_global_connection -net VSS -pins VSS
+} 13 {update_power_domain -name PD_CORE -primary_power_net VDD   -primary_ground_net VSS
+} 14 {end_design
+}}
+set ::CPF::cpf_mmmc {0}
+set ::CPF::cpf_records ""
+set ::CPF::cpf_reinit {1}
+set ::CPF::cpf_user_env_vars ""
+set ::CPF::cpf_user_vars {cell_path /work/global/brg/install/adk-pkgs/saed-90nm/pkgs/SAED_EDK90nm_01252011/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models DESIGNFULL NYQ}
+set ::CPF::cpf_version {1.1}
+set ::CPF::cpfscope_list { . }
+set ::CPF::cteShareDelayCorner {0}
+set ::CPF::current_cpfscope {.}
+set ::CPF::current_design {NYQ}
+set ::CPF::current_fid {file25}
+set ::CPF::current_file ""
+set ::CPF::current_macro ""
+set ::CPF::current_scope {/}
+set ::CPF::dbgAllowShifterIn3rdPD {1}
+set ::CPF::defaultModeVoltage {1.2}
+set ::CPF::default_pd {PD_CORE}
+array set ::CPF::designs {NYQ,-domains { PD_CORE} NYQ,-ports {} NYQ,PD_CORE,-default 1 NYQ,design NYQ}
+set ::CPF::domain_mapping_list ""
+set ::CPF::ecoLoad {0}
+set ::CPF::ecsm_lib ""
+set ::CPF::end_lineno {64}
+set ::CPF::evalMacroCommands {0}
+set ::CPF::exe_version {17.13-s098_1}
+set ::CPF::first_input {${::IMEX::libVar}/cpf/chip.cpf}
+array set ::CPF::followpin {0x7f692234a140 {{  VDD } {  VSS } { } { } { } { } {  VDDG } { }} 0x7f692234a020 {{  VDD } {  VSS } { } { } { } { } {  VDDG } { }} 0x7f692619eeb0 {{  VDD } {  VSS } { } { } { } { } {  VDDG } { }}}
+array set ::CPF::gnd_nets {0,-nets VSS}
+array set ::CPF::gvoltageRange {PD_CORE,high 0 PD_CORE,low 0}
+set ::CPF::handleAssignForPowerMode {0}
+set ::CPF::handleLibStdCellRelatedPG {1}
+set ::CPF::handleNestedPDRows {1}
+set ::CPF::handleNetsExcludedFromAllRules {1}
+set ::CPF::handleNetsExcludedThroughBuffers {1}
+set ::CPF::hidden_commands { exit }
+set ::CPF::hierScript ""
+set ::CPF::hsc {/}
+set ::CPF::implicitRuleToIncludeExcludedPins {1}
+set ::CPF::inline_macro_models {1}
+set ::CPF::inst_list ""
+set ::CPF::internal_pgnet ""
+set ::CPF::isBackslashInNamesHidden {0}
+set ::CPF::isMinimalCPF {0}
+set ::CPF::isoEnPinNotAlwaysOn {0}
+set ::CPF::isoEnableNets ""
+set ::CPF::isoEnableNets_inFromDomain ""
+set ::CPF::isoLSNeededInitialized {1}
+set ::CPF::isolation_libcells {ISOLORX8 ISOLORX4 ISOLORX2 ISOLORX1 ISOLANDX8 ISOLANDX4 ISOLANDX2 ISOLANDX1}
+set ::CPF::isoshifter_pgconn ""
+set ::CPF::keepGNC {0}
+set ::CPF::keepPDsPhyData {1}
+set ::CPF::keepRowsData {0}
+set ::CPF::level_shifter_libcells ""
+set ::CPF::lib_map ""
+array set ::CPF::library_set {l_tc,-name l_tc l_tc,-libraries ${::IMEX::libVar}/mmmc/saed90nm_typ.lib}
+set ::CPF::line_number {64}
+set ::CPF::lint_error {0}
+set ::CPF::load_errcnt {0}
+set ::CPF::matchExistingDelayCorner {0}
+set ::CPF::movedInsts ""
+set ::CPF::movedInsts2 ""
+set ::CPF::nmfFile ""
+set ::CPF::nmfLoaded {0}
+set ::CPF::noCpfPowerNetByInstPin {0}
+set ::CPF::noLibraryLoading {1}
+set ::CPF::noReorderDomainsWithinEachOther {1}
+set ::CPF::noTopEnb {1}
+array set ::CPF::nominal_condition {NOMINAL,-name NOMINAL NOMINAL,-state on NOMINAL,-voltage 1.2 NOMINAL,-library_set l_tc}
+set ::CPF::numImplicitCPFRules {0}
+set ::CPF::num_always_cell {0}
+set ::CPF::num_always_driver {0}
+set ::CPF::num_bias_net {0}
+set ::CPF::num_clamp_cell {0}
+set ::CPF::num_commands {15}
+set ::CPF::num_cpf_commands {14}
+set ::CPF::num_cpf_inputs {15}
+set ::CPF::num_cpf_iso_cell {0}
+set ::CPF::num_cpf_shifter_cell {0}
+set ::CPF::num_domain_conn {0}
+set ::CPF::num_eq_ctrlpins {0}
+set ::CPF::num_globalAO_cell {0}
+set ::CPF::num_global_cell {0}
+set ::CPF::num_gnd_nets {1}
+set ::CPF::num_iso_cell {0}
+set ::CPF::num_iso_rule {0}
+set ::CPF::num_macro_models {0}
+set ::CPF::num_open_source {0}
+set ::CPF::num_pad_cell {0}
+set ::CPF::num_pad_rule {0}
+set ::CPF::num_pg_conn {2}
+set ::CPF::num_power_clamp_pin {0}
+set ::CPF::num_power_domain {1}
+set ::CPF::num_pso_cell {0}
+set ::CPF::num_pso_rule {0}
+set ::CPF::num_pwr_nets {1}
+set ::CPF::num_related_power_pins {0}
+set ::CPF::num_retention_cell {0}
+set ::CPF::num_retention_rule {0}
+set ::CPF::num_secondary_domain {0}
+set ::CPF::num_shifter_cell {0}
+set ::CPF::num_shifter_rule {0}
+set ::CPF::num_switch_act {0}
+set ::CPF::num_update_pd_primary_pg_net {1}
+set ::CPF::par_mapping_list ""
+array set ::CPF::pd_intnets {PD_CORE,power VDD PD_CORE,ground VSS}
+set ::CPF::pd_list {PD_CORE}
+array set ::CPF::pd_pgconn {PD_CORE,power {  (VDD:VDD)} PD_CORE,ground {  (VSS:VSS)}}
+array set ::CPF::pd_pgspec {PD_CORE,power { (VDD:VDD)} PD_CORE,ground { (VSS:VSS)}}
+array set ::CPF::pgCmd {PD_CORE { -power {  (VDD:VDD)} -ground {  (VSS:VSS)}}}
+array set ::CPF::pg_conn {1,-pins VSS 0,-net VDD 1,-net VSS 0,-pins VDD}
+array set ::CPF::power_domain {PD_CORE,-internal_power_net VDD PD_CORE,instForIoPin / 0 PD_CORE PD_CORE,nom_cond NOMINAL PD_CORE,hasHInst 1 PD_CORE,-internal_ground_net VSS PD_CORE,all_nom NOMINAL PD_CORE,-name PD_CORE PD_CORE,-default 1 PD_CORE,all_libset {l_bc l_tc l_wc}}
+array set ::CPF::power_mode {PM_NOMINAL,-name PM_NOMINAL PM_NOMINAL,-domain_conditions PD_CORE@NOMINAL PM_NOMINAL,-default 1}
+set ::CPF::power_switch_libcells {HEAD2X8 HEAD2X4 HEAD2X32 HEAD2X2 HEAD2X16 HEADX8 HEADX4 HEADX32 HEADX16 HEADX2}
+set ::CPF::power_unit {nW}
+set ::CPF::ptnCpfCellsFirst {1}
+array set ::CPF::pwr_nets {0,-nets VDD}
+set ::CPF::recording_cpf {0}
+set ::CPF::redundantBiasNets ""
+set ::CPF::register_naming {_reg%s}
+set ::CPF::replacePDAssign {1}
+set ::CPF::resizeOnlyInsts ""
+set ::CPF::retention_libcells ""
+set ::CPF::scope_list { / }
+array set ::CPF::scopes {/,-merge_default 0 /,design NYQ /,parent {} /,hsc / /,default_domain PD_CORE}
+set ::CPF::setRulePinsConstraint {0}
+set ::CPF::setupMmmcOnly {0}
+set ::CPF::shifterUseCpfPGSpec {0}
+set ::CPF::singlePD {1}
+set ::CPF::skipCheckGNC {0}
+set ::CPF::skipGNCTraceForAOB {0}
+set ::CPF::sorted_iso_rules ""
+set ::CPF::sorted_shifter_rules ""
+set ::CPF::srpgEnableNets ""
+set ::CPF::startCpuTime {95.190000}
+set ::CPF::startRealTime {297.000000}
+set ::CPF::start_lineno {64}
+set ::CPF::supportHierCPF {false}
+set ::CPF::time_scale {1000000000.0}
+set ::CPF::time_unit {ns}
+set ::CPF::tracingHead ""
+set ::CPF::useFlatTopCPF {1}
+set ::CPF::useHierScript {0}
+set ::CPF::useMacroTopCPF {0}
+set ::CPF::usePowerDomainMinGapZero {0}
+set ::CPF::useViewDefLibSet {1}
+set ::CPF::use_slave_interp {0}
+set ::CPF::use_viewdef_data {1}
+array set ::CPF::voltageRange {PD_CORE,high 1.2 PD_CORE,low 1.2}
+set ::CPF::warnMissingCPFRules {1}
+::MSV::setSNetVoltageForView {VSS} func_tc 0
+::MSV::setSNetVoltageForView {VSS} func_wc 0
+::MSV::setSNetVoltageForView {VSS} hold_bc 0
+::MSV::setSNetVoltageForView {VSS} hold_tc 0
+::MSV::setSNetVoltageForView {VSS} hold_wc 0
+::MSV::setSNetVoltageForView {VSS} test_wc 0
+::MSV::setSNetVoltageForView {VDD} func_tc 1.2
+::MSV::setSNetVoltageForView {VDD} func_wc 0.7
+::MSV::setSNetVoltageForView {VDD} hold_bc 1.32
+::MSV::setSNetVoltageForView {VDD} hold_tc 1.2
+::MSV::setSNetVoltageForView {VDD} hold_wc 0.7
+::MSV::setSNetVoltageForView {VDD} test_wc 0.7
+if {$::rdagVersionName >= 16.12 || ($::rdagVersionName >= 15.25 && $::rdagVersionName < 16.0)} {
+}
+set ::CPF::allSNetVoltageSet 1
+namespace eval ::pd_physical_data {
+set pd_data {
+POWERDOMAIN: NAME=PD_CORE 
+	PRIM_POWER=VDD PRIM_GND=VSS VOLT=1.2000 LAYER=0 ISDEFAULT=1 
+	NRLIB=3 
+	TIMELIB=saed90nm_max(l_wc) 
+	TIMELIB=saed90nm_typ(l_tc) 
+	TIMELIB=saed90nm_min(l_bc) 
+	ROWFLIP=3 SITE=unit ROWSPACETYPE=2 ROWSPACING=0.0000 
+	MODULE=* POWER=(VDD:VDD) GND=(VSS:VSS) 
+END_PD
+}
+}

@@ -1,0 +1,56 @@
+ 
+****************************************
+Report : area
+Design : NYQ
+Version: M-2016.12
+Date   : Mon Nov 25 18:29:29 2019
+****************************************
+
+Library(s) Used:
+
+    saed90nm_typ (File: /work/global/brg/install/adk-pkgs/saed-90nm/pkgs/SAED_EDK90nm_01252011/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models/saed90nm_typ.db)
+
+Number of ports:                          992
+Number of nets:                         10732
+Number of cells:                         9015
+Number of combinational cells:           7942
+Number of sequential cells:              1060
+Number of macros/black boxes:               0
+Number of buf/inv:                        786
+Number of references:                      49
+
+Combinational area:              93282.509551
+Buf/Inv area:                     4949.913699
+Noncombinational area:           34067.866150
+Macro/Black Box area:                0.000000
+Net Interconnect area:           15531.452067
+
+Total cell area:                127350.375701
+Total area:                     142881.827768
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area             Local cell area
+                                  --------------------  ------------------------------ 
+Hierarchical cell                 Absolute     Percent  Combi-      Noncombi-   Black-
+                                  Total        Total    national    national    boxes   Design
+--------------------------------  -----------  -------  ----------  ----------  ------  -----------------
+NYQ                               127350.3757    100.0  18902.0162  24803.9428  0.0000  NYQ
+FF_1                                1048.7808      0.8    270.9504    777.8304  0.0000  FF_DATA_WIDTH24_3
+FF_2                                1050.6240      0.8    276.4800    774.1440  0.0000  FF_DATA_WIDTH24_2
+FF_3                                1057.9968      0.8    282.0096    775.9872  0.0000  FF_DATA_WIDTH24_1
+FF_4                                1056.1536      0.8    282.0096    774.1440  0.0000  FF_DATA_WIDTH24_0
+MAC_1                              18643.9681     14.6  16602.6241      0.0000  0.0000  MAC_WIDTH24_3
+MAC_1/FF_1                          2041.3440      1.6    525.3120   1516.0320  0.0000  FF_DATA_WIDTH48_3
+MAC_2                              20431.8722     16.0  18376.7041      0.0000  0.0000  MAC_WIDTH24_2
+MAC_2/FF_1                          2055.1680      1.6    539.1360   1516.0320  0.0000  FF_DATA_WIDTH48_2
+MAC_3                              20226.3554     15.9  18184.0897      0.0000  0.0000  MAC_WIDTH24_1
+MAC_3/FF_1                          2042.2656      1.6    526.2336   1516.0320  0.0000  FF_DATA_WIDTH48_1
+MAC_4                              19966.4641     15.7  17924.1985      0.0000  0.0000  MAC_WIDTH24_0
+MAC_4/FF_1                          2042.2656      1.6    526.2336   1516.0320  0.0000  FF_DATA_WIDTH48_0
+counter_1                            162.2016      0.1     64.5120     97.6896  0.0000  counter
+--------------------------------  -----------  -------  ----------  ----------  ------  -----------------
+Total                                                   93282.5096  34067.8661  0.0000
+
+1

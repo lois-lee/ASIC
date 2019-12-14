@@ -1,0 +1,170 @@
+# PPCMD 1 
+# addStripe -nets {VDD VSS} -layer M8 -direction vertical -width 3.2 -spacing 8.6 -set_to_set_distance 23.04 -start_from left -start_offset 5.6 -switch_layer_over_obs false -max_same_layer_jog_length 2
+# 7 
+# 2 
+# 1 
+# 0 
+# 0 
+# 2 
+# BOX_LIST 
+# 960 960 1494400 1494400 0 
+# 7680 7680 1487680 1487680 0 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# VSS 3200 8 0 31480 1485760 23040 0 0 
+# VDD 3200 8 0 19680 1485760 23040 0 0 
+# END_NET_INFO_LIST 
+# END_PPCMD 1 
+
+# PPCMD 2 
+# addStripe -nets {VDD VSS} -layer M7 -direction horizontal -width 0.64 -spacing 2.24 -set_to_set_distance 5.76 -start_from top -start_offset 1.12 -switch_layer_over_obs false -max_same_layer_jog_length 2
+# 6 
+# 2 
+# 1 
+# 0 
+# 0 
+# 2 
+# BOX_LIST 
+# 960 5440 1494400 1498880 0 
+# 7680 12160 1487680 1492160 0 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# VSS 640 7 0 1481760 14080 -5760 0 0 
+# VDD 640 7 0 1484640 14080 -5760 0 0 
+# END_NET_INFO_LIST 
+# END_PPCMD 2 
+
+# PPCMD 3 
+# sroute -connect { corePin } -allowLayerChange 1 -allowJogging 1 -crossoverViaLayerRange {M2 M4} -targetViaLayerRange {M2 M4} -nets {VDD VSS} -corePinWidth 0.160 -corePinLayer M1
+# 5 
+# 16 
+# 0 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 3 
+
+# PPCMD 4 
+# addRing -width 4.48 -spacing 2.24 -offset 1.92 -layer {bottom M1 top M1 right M2 left M2} -nets {VDD VSS} -type core_rings -follow core -threshold 0
+# 4 
+# 32 
+# 1 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# VSS 4480 1 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 749920 3200 749920 1496640 
+# END_RING_PT_INFO_LIST 
+# VSS 4480 2 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 3200 749920 1496640 749920 
+# END_RING_PT_INFO_LIST 
+# VDD 4480 1 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 749920 9920 749920 1489920 
+# END_RING_PT_INFO_LIST 
+# VDD 4480 2 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 9920 749920 1489920 749920 
+# END_RING_PT_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 4 
+
+# PPCMD 5 
+# addRing -width 4.48 -spacing 2.24 -offset 1.92 -layer {bottom M3 top M3 right M4 left M4} -nets {VDD VSS} -type core_rings -follow core -threshold 0
+# 3 
+# 32 
+# 1 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# VSS 4480 3 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 749920 3200 749920 1496640 
+# END_RING_PT_INFO_LIST 
+# VSS 4480 4 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 3200 749920 1496640 749920 
+# END_RING_PT_INFO_LIST 
+# VDD 4480 3 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 749920 9920 749920 1489920 
+# END_RING_PT_INFO_LIST 
+# VDD 4480 4 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 9920 749920 1489920 749920 
+# END_RING_PT_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 5 
+
+# PPCMD 6 
+# addRing -width 4.48 -spacing 2.24 -offset 1.92 -layer {bottom M5 top M5 right M6 left M6} -nets {VDD VSS} -type core_rings -follow core -threshold 0
+# 2 
+# 32 
+# 1 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# VSS 4480 5 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 749920 3200 749920 1496640 
+# END_RING_PT_INFO_LIST 
+# VSS 4480 6 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 3200 749920 1496640 749920 
+# END_RING_PT_INFO_LIST 
+# VDD 4480 5 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 749920 9920 749920 1489920 
+# END_RING_PT_INFO_LIST 
+# VDD 4480 6 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 9920 749920 1489920 749920 
+# END_RING_PT_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 6 
+
+# PPCMD 7 
+# addRing -width 4.48 -spacing 2.24 -offset 1.92 -layer {bottom M7 top M7 right M8 left M8} -nets {VDD VSS} -type core_rings -follow core -threshold 0
+# 1 
+# 32 
+# 1 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# VSS 4480 7 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 749920 3200 749920 1496640 
+# END_RING_PT_INFO_LIST 
+# VSS 4480 8 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 3200 749920 1496640 749920 
+# END_RING_PT_INFO_LIST 
+# VDD 4480 7 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 749920 9920 749920 1489920 
+# END_RING_PT_INFO_LIST 
+# VDD 4480 8 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 9920 749920 1489920 749920 
+# END_RING_PT_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 7 
+

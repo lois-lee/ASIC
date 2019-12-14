@@ -1,0 +1,638 @@
+Information: Updating design information... (UID-85)
+Warning: Design 'NYQ' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 5
+Design : NYQ
+Version: M-2016.12
+Date   : Thu Dec  5 22:08:42 2019
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: TYPICAL   Library: saed90nm_typ
+Wire Load Model Mode: enclosed
+
+  Startpoint: counter_1/Cnt_Out_DO_reg[3]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: FF_3/Q_DO_reg[23]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                2000000               saed90nm_typ
+  MAC_WIDTH24_1      35000                 saed90nm_typ
+  FF_DATA_WIDTH24_1  8000                  saed90nm_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk_CI (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  counter_1/Cnt_Out_DO_reg[3]/CLK (DFFARX1)               0.00 #     0.00 r
+  counter_1/Cnt_Out_DO_reg[3]/QN (DFFARX1)                0.17       0.17 f
+  counter_1/Cnt_Out_DO[3] (counter)                       0.00       0.17 f
+  U48151/QN (NOR2X0)                                      1.78       1.95 r
+  U48190/QN (NAND2X0)                                     1.30       3.25 f
+  U48206/QN (NOR2X0)                                      2.06       5.31 r
+  U48813/ZN (INVX0)                                       2.83       8.13 f
+  U51210/ZN (INVX0)                                       2.39      10.53 r
+  U51519/Q (AO22X1)                                       6.27      16.80 r
+  U51520/QN (NOR4X0)                                      0.96      17.76 f
+  U51529/QN (NAND4X0)                                     0.82      18.58 r
+  U51551/Q (OR4X1)                                        1.09      19.67 r
+  U44348/Q (MUX21X1)                                      0.89      20.56 r
+  MAC_3/In0_DI[14] (MAC_WIDTH24_1)                        0.00      20.56 r
+  MAC_3/U73/ZN (INVX0)                                    0.74      21.30 f
+  MAC_3/U784/ZN (INVX0)                                   0.27      21.57 r
+  MAC_3/U302/Q (MUX21X1)                                  0.27      21.84 r
+  MAC_3/U352/QN (NAND2X0)                                 0.27      22.11 f
+  MAC_3/U1010/ZN (INVX0)                                  0.26      22.37 r
+  MAC_3/U306/Q (AO222X1)                                  0.14      22.51 r
+  MAC_3/U304/Q (MUX21X1)                                  0.16      22.68 f
+  MAC_3/U1038/S (FADDX1)                                  0.33      23.01 r
+  MAC_3/U807/QN (NAND2X0)                                 0.09      23.09 f
+  MAC_3/U808/QN (NAND3X0)                                 0.11      23.21 r
+  MAC_3/U747/QN (NAND2X0)                                 0.09      23.29 f
+  MAC_3/U748/QN (NAND3X0)                                 0.11      23.41 r
+  MAC_3/U751/QN (NAND2X0)                                 0.09      23.49 f
+  MAC_3/U752/QN (NAND3X0)                                 0.11      23.60 r
+  MAC_3/U581/QN (NAND2X0)                                 0.09      23.70 f
+  MAC_3/U583/QN (NAND3X0)                                 0.11      23.81 r
+  MAC_3/U379/QN (NAND2X0)                                 0.09      23.91 f
+  MAC_3/U380/QN (NAND3X0)                                 0.12      24.02 r
+  MAC_3/U274/QN (NAND2X0)                                 0.09      24.11 f
+  MAC_3/U594/QN (NAND3X0)                                 0.11      24.22 r
+  MAC_3/U275/Q (XOR3X1)                                   0.28      24.51 r
+  MAC_3/U741/Q (XOR2X1)                                   0.20      24.71 f
+  MAC_3/U58/Q (XOR2X1)                                    0.20      24.91 r
+  MAC_3/U729/QN (NAND2X0)                                 0.09      24.99 f
+  MAC_3/U730/QN (NAND3X0)                                 0.11      25.11 r
+  MAC_3/U586/QN (NAND2X0)                                 0.09      25.19 f
+  MAC_3/U455/QN (NAND3X0)                                 0.12      25.31 r
+  MAC_3/U588/QN (NAND2X0)                                 0.09      25.40 f
+  MAC_3/U589/QN (NAND3X0)                                 0.12      25.52 r
+  MAC_3/U1135/CO (FADDX1)                                 0.28      25.80 r
+  MAC_3/U77/Q (XOR3X1)                                    0.19      25.99 f
+  MAC_3/U595/Q (XOR3X1)                                   0.27      26.27 r
+  MAC_3/Out_DO[0] (MAC_WIDTH24_1)                         0.00      26.27 r
+  U43398/Q (AND2X1)                                       0.98      27.25 r
+  U48143/CO (FADDX1)                                      3.64      30.89 r
+  U48142/CO (FADDX1)                                      3.65      34.54 r
+  U48141/CO (FADDX1)                                      3.64      38.18 r
+  U47658/Q (OR2X1)                                        1.42      39.60 r
+  U43392/Q (AO22X1)                                       0.80      40.40 r
+  U45679/Q (AO22X1)                                       0.76      41.16 r
+  U47674/Q (OR2X1)                                        1.10      42.26 r
+  U43377/Q (AO22X1)                                       0.68      42.94 r
+  U43395/Q (OR2X1)                                        1.27      44.21 r
+  U43394/Q (AO22X1)                                       0.69      44.90 r
+  U48044/CO (FADDX1)                                      3.21      48.11 r
+  U48140/CO (FADDX1)                                      3.64      51.75 r
+  U48045/Q (OR2X1)                                        1.25      53.00 r
+  U43384/Q (AO22X1)                                       0.68      53.68 r
+  U48046/Q (OA21X1)                                       0.85      54.53 r
+  U43371/Q (AO21X1)                                       0.74      55.27 r
+  U48047/Q (OR2X1)                                        1.25      56.52 r
+  U43373/Q (AO22X1)                                       0.80      57.32 r
+  U45728/QN (NAND3X1)                                     0.75      58.07 f
+  U47681/QN (NAND4X0)                                     0.96      59.03 r
+  U47427/Q (AO22X1)                                       0.63      59.66 r
+  U48048/Q (OA21X1)                                       0.85      60.51 r
+  U43374/Q (AO21X1)                                       0.73      61.24 r
+  U48049/Q (AO22X1)                                       0.75      61.99 r
+  U48050/Q (OA21X1)                                       0.96      62.95 r
+  U47679/QN (NAND3X1)                                     0.67      63.62 f
+  U47659/QN (NAND4X0)                                     0.79      64.41 r
+  U47673/Q (OA21X1)                                       0.86      65.27 r
+  U44018/Q (AO21X1)                                       0.74      66.00 r
+  U48054/Q (OR2X1)                                        1.25      67.25 r
+  U47376/QN (AOI22X1)                                     0.55      67.81 f
+  U47375/Q (XNOR2X1)                                      1.18      68.99 r
+  FF_3/D_DI[23] (FF_DATA_WIDTH24_1)                       0.00      68.99 r
+  FF_3/U2/Q (MUX21X1)                                     0.89      69.88 r
+  FF_3/Q_DO_reg[23]/D (DFFARX1)                           0.04      69.92 r
+  data arrival time                                                 69.92
+
+  clock Clk_CI (rise edge)                               70.00      70.00
+  clock network delay (ideal)                             0.00      70.00
+  FF_3/Q_DO_reg[23]/CLK (DFFARX1)                         0.00      70.00 r
+  library setup time                                     -0.06      69.94
+  data required time                                                69.94
+  --------------------------------------------------------------------------
+  data required time                                                69.94
+  data arrival time                                                -69.92
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.02
+
+
+  Startpoint: counter_1/Cnt_Out_DO_reg[3]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: FF_4/Q_DO_reg[23]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                2000000               saed90nm_typ
+  MAC_WIDTH24_0      35000                 saed90nm_typ
+  FF_DATA_WIDTH24_0  8000                  saed90nm_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk_CI (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  counter_1/Cnt_Out_DO_reg[3]/CLK (DFFARX1)               0.00 #     0.00 r
+  counter_1/Cnt_Out_DO_reg[3]/QN (DFFARX1)                0.17       0.17 f
+  counter_1/Cnt_Out_DO[3] (counter)                       0.00       0.17 f
+  U48151/QN (NOR2X0)                                      1.78       1.95 r
+  U48190/QN (NAND2X0)                                     1.30       3.25 f
+  U48206/QN (NOR2X0)                                      2.06       5.31 r
+  U48813/ZN (INVX0)                                       2.83       8.13 f
+  U51210/ZN (INVX0)                                       2.39      10.53 r
+  U54779/Q (AO22X1)                                       6.27      16.80 r
+  U54782/QN (NOR4X0)                                      1.09      17.89 f
+  U54793/QN (NAND4X0)                                     0.78      18.68 r
+  U54794/Q (OR4X1)                                        1.10      19.78 r
+  U54795/Q (MUX21X1)                                      0.91      20.69 r
+  MAC_4/In0_DI[11] (MAC_WIDTH24_0)                        0.00      20.69 r
+  MAC_4/U17/Z (NBUFFX2)                                   1.18      21.87 r
+  MAC_4/U1182/S (FADDX1)                                  1.41      23.28 f
+  MAC_4/U1270/S (FADDX1)                                  0.40      23.67 r
+  MAC_4/U1335/CO (FADDX1)                                 0.32      24.00 r
+  MAC_4/U290/QN (NAND2X0)                                 0.09      24.09 f
+  MAC_4/U291/QN (NAND3X0)                                 0.12      24.20 r
+  MAC_4/U453/QN (NAND2X0)                                 0.09      24.29 f
+  MAC_4/U1287/QN (NAND3X0)                                0.12      24.41 r
+  MAC_4/U452/QN (NAND2X0)                                 0.09      24.49 f
+  MAC_4/U1288/QN (NAND3X0)                                0.12      24.61 r
+  MAC_4/U380/QN (NAND2X0)                                 0.09      24.70 f
+  MAC_4/U1289/QN (NAND3X0)                                0.12      24.82 r
+  MAC_4/U1318/CO (FADDX1)                                 0.28      25.10 r
+  MAC_4/U267/QN (NAND2X0)                                 0.08      25.18 f
+  MAC_4/U269/QN (NAND3X0)                                 0.12      25.30 r
+  MAC_4/U272/QN (NAND2X0)                                 0.09      25.39 f
+  MAC_4/U274/QN (NAND3X0)                                 0.12      25.51 r
+  MAC_4/U1309/CO (FADDX1)                                 0.28      25.79 r
+  MAC_4/U1306/S (FADDX1)                                  0.33      26.12 f
+  MAC_4/U307/QN (NAND2X0)                                 0.08      26.20 r
+  MAC_4/U310/QN (NAND3X0)                                 0.10      26.31 f
+  MAC_4/U407/QN (NAND2X0)                                 0.09      26.40 r
+  MAC_4/U409/QN (NAND3X0)                                 0.11      26.51 f
+  MAC_4/U413/QN (NAND2X0)                                 0.09      26.60 r
+  MAC_4/U415/QN (NAND3X0)                                 0.11      26.71 f
+  MAC_4/U275/QN (NAND2X0)                                 0.09      26.80 r
+  MAC_4/U278/QN (NAND3X0)                                 0.10      26.91 f
+  MAC_4/U329/QN (NAND2X0)                                 0.09      27.00 r
+  MAC_4/U1363/QN (NAND3X0)                                0.12      27.12 f
+  MAC_4/U127/Q (XOR2X1)                                   0.22      27.34 r
+  MAC_4/Out_DO[0] (MAC_WIDTH24_0)                         0.00      27.34 r
+  U48057/QN (NAND2X0)                                     0.67      28.02 f
+  U45573/ZN (INVX0)                                       0.82      28.84 r
+  U48146/CO (FADDX1)                                      3.64      32.48 r
+  U44350/Q (OR2X1)                                        1.27      33.76 r
+  U44349/Q (AO22X1)                                       0.68      34.44 r
+  U48058/Q (OR2X1)                                        1.42      35.85 r
+  U48059/Q (AO22X1)                                       0.80      36.66 r
+  U45681/Q (AO22X1)                                       0.78      37.43 r
+  U47661/Q (OR2X1)                                        1.42      38.85 r
+  U46858/Q (AO22X1)                                       0.80      39.65 r
+  U44351/Q (AO22X1)                                       0.77      40.42 r
+  U47683/Q (OR2X1)                                        1.42      41.84 r
+  U45574/Q (AO22X1)                                       0.80      42.63 r
+  U48061/Q (OR2X1)                                        0.93      43.56 r
+  U48062/Q (AO22X1)                                       0.69      44.25 r
+  U47662/CO (FADDX1)                                      3.21      47.46 r
+  U47682/Q (OR2X1)                                        1.25      48.71 r
+  U44228/Q (AO22X1)                                       0.68      49.39 r
+  U48087/Q (OR2X1)                                        1.25      50.64 r
+  U45575/Q (AO22X1)                                       0.70      51.34 r
+  U46488/Q (OR2X1)                                        1.25      52.59 r
+  U46892/QN (AOI22X1)                                     0.67      53.26 f
+  U45734/ZN (INVX0)                                       0.90      54.16 r
+  U45733/Q (AO22X1)                                       0.70      54.86 r
+  U48091/Q (OA21X1)                                       0.85      55.71 r
+  U44279/Q (AO21X1)                                       0.74      56.45 r
+  U48092/Q (OA21X1)                                       0.85      57.30 r
+  U44356/Q (AO21X1)                                       0.74      58.03 r
+  U48098/Q (OA21X1)                                       0.85      58.88 r
+  U44227/Q (AO21X1)                                       0.74      59.62 r
+  U47678/Q (OA21X1)                                       0.85      60.47 r
+  U44226/Q (AO21X1)                                       0.74      61.21 r
+  U47685/Q (OA21X1)                                       0.85      62.06 r
+  U44357/Q (AO21X1)                                       0.74      62.79 r
+  U47684/Q (OA21X1)                                       0.85      63.64 r
+  U45576/Q (AO21X1)                                       0.73      64.37 r
+  U48109/Q (AO22X1)                                       0.74      65.11 r
+  U48117/Q (AO22X1)                                       0.77      65.88 r
+  U48118/Q (OR2X1)                                        1.25      67.13 r
+  U48119/Q (AO22X1)                                       0.64      67.77 r
+  U48120/Q (XOR2X1)                                       1.16      68.93 r
+  FF_4/D_DI[23] (FF_DATA_WIDTH24_0)                       0.00      68.93 r
+  FF_4/U3/Q (MUX21X1)                                     0.89      69.82 r
+  FF_4/Q_DO_reg[23]/D (DFFARX1)                           0.04      69.86 r
+  data arrival time                                                 69.86
+
+  clock Clk_CI (rise edge)                               70.00      70.00
+  clock network delay (ideal)                             0.00      70.00
+  FF_4/Q_DO_reg[23]/CLK (DFFARX1)                         0.00      70.00 r
+  library setup time                                     -0.06      69.94
+  data required time                                                69.94
+  --------------------------------------------------------------------------
+  data required time                                                69.94
+  data arrival time                                                -69.86
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.08
+
+
+  Startpoint: counter_1/Cnt_Out_DO_reg[6]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: FF_2/Q_DO_reg[23]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                2000000               saed90nm_typ
+  MAC_WIDTH24_2      35000                 saed90nm_typ
+  FF_DATA_WIDTH24_2  8000                  saed90nm_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk_CI (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  counter_1/Cnt_Out_DO_reg[6]/CLK (DFFASX1)               0.00 #     0.00 r
+  counter_1/Cnt_Out_DO_reg[6]/Q (DFFASX1)                 0.22       0.22 r
+  counter_1/Cnt_Out_DO[6] (counter)                       0.00       0.22 r
+  U48160/ZN (INVX0)                                       1.17       1.40 f
+  U48166/QN (NOR2X0)                                      0.83       2.23 r
+  U48171/QN (NAND2X0)                                     0.99       3.22 f
+  U43854/Z (NBUFFX2)                                      0.97       4.20 f
+  U43413/Q (OR2X1)                                        0.90       5.09 f
+  U43418/ZN (IBUFFX4)                                     1.22       6.31 r
+  U56985/Q (AO22X1)                                       9.98      16.29 r
+  U56988/QN (NOR4X0)                                      1.09      17.38 f
+  U47649/QN (NAND4X0)                                     0.83      18.20 r
+  U56998/Q (OR4X1)                                        1.10      19.30 r
+  U47249/Q (MUX21X1)                                      0.91      20.21 r
+  MAC_2/In0_DI[1] (MAC_WIDTH24_2)                         0.00      20.21 r
+  MAC_2/U481/Q (MUX21X1)                                  1.95      22.16 f
+  MAC_2/U641/Q (AND2X1)                                   0.11      22.27 f
+  MAC_2/U441/ZN (INVX0)                                   0.20      22.47 r
+  MAC_2/U1073/Q (OA221X1)                                 0.31      22.78 r
+  MAC_2/U142/Q (MUX21X1)                                  0.16      22.94 r
+  MAC_2/U636/QN (NAND2X0)                                 0.08      23.02 f
+  MAC_2/U1078/QN (NAND3X0)                                0.12      23.14 r
+  MAC_2/U581/QN (NAND2X0)                                 0.09      23.23 f
+  MAC_2/U1079/QN (NAND3X0)                                0.12      23.35 r
+  MAC_2/U288/QN (NAND2X0)                                 0.09      23.43 f
+  MAC_2/U248/QN (NAND3X0)                                 0.11      23.54 r
+  MAC_2/U235/QN (NAND2X0)                                 0.09      23.63 f
+  MAC_2/U287/QN (NAND3X0)                                 0.11      23.74 r
+  MAC_2/U240/QN (NAND2X0)                                 0.09      23.83 f
+  MAC_2/U315/QN (NAND3X0)                                 0.11      23.94 r
+  MAC_2/U242/QN (NAND2X0)                                 0.09      24.02 f
+  MAC_2/U312/QN (NAND3X0)                                 0.11      24.13 r
+  MAC_2/U243/QN (NAND2X0)                                 0.09      24.22 f
+  MAC_2/U1083/QN (NAND3X0)                                0.11      24.33 r
+  MAC_2/U596/QN (NAND2X0)                                 0.09      24.42 f
+  MAC_2/U1084/QN (NAND3X0)                                0.11      24.53 r
+  MAC_2/U583/QN (NAND2X0)                                 0.09      24.62 f
+  MAC_2/U1085/QN (NAND3X0)                                0.12      24.74 r
+  MAC_2/U457/QN (NAND2X0)                                 0.09      24.82 f
+  MAC_2/U459/QN (NAND3X0)                                 0.12      24.94 r
+  MAC_2/U462/QN (NAND2X0)                                 0.09      25.03 f
+  MAC_2/U464/QN (NAND3X0)                                 0.12      25.14 r
+  MAC_2/U244/QN (NAND2X0)                                 0.09      25.23 f
+  MAC_2/U1089/QN (NAND3X0)                                0.11      25.34 r
+  MAC_2/U230/QN (NAND2X0)                                 0.09      25.43 f
+  MAC_2/U232/QN (NAND3X0)                                 0.11      25.55 r
+  MAC_2/U427/QN (NAND2X0)                                 0.09      25.64 f
+  MAC_2/U246/QN (NAND3X0)                                 0.12      25.75 r
+  MAC_2/U380/QN (NAND2X0)                                 0.09      25.84 f
+  MAC_2/U382/QN (NAND3X0)                                 0.11      25.95 r
+  MAC_2/U245/QN (NAND2X0)                                 0.09      26.04 f
+  MAC_2/U1091/QN (NAND3X0)                                0.11      26.15 r
+  MAC_2/U384/QN (NAND2X0)                                 0.09      26.24 f
+  MAC_2/U386/QN (NAND3X0)                                 0.12      26.35 r
+  MAC_2/U390/QN (NAND2X0)                                 0.09      26.44 f
+  MAC_2/U392/QN (NAND3X0)                                 0.12      26.56 r
+  MAC_2/U492/QN (NAND2X0)                                 0.09      26.65 f
+  MAC_2/U494/QN (NAND3X0)                                 0.11      26.76 r
+  MAC_2/U238/QN (NAND2X0)                                 0.09      26.85 f
+  MAC_2/U490/QN (NAND3X0)                                 0.11      26.96 r
+  MAC_2/U628/QN (NAND2X0)                                 0.09      27.05 f
+  MAC_2/U1092/QN (NAND3X0)                                0.13      27.17 r
+  MAC_2/U61/Q (XOR2X1)                                    0.19      27.36 r
+  MAC_2/Out_DO[0] (MAC_WIDTH24_2)                         0.00      27.36 r
+  U44108/Q (AND2X1)                                       0.74      28.10 r
+  U48145/CO (FADDX1)                                      4.37      32.48 r
+  U47410/CO (FADDX1)                                      3.21      35.69 r
+  U48144/CO (FADDX1)                                      3.64      39.33 r
+  U48040/Q (OR2X1)                                        1.25      40.58 r
+  U47688/QN (NAND2X0)                                     0.68      41.26 f
+  U43388/QN (NAND3X0)                                     1.05      42.32 r
+  U43386/Q (AO22X1)                                       0.88      43.20 r
+  U44059/Q (AO221X1)                                      1.02      44.22 r
+  U45566/Q (AO22X1)                                       0.80      45.03 r
+  U44275/QN (NAND2X0)                                     0.73      45.75 f
+  U45688/Q (AND3X1)                                       0.61      46.36 f
+  U45687/QN (NAND2X0)                                     0.54      46.91 r
+  U44058/Q (AO22X1)                                       0.69      47.59 r
+  U48067/Q (OR2X1)                                        1.25      48.84 r
+  U45567/Q (AO22X1)                                       0.68      49.52 r
+  U48068/Q (OR2X1)                                        1.25      50.77 r
+  U46553/Q (AO22X1)                                       0.62      51.40 r
+  U48069/Q (OR2X1)                                        1.10      52.49 r
+  U48070/Q (AO22X1)                                       0.76      53.25 r
+  U48073/QN (NOR2X0)                                      0.91      54.16 f
+  U45712/Q (OA22X1)                                       0.80      54.96 f
+  U46987/Q (AND2X1)                                       0.71      55.67 f
+  U45713/QN (OAI22X1)                                     0.60      56.27 r
+  U48074/Q (OR2X1)                                        1.25      57.52 r
+  U44057/Q (AO22X1)                                       0.68      58.20 r
+  U48075/Q (OA21X1)                                       0.85      59.05 r
+  U44056/Q (AO21X1)                                       0.74      59.78 r
+  U48076/Q (OA21X1)                                       0.85      60.63 r
+  U45568/Q (AO21X1)                                       0.74      61.37 r
+  U48077/Q (OA21X1)                                       0.81      62.17 r
+  U44055/Q (AO21X1)                                       0.74      62.91 r
+  U48078/Q (OA21X1)                                       0.85      63.76 r
+  U44054/Q (AO21X1)                                       0.74      64.50 r
+  U48079/Q (OA21X1)                                       0.85      65.35 r
+  U45569/Q (AO21X1)                                       0.74      66.08 r
+  U48080/Q (OR2X1)                                        1.25      67.33 r
+  U48081/Q (AO22X1)                                       0.64      67.97 r
+  U48082/Q (XOR2X1)                                       1.16      69.13 r
+  FF_2/D_DI[23] (FF_DATA_WIDTH24_2)                       0.00      69.13 r
+  FF_2/U3/QN (NAND2X0)                                    0.56      69.68 f
+  FF_2/U4/QN (NAND2X0)                                    0.09      69.77 r
+  FF_2/Q_DO_reg[23]/D (DFFARX1)                           0.04      69.81 r
+  data arrival time                                                 69.81
+
+  clock Clk_CI (rise edge)                               70.00      70.00
+  clock network delay (ideal)                             0.00      70.00
+  FF_2/Q_DO_reg[23]/CLK (DFFARX1)                         0.00      70.00 r
+  library setup time                                     -0.07      69.93
+  data required time                                                69.93
+  --------------------------------------------------------------------------
+  data required time                                                69.93
+  data arrival time                                                -69.81
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.12
+
+
+  Startpoint: counter_1/Cnt_Out_DO_reg[6]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: FF_2/Q_DO_reg[22]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                2000000               saed90nm_typ
+  MAC_WIDTH24_2      35000                 saed90nm_typ
+  FF_DATA_WIDTH24_2  8000                  saed90nm_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk_CI (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  counter_1/Cnt_Out_DO_reg[6]/CLK (DFFASX1)               0.00 #     0.00 r
+  counter_1/Cnt_Out_DO_reg[6]/Q (DFFASX1)                 0.22       0.22 r
+  counter_1/Cnt_Out_DO[6] (counter)                       0.00       0.22 r
+  U48160/ZN (INVX0)                                       1.17       1.40 f
+  U48166/QN (NOR2X0)                                      0.83       2.23 r
+  U48171/QN (NAND2X0)                                     0.99       3.22 f
+  U43854/Z (NBUFFX2)                                      0.97       4.20 f
+  U43413/Q (OR2X1)                                        0.90       5.09 f
+  U43418/ZN (IBUFFX4)                                     1.22       6.31 r
+  U56985/Q (AO22X1)                                       9.98      16.29 r
+  U56988/QN (NOR4X0)                                      1.09      17.38 f
+  U47649/QN (NAND4X0)                                     0.83      18.20 r
+  U56998/Q (OR4X1)                                        1.10      19.30 r
+  U47249/Q (MUX21X1)                                      0.91      20.21 r
+  MAC_2/In0_DI[1] (MAC_WIDTH24_2)                         0.00      20.21 r
+  MAC_2/U481/Q (MUX21X1)                                  1.95      22.16 f
+  MAC_2/U641/Q (AND2X1)                                   0.11      22.27 f
+  MAC_2/U441/ZN (INVX0)                                   0.20      22.47 r
+  MAC_2/U1073/Q (OA221X1)                                 0.31      22.78 r
+  MAC_2/U142/Q (MUX21X1)                                  0.16      22.94 r
+  MAC_2/U636/QN (NAND2X0)                                 0.08      23.02 f
+  MAC_2/U1078/QN (NAND3X0)                                0.12      23.14 r
+  MAC_2/U581/QN (NAND2X0)                                 0.09      23.23 f
+  MAC_2/U1079/QN (NAND3X0)                                0.12      23.35 r
+  MAC_2/U288/QN (NAND2X0)                                 0.09      23.43 f
+  MAC_2/U248/QN (NAND3X0)                                 0.11      23.54 r
+  MAC_2/U235/QN (NAND2X0)                                 0.09      23.63 f
+  MAC_2/U287/QN (NAND3X0)                                 0.11      23.74 r
+  MAC_2/U240/QN (NAND2X0)                                 0.09      23.83 f
+  MAC_2/U315/QN (NAND3X0)                                 0.11      23.94 r
+  MAC_2/U242/QN (NAND2X0)                                 0.09      24.02 f
+  MAC_2/U312/QN (NAND3X0)                                 0.11      24.13 r
+  MAC_2/U243/QN (NAND2X0)                                 0.09      24.22 f
+  MAC_2/U1083/QN (NAND3X0)                                0.11      24.33 r
+  MAC_2/U596/QN (NAND2X0)                                 0.09      24.42 f
+  MAC_2/U1084/QN (NAND3X0)                                0.11      24.53 r
+  MAC_2/U583/QN (NAND2X0)                                 0.09      24.62 f
+  MAC_2/U1085/QN (NAND3X0)                                0.12      24.74 r
+  MAC_2/U457/QN (NAND2X0)                                 0.09      24.82 f
+  MAC_2/U459/QN (NAND3X0)                                 0.12      24.94 r
+  MAC_2/U462/QN (NAND2X0)                                 0.09      25.03 f
+  MAC_2/U464/QN (NAND3X0)                                 0.12      25.14 r
+  MAC_2/U244/QN (NAND2X0)                                 0.09      25.23 f
+  MAC_2/U1089/QN (NAND3X0)                                0.11      25.34 r
+  MAC_2/U230/QN (NAND2X0)                                 0.09      25.43 f
+  MAC_2/U232/QN (NAND3X0)                                 0.11      25.55 r
+  MAC_2/U427/QN (NAND2X0)                                 0.09      25.64 f
+  MAC_2/U246/QN (NAND3X0)                                 0.12      25.75 r
+  MAC_2/U380/QN (NAND2X0)                                 0.09      25.84 f
+  MAC_2/U382/QN (NAND3X0)                                 0.11      25.95 r
+  MAC_2/U245/QN (NAND2X0)                                 0.09      26.04 f
+  MAC_2/U1091/QN (NAND3X0)                                0.11      26.15 r
+  MAC_2/U384/QN (NAND2X0)                                 0.09      26.24 f
+  MAC_2/U386/QN (NAND3X0)                                 0.12      26.35 r
+  MAC_2/U390/QN (NAND2X0)                                 0.09      26.44 f
+  MAC_2/U392/QN (NAND3X0)                                 0.12      26.56 r
+  MAC_2/U492/QN (NAND2X0)                                 0.09      26.65 f
+  MAC_2/U494/QN (NAND3X0)                                 0.11      26.76 r
+  MAC_2/U238/QN (NAND2X0)                                 0.09      26.85 f
+  MAC_2/U490/QN (NAND3X0)                                 0.11      26.96 r
+  MAC_2/U628/QN (NAND2X0)                                 0.09      27.05 f
+  MAC_2/U1092/QN (NAND3X0)                                0.13      27.17 r
+  MAC_2/U61/Q (XOR2X1)                                    0.19      27.36 r
+  MAC_2/Out_DO[0] (MAC_WIDTH24_2)                         0.00      27.36 r
+  U44108/Q (AND2X1)                                       0.74      28.10 r
+  U48145/CO (FADDX1)                                      4.37      32.48 r
+  U47410/CO (FADDX1)                                      3.21      35.69 r
+  U48144/CO (FADDX1)                                      3.64      39.33 r
+  U48040/Q (OR2X1)                                        1.25      40.58 r
+  U47688/QN (NAND2X0)                                     0.68      41.26 f
+  U43388/QN (NAND3X0)                                     1.05      42.32 r
+  U43386/Q (AO22X1)                                       0.88      43.20 r
+  U44059/Q (AO221X1)                                      1.02      44.22 r
+  U45566/Q (AO22X1)                                       0.80      45.03 r
+  U44275/QN (NAND2X0)                                     0.73      45.75 f
+  U45688/Q (AND3X1)                                       0.61      46.36 f
+  U45687/QN (NAND2X0)                                     0.54      46.91 r
+  U44058/Q (AO22X1)                                       0.69      47.59 r
+  U48067/Q (OR2X1)                                        1.25      48.84 r
+  U45567/Q (AO22X1)                                       0.68      49.52 r
+  U48068/Q (OR2X1)                                        1.25      50.77 r
+  U46553/Q (AO22X1)                                       0.62      51.40 r
+  U48069/Q (OR2X1)                                        1.10      52.49 r
+  U48070/Q (AO22X1)                                       0.76      53.25 r
+  U48073/QN (NOR2X0)                                      0.91      54.16 f
+  U45712/Q (OA22X1)                                       0.80      54.96 f
+  U46987/Q (AND2X1)                                       0.71      55.67 f
+  U45713/QN (OAI22X1)                                     0.60      56.27 r
+  U48074/Q (OR2X1)                                        1.25      57.52 r
+  U44057/Q (AO22X1)                                       0.68      58.20 r
+  U48075/Q (OA21X1)                                       0.85      59.05 r
+  U44056/Q (AO21X1)                                       0.74      59.78 r
+  U48076/Q (OA21X1)                                       0.85      60.63 r
+  U45568/Q (AO21X1)                                       0.74      61.37 r
+  U48077/Q (OA21X1)                                       0.81      62.17 r
+  U44055/Q (AO21X1)                                       0.74      62.91 r
+  U48078/Q (OA21X1)                                       0.85      63.76 r
+  U44054/Q (AO21X1)                                       0.74      64.50 r
+  U48079/Q (OA21X1)                                       0.85      65.35 r
+  U45569/Q (AO21X1)                                       0.74      66.08 r
+  U48113/Q (XOR3X1)                                       1.62      67.70 r
+  FF_2/D_DI[22] (FF_DATA_WIDTH24_2)                       0.00      67.70 r
+  FF_2/U11/Q (MUX21X1)                                    0.89      68.60 r
+  FF_2/Q_DO_reg[22]/D (DFFARX1)                           0.04      68.63 r
+  data arrival time                                                 68.63
+
+  clock Clk_CI (rise edge)                               70.00      70.00
+  clock network delay (ideal)                             0.00      70.00
+  FF_2/Q_DO_reg[22]/CLK (DFFARX1)                         0.00      70.00 r
+  library setup time                                     -0.06      69.94
+  data required time                                                69.94
+  --------------------------------------------------------------------------
+  data required time                                                69.94
+  data arrival time                                                -68.63
+  --------------------------------------------------------------------------
+  slack (MET)                                                        1.30
+
+
+  Startpoint: counter_1/Cnt_Out_DO_reg[3]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: FF_3/Q_DO_reg[22]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                2000000               saed90nm_typ
+  MAC_WIDTH24_1      35000                 saed90nm_typ
+  FF_DATA_WIDTH24_1  8000                  saed90nm_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk_CI (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  counter_1/Cnt_Out_DO_reg[3]/CLK (DFFARX1)               0.00 #     0.00 r
+  counter_1/Cnt_Out_DO_reg[3]/QN (DFFARX1)                0.17       0.17 f
+  counter_1/Cnt_Out_DO[3] (counter)                       0.00       0.17 f
+  U48151/QN (NOR2X0)                                      1.78       1.95 r
+  U48190/QN (NAND2X0)                                     1.30       3.25 f
+  U48206/QN (NOR2X0)                                      2.06       5.31 r
+  U48813/ZN (INVX0)                                       2.83       8.13 f
+  U51210/ZN (INVX0)                                       2.39      10.53 r
+  U51519/Q (AO22X1)                                       6.27      16.80 r
+  U51520/QN (NOR4X0)                                      0.96      17.76 f
+  U51529/QN (NAND4X0)                                     0.82      18.58 r
+  U51551/Q (OR4X1)                                        1.09      19.67 r
+  U44348/Q (MUX21X1)                                      0.89      20.56 r
+  MAC_3/In0_DI[14] (MAC_WIDTH24_1)                        0.00      20.56 r
+  MAC_3/U73/ZN (INVX0)                                    0.74      21.30 f
+  MAC_3/U784/ZN (INVX0)                                   0.27      21.57 r
+  MAC_3/U302/Q (MUX21X1)                                  0.27      21.84 r
+  MAC_3/U352/QN (NAND2X0)                                 0.27      22.11 f
+  MAC_3/U1010/ZN (INVX0)                                  0.26      22.37 r
+  MAC_3/U306/Q (AO222X1)                                  0.14      22.51 r
+  MAC_3/U304/Q (MUX21X1)                                  0.16      22.68 f
+  MAC_3/U1038/S (FADDX1)                                  0.33      23.01 r
+  MAC_3/U807/QN (NAND2X0)                                 0.09      23.09 f
+  MAC_3/U808/QN (NAND3X0)                                 0.11      23.21 r
+  MAC_3/U747/QN (NAND2X0)                                 0.09      23.29 f
+  MAC_3/U748/QN (NAND3X0)                                 0.11      23.41 r
+  MAC_3/U751/QN (NAND2X0)                                 0.09      23.49 f
+  MAC_3/U752/QN (NAND3X0)                                 0.11      23.60 r
+  MAC_3/U581/QN (NAND2X0)                                 0.09      23.70 f
+  MAC_3/U583/QN (NAND3X0)                                 0.11      23.81 r
+  MAC_3/U379/QN (NAND2X0)                                 0.09      23.91 f
+  MAC_3/U380/QN (NAND3X0)                                 0.12      24.02 r
+  MAC_3/U274/QN (NAND2X0)                                 0.09      24.11 f
+  MAC_3/U594/QN (NAND3X0)                                 0.11      24.22 r
+  MAC_3/U275/Q (XOR3X1)                                   0.28      24.51 r
+  MAC_3/U741/Q (XOR2X1)                                   0.20      24.71 f
+  MAC_3/U58/Q (XOR2X1)                                    0.20      24.91 r
+  MAC_3/U729/QN (NAND2X0)                                 0.09      24.99 f
+  MAC_3/U730/QN (NAND3X0)                                 0.11      25.11 r
+  MAC_3/U586/QN (NAND2X0)                                 0.09      25.19 f
+  MAC_3/U455/QN (NAND3X0)                                 0.12      25.31 r
+  MAC_3/U588/QN (NAND2X0)                                 0.09      25.40 f
+  MAC_3/U589/QN (NAND3X0)                                 0.12      25.52 r
+  MAC_3/U1135/CO (FADDX1)                                 0.28      25.80 r
+  MAC_3/U77/Q (XOR3X1)                                    0.19      25.99 f
+  MAC_3/U595/Q (XOR3X1)                                   0.27      26.27 r
+  MAC_3/Out_DO[0] (MAC_WIDTH24_1)                         0.00      26.27 r
+  U43398/Q (AND2X1)                                       0.98      27.25 r
+  U48143/CO (FADDX1)                                      3.64      30.89 r
+  U48142/CO (FADDX1)                                      3.65      34.54 r
+  U48141/CO (FADDX1)                                      3.64      38.18 r
+  U47658/Q (OR2X1)                                        1.42      39.60 r
+  U43392/Q (AO22X1)                                       0.80      40.40 r
+  U45679/Q (AO22X1)                                       0.76      41.16 r
+  U47674/Q (OR2X1)                                        1.10      42.26 r
+  U43377/Q (AO22X1)                                       0.68      42.94 r
+  U43395/Q (OR2X1)                                        1.27      44.21 r
+  U43394/Q (AO22X1)                                       0.69      44.90 r
+  U48044/CO (FADDX1)                                      3.21      48.11 r
+  U48140/CO (FADDX1)                                      3.64      51.75 r
+  U48045/Q (OR2X1)                                        1.25      53.00 r
+  U43384/Q (AO22X1)                                       0.68      53.68 r
+  U48046/Q (OA21X1)                                       0.85      54.53 r
+  U43371/Q (AO21X1)                                       0.74      55.27 r
+  U48047/Q (OR2X1)                                        1.25      56.52 r
+  U43373/Q (AO22X1)                                       0.80      57.32 r
+  U45728/QN (NAND3X1)                                     0.75      58.07 f
+  U47681/QN (NAND4X0)                                     0.96      59.03 r
+  U47427/Q (AO22X1)                                       0.63      59.66 r
+  U48048/Q (OA21X1)                                       0.85      60.51 r
+  U43374/Q (AO21X1)                                       0.73      61.24 r
+  U48049/Q (AO22X1)                                       0.75      61.99 r
+  U48050/Q (OA21X1)                                       0.96      62.95 r
+  U47679/QN (NAND3X1)                                     0.67      63.62 f
+  U47659/QN (NAND4X0)                                     0.79      64.41 r
+  U47673/Q (OA21X1)                                       0.86      65.27 r
+  U44018/Q (AO21X1)                                       0.74      66.00 r
+  U48123/Q (XOR3X1)                                       1.62      67.62 r
+  FF_3/D_DI[22] (FF_DATA_WIDTH24_1)                       0.00      67.62 r
+  FF_3/U10/Q (MUX21X1)                                    0.89      68.52 r
+  FF_3/Q_DO_reg[22]/D (DFFARX1)                           0.04      68.55 r
+  data arrival time                                                 68.55
+
+  clock Clk_CI (rise edge)                               70.00      70.00
+  clock network delay (ideal)                             0.00      70.00
+  FF_3/Q_DO_reg[22]/CLK (DFFARX1)                         0.00      70.00 r
+  library setup time                                     -0.06      69.94
+  data required time                                                69.94
+  --------------------------------------------------------------------------
+  data required time                                                69.94
+  data arrival time                                                -68.55
+  --------------------------------------------------------------------------
+  slack (MET)                                                        1.38
+
+
+1

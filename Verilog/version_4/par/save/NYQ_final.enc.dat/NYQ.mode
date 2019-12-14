@@ -1,0 +1,59 @@
+catch { setAnalysisMode -analysisType onChipVariation }
+catch { setAnalysisMode -checkType setup }
+catch { setAnalysisMode -clkSrcPath true }
+catch { setAnalysisMode -clockPropagation sdcControl }
+catch { setAnalysisMode -cppr both }
+catch { setAnalysisMode -skew true }
+catch { setAnalysisMode -usefulSkew true }
+catch { setOptMode -activeHoldViews { hold_bc hold_tc hold_wc } }
+catch { setOptMode -activeSetupViews { func_wc func_tc test_wc } }
+catch { setOptMode -autoHoldViews { hold_bc } }
+catch { setOptMode -autoSetupViews { func_wc} }
+catch { setOptMode -autoViewHoldTargetSlack 0 }
+catch { setOptMode -drcMargin 0 }
+catch { setOptMode -effort high }
+catch { setOptMode -fixDrc true }
+catch { setOptMode -optimizeFF true }
+catch { setOptMode -preserveAllSequential false }
+catch { setOptMode -setupTargetSlack 0 }
+setExtractRCMode  -effortLevel low -engine postRoute -coupled false -minNetTermNrToBeInMem 50
+catch {setNanoRouteMode -quiet -drouteAntennaFactor 1.000000}
+catch {setNanoRouteMode -quiet -drouteFixAntenna true}
+catch {setNanoRouteMode -quiet -droutePostRouteSpreadWire "true"}
+catch {setNanoRouteMode -quiet -drouteStartIteration 0}
+catch {setNanoRouteMode -quiet -drouteUseMinSpacingForBlockage auto}
+catch {setNanoRouteMode -quiet -routeAntennaCellName "ANTENNA"}
+catch {setNanoRouteMode -quiet -routeStrictlyHonorNonDefaultRule "false"}
+catch {setNanoRouteMode -quiet -routeWithEco true}
+
+catch { setPlaceMode -place_detail_legalization_inst_gap 1 }
+catch { setPlaceMode -place_global_clock_gate_aware true }
+catch { setPlaceMode -place_global_clock_power_driven true }
+catch { setPlaceMode -place_global_cong_effort high }
+catch { setPlaceMode -place_global_reorder_scan false }
+catch { setPlaceMode -place_global_timing_effort medium }
+catch { setIlmMode -keepHighFanoutPorts true -keepLoopBack false -keepFlatten true }
+catch { setUsefulSkewMode -ecoRoute false }
+catch { setDelayCalMode -enable_high_fanout true }
+catch { setDelayCalMode -eng_copyNetPropToNewNet true }
+catch { setDelayCalMode -eng_taskCompressionMode 2 }
+catch { setDelayCalMode -engine aae }
+catch { setDelayCalMode -ignoreNetLoad false }
+catch { setDelayCalMode -SIAware false }
+catch { setPinAssignMode -pinEditInBatch false }
+catch { setTrialRouteMode -handlePreroute true }
+catch { setTrialRouteMode -keepMarkedOptRoutes true }
+catch { setHierMode -disableArt false }
+catch { setHierMode -reportPostRouteArtTiming false }
+catch { setHierMode -trialRouteHonorReadOnly false }
+catch { setImportMode -keepEmptyModule true }
+catch { setImportMode -treatUndefinedCellAsBbox false }
+catch { setTieHiLoMode -cell {{TIEH TIEL}} }
+catch { setTieHiLoMode -maxDistance 20 }
+catch { setTieHiLoMode -maxFanout 10 }
+catch { setSIMode -separate_delta_delay_on_data true }
+catch { setRouteMode -earlyGlobalMaxRouteLayer 9 }
+catch { setRouteMode -earlyGlobalMinRouteLayer 2 }
+catch { setRouteMode -earlyGlobalRouteSecondPG false }
+catch { setEndCapMode -leftEdge DCAP }
+catch { setEndCapMode -rightEdge DCAP }
