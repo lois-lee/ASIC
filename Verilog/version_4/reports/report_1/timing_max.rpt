@@ -1,0 +1,416 @@
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 5
+Design : NYQ
+Version: M-2016.12
+Date   : Fri Nov  1 12:08:25 2019
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: TYPICAL   Library: saed90nm_typ
+Wire Load Model Mode: enclosed
+
+  Startpoint: FF_3/Q_DO_reg[1]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: FF_4/Q_DO_reg[23]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                1000000               saed90nm_typ
+  FF_DATA_WIDTH24_0  8000                  saed90nm_typ
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk_CI (rise edge)                 0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FF_3/Q_DO_reg[1]/CLK (DFFARX1)           0.00 #     0.00 r
+  FF_3/Q_DO_reg[1]/Q (DFFARX1)             0.21       0.21 r
+  FF_3/Q_DO[1] (FF_DATA_WIDTH24_1)         0.00       0.21 r
+  U23063/Q (OR2X1)                         1.00       1.21 r
+  U23147/Q (AO22X1)                        0.57       1.78 r
+  U23246/Q (OA21X1)                        0.56       2.33 r
+  U23139/Q (AO21X2)                        0.66       2.99 r
+  U23257/Q (OA21X1)                        0.56       3.55 r
+  U23195/Q (AO21X2)                        0.66       4.20 r
+  U23247/Q (OA21X1)                        0.56       4.76 r
+  U23126/Q (AO21X2)                        0.66       5.42 r
+  U23250/Q (OA21X1)                        0.56       5.98 r
+  U23196/Q (AO21X2)                        0.66       6.63 r
+  U23254/Q (OA21X1)                        0.56       7.19 r
+  U23140/Q (AO21X2)                        0.66       7.85 r
+  U23256/Q (OA21X1)                        0.56       8.40 r
+  U23143/Q (AO21X2)                        0.66       9.06 r
+  U23245/Q (OA21X1)                        0.56       9.62 r
+  U23138/Q (AO21X2)                        0.66      10.27 r
+  U23249/Q (OA21X1)                        0.56      10.83 r
+  U23142/Q (AO21X2)                        0.66      11.49 r
+  U23244/Q (OA21X1)                        0.56      12.04 r
+  U23137/Q (AO21X2)                        0.66      12.70 r
+  U23248/Q (OA21X1)                        0.56      13.26 r
+  U23141/Q (AO21X2)                        0.66      13.91 r
+  U23253/Q (OA21X1)                        0.56      14.47 r
+  U23144/Q (AO21X2)                        0.66      15.13 r
+  U23260/Q (OA21X1)                        0.56      15.68 r
+  U23203/Q (AO21X2)                        0.66      16.34 r
+  U23252/Q (OA21X1)                        0.56      16.90 r
+  U23199/Q (AO21X2)                        0.66      17.56 r
+  U23259/Q (OA21X1)                        0.56      18.11 r
+  U23202/Q (AO21X2)                        0.66      18.77 r
+  U23251/Q (OA21X1)                        0.56      19.33 r
+  U23198/Q (AO21X2)                        0.66      19.98 r
+  U23258/Q (OA21X1)                        0.56      20.54 r
+  U23201/Q (AO21X2)                        0.66      21.20 r
+  U23225/Q (OA21X1)                        0.56      21.75 r
+  U23197/Q (AO21X2)                        0.66      22.41 r
+  U23226/Q (OA21X1)                        0.56      22.97 r
+  U23200/Q (AO21X2)                        0.66      23.62 r
+  U23255/Q (OA21X1)                        0.56      24.18 r
+  U23206/Q (AO21X2)                        0.66      24.84 r
+  U23224/Q (OA21X1)                        0.56      25.39 r
+  U23205/Q (AO21X2)                        0.66      26.05 r
+  U23294/Q (OA21X1)                        0.56      26.61 r
+  U23204/Q (AO21X2)                        0.66      27.26 r
+  U23352/Q (XOR2X1)                        1.05      28.32 r
+  FF_4/D_DI[23] (FF_DATA_WIDTH24_0)        0.00      28.32 r
+  FF_4/U2/Q (MUX21X2)                      0.77      29.09 r
+  FF_4/Q_DO_reg[23]/D (DFFARX1)            0.04      29.13 r
+  data arrival time                                  29.13
+
+  clock Clk_CI (rise edge)                 6.00       6.00
+  clock network delay (ideal)              0.00       6.00
+  FF_4/Q_DO_reg[23]/CLK (DFFARX1)          0.00       6.00 r
+  library setup time                      -0.06       5.94
+  data required time                                  5.94
+  -----------------------------------------------------------
+  data required time                                  5.94
+  data arrival time                                 -29.13
+  -----------------------------------------------------------
+  slack (VIOLATED)                                  -23.19
+
+
+  Startpoint: FF_2/Q_DO_reg[1]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: FF_3/Q_DO_reg[23]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                1000000               saed90nm_typ
+  FF_DATA_WIDTH24_1  8000                  saed90nm_typ
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk_CI (rise edge)                 0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FF_2/Q_DO_reg[1]/CLK (DFFARX1)           0.00 #     0.00 r
+  FF_2/Q_DO_reg[1]/Q (DFFARX1)             0.21       0.21 r
+  FF_2/Q_DO[1] (FF_DATA_WIDTH24_2)         0.00       0.21 r
+  U23119/Q (OR2X1)                         0.99       1.19 r
+  U23125/Q (AO22X1)                        0.57       1.76 r
+  U23264/Q (OA21X1)                        0.56       2.32 r
+  U23155/Q (AO21X2)                        0.66       2.98 r
+  U23267/Q (OA21X1)                        0.56       3.53 r
+  U23153/Q (AO21X2)                        0.66       4.19 r
+  U23271/Q (OA21X1)                        0.56       4.75 r
+  U23148/Q (AO21X2)                        0.66       5.40 r
+  U23268/Q (OA21X1)                        0.56       5.96 r
+  U23152/Q (AO21X2)                        0.66       6.62 r
+  U23233/Q (OA21X1)                        0.56       7.17 r
+  U23115/Q (AO21X2)                        0.66       7.83 r
+  U23266/Q (OA21X1)                        0.56       8.39 r
+  U23151/Q (AO21X2)                        0.66       9.05 r
+  U23270/Q (OA21X1)                        0.56       9.60 r
+  U23116/Q (AO21X2)                        0.66      10.26 r
+  U23265/Q (OA21X1)                        0.56      10.82 r
+  U23150/Q (AO21X2)                        0.66      11.47 r
+  U23232/Q (OA21X1)                        0.56      12.03 r
+  U23117/Q (AO21X2)                        0.66      12.69 r
+  U23230/Q (OA21X1)                        0.56      13.25 r
+  U23149/Q (AO21X2)                        0.66      13.90 r
+  U23228/Q (OA21X1)                        0.56      14.46 r
+  U23154/Q (AO21X2)                        0.66      15.12 r
+  U23305/Q (OA21X1)                        0.56      15.68 r
+  U23163/Q (AO21X2)                        0.66      16.33 r
+  U23263/Q (OA21X1)                        0.56      16.89 r
+  U23160/Q (AO21X2)                        0.66      17.55 r
+  U23274/Q (OA21X1)                        0.56      18.10 r
+  U23162/Q (AO21X2)                        0.66      18.76 r
+  U23269/Q (OA21X1)                        0.56      19.32 r
+  U23157/Q (AO21X2)                        0.66      19.97 r
+  U23273/Q (OA21X1)                        0.56      20.53 r
+  U23161/Q (AO21X2)                        0.66      21.19 r
+  U23229/Q (OA21X1)                        0.56      21.74 r
+  U23156/Q (AO21X2)                        0.66      22.40 r
+  U23231/Q (OA21X1)                        0.56      22.96 r
+  U23164/Q (AO21X2)                        0.66      23.61 r
+  U23272/Q (OA21X1)                        0.56      24.17 r
+  U23158/Q (AO21X2)                        0.66      24.83 r
+  U23227/Q (OA21X1)                        0.56      25.39 r
+  U23159/Q (AO21X2)                        0.66      26.04 r
+  U23304/Q (OA21X1)                        0.56      26.60 r
+  U23114/Q (AO21X2)                        0.66      27.26 r
+  U23331/Q (XOR2X1)                        1.05      28.31 r
+  FF_3/D_DI[23] (FF_DATA_WIDTH24_1)        0.00      28.31 r
+  FF_3/U4/Q (MUX21X1)                      0.76      29.07 r
+  FF_3/Q_DO_reg[23]/D (DFFARX1)            0.04      29.11 r
+  data arrival time                                  29.11
+
+  clock Clk_CI (rise edge)                 6.00       6.00
+  clock network delay (ideal)              0.00       6.00
+  FF_3/Q_DO_reg[23]/CLK (DFFARX1)          0.00       6.00 r
+  library setup time                      -0.06       5.94
+  data required time                                  5.94
+  -----------------------------------------------------------
+  data required time                                  5.94
+  data arrival time                                 -29.11
+  -----------------------------------------------------------
+  slack (VIOLATED)                                  -23.17
+
+
+  Startpoint: FF_1/Q_DO_reg[1]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: FF_2/Q_DO_reg[23]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                1000000               saed90nm_typ
+  FF_DATA_WIDTH24_2  8000                  saed90nm_typ
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk_CI (rise edge)                 0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FF_1/Q_DO_reg[1]/CLK (DFFARX1)           0.00 #     0.00 r
+  FF_1/Q_DO_reg[1]/Q (DFFARX1)             0.21       0.21 r
+  FF_1/Q_DO[1] (FF_DATA_WIDTH24_3)         0.00       0.21 r
+  U23120/Q (OR2X1)                         1.00       1.21 r
+  U23145/Q (AO22X1)                        0.59       1.80 r
+  U23283/Q (OA21X1)                        0.56       2.35 r
+  U23132/Q (AO21X2)                        0.66       3.01 r
+  U23285/Q (OA21X1)                        0.56       3.57 r
+  U23165/Q (AO21X2)                        0.66       4.22 r
+  U23279/Q (OA21X1)                        0.56       4.78 r
+  U23131/Q (AO21X2)                        0.66       5.44 r
+  U23284/Q (OA21X1)                        0.56       5.99 r
+  U23136/Q (AO21X2)                        0.66       6.65 r
+  U23239/Q (OA21X1)                        0.56       7.21 r
+  U23130/Q (AO21X2)                        0.66       7.86 r
+  U23242/Q (OA21X1)                        0.56       8.42 r
+  U23135/Q (AO21X2)                        0.66       9.08 r
+  U23238/Q (OA21X1)                        0.56       9.63 r
+  U23129/Q (AO21X2)                        0.66      10.29 r
+  U23240/Q (OA21X1)                        0.56      10.85 r
+  U23133/Q (AO21X2)                        0.66      11.51 r
+  U23237/Q (OA21X1)                        0.56      12.06 r
+  U23122/Q (AO21X2)                        0.66      12.72 r
+  U23241/Q (OA21X1)                        0.56      13.28 r
+  U23134/Q (AO21X2)                        0.66      13.93 r
+  U23235/Q (OA21X1)                        0.56      14.49 r
+  U23166/Q (AO21X2)                        0.66      15.15 r
+  U23314/Q (OA21X1)                        0.56      15.70 r
+  U23173/Q (AO21X2)                        0.66      16.36 r
+  U23282/Q (OA21X1)                        0.56      16.92 r
+  U23169/Q (AO21X2)                        0.66      17.57 r
+  U23286/Q (OA21X1)                        0.56      18.13 r
+  U23172/Q (AO21X2)                        0.66      18.79 r
+  U23281/Q (OA21X1)                        0.56      19.34 r
+  U23168/Q (AO21X2)                        0.66      20.00 r
+  U23280/Q (OA21X1)                        0.56      20.56 r
+  U23171/Q (AO21X2)                        0.66      21.21 r
+  U23236/Q (OA21X1)                        0.56      21.77 r
+  U23167/Q (AO21X2)                        0.66      22.43 r
+  U23243/Q (OA21X1)                        0.56      22.99 r
+  U23170/Q (AO21X2)                        0.66      23.64 r
+  U23287/Q (OA21X1)                        0.56      24.20 r
+  U23175/Q (AO21X2)                        0.66      24.86 r
+  U23234/Q (OA21X1)                        0.56      25.41 r
+  U23174/Q (AO21X2)                        0.66      26.07 r
+  U23061/QN (OAI21X2)                      0.55      26.63 f
+  U23060/QN (OAI21X2)                      0.49      27.11 r
+  U23350/Q (XOR2X1)                        1.05      28.17 r
+  FF_2/D_DI[23] (FF_DATA_WIDTH24_2)        0.00      28.17 r
+  FF_2/U3/Q (MUX21X2)                      0.77      28.94 r
+  FF_2/Q_DO_reg[23]/D (DFFARX1)            0.04      28.98 r
+  data arrival time                                  28.98
+
+  clock Clk_CI (rise edge)                 6.00       6.00
+  clock network delay (ideal)              0.00       6.00
+  FF_2/Q_DO_reg[23]/CLK (DFFARX1)          0.00       6.00 r
+  library setup time                      -0.06       5.94
+  data required time                                  5.94
+  -----------------------------------------------------------
+  data required time                                  5.94
+  data arrival time                                 -28.98
+  -----------------------------------------------------------
+  slack (VIOLATED)                                  -23.04
+
+
+  Startpoint: FF_3/Q_DO_reg[1]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: FF_4/Q_DO_reg[22]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                1000000               saed90nm_typ
+  FF_DATA_WIDTH24_0  8000                  saed90nm_typ
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk_CI (rise edge)                 0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FF_3/Q_DO_reg[1]/CLK (DFFARX1)           0.00 #     0.00 r
+  FF_3/Q_DO_reg[1]/Q (DFFARX1)             0.21       0.21 r
+  FF_3/Q_DO[1] (FF_DATA_WIDTH24_1)         0.00       0.21 r
+  U23063/Q (OR2X1)                         1.00       1.21 r
+  U23147/Q (AO22X1)                        0.57       1.78 r
+  U23246/Q (OA21X1)                        0.56       2.33 r
+  U23139/Q (AO21X2)                        0.66       2.99 r
+  U23257/Q (OA21X1)                        0.56       3.55 r
+  U23195/Q (AO21X2)                        0.66       4.20 r
+  U23247/Q (OA21X1)                        0.56       4.76 r
+  U23126/Q (AO21X2)                        0.66       5.42 r
+  U23250/Q (OA21X1)                        0.56       5.98 r
+  U23196/Q (AO21X2)                        0.66       6.63 r
+  U23254/Q (OA21X1)                        0.56       7.19 r
+  U23140/Q (AO21X2)                        0.66       7.85 r
+  U23256/Q (OA21X1)                        0.56       8.40 r
+  U23143/Q (AO21X2)                        0.66       9.06 r
+  U23245/Q (OA21X1)                        0.56       9.62 r
+  U23138/Q (AO21X2)                        0.66      10.27 r
+  U23249/Q (OA21X1)                        0.56      10.83 r
+  U23142/Q (AO21X2)                        0.66      11.49 r
+  U23244/Q (OA21X1)                        0.56      12.04 r
+  U23137/Q (AO21X2)                        0.66      12.70 r
+  U23248/Q (OA21X1)                        0.56      13.26 r
+  U23141/Q (AO21X2)                        0.66      13.91 r
+  U23253/Q (OA21X1)                        0.56      14.47 r
+  U23144/Q (AO21X2)                        0.66      15.13 r
+  U23260/Q (OA21X1)                        0.56      15.68 r
+  U23203/Q (AO21X2)                        0.66      16.34 r
+  U23252/Q (OA21X1)                        0.56      16.90 r
+  U23199/Q (AO21X2)                        0.66      17.56 r
+  U23259/Q (OA21X1)                        0.56      18.11 r
+  U23202/Q (AO21X2)                        0.66      18.77 r
+  U23251/Q (OA21X1)                        0.56      19.33 r
+  U23198/Q (AO21X2)                        0.66      19.98 r
+  U23258/Q (OA21X1)                        0.56      20.54 r
+  U23201/Q (AO21X2)                        0.66      21.20 r
+  U23225/Q (OA21X1)                        0.56      21.75 r
+  U23197/Q (AO21X2)                        0.66      22.41 r
+  U23226/Q (OA21X1)                        0.56      22.97 r
+  U23200/Q (AO21X2)                        0.66      23.62 r
+  U23255/Q (OA21X1)                        0.56      24.18 r
+  U23206/Q (AO21X2)                        0.66      24.84 r
+  U23224/Q (OA21X1)                        0.56      25.39 r
+  U23205/Q (AO21X2)                        0.66      26.05 r
+  U23056/Z (NBUFFX2)                       0.79      26.84 r
+  U23353/Q (XOR3X1)                        1.07      27.91 r
+  FF_4/D_DI[22] (FF_DATA_WIDTH24_0)        0.00      27.91 r
+  FF_4/U4/Q (MUX21X1)                      0.82      28.73 r
+  FF_4/Q_DO_reg[22]/D (DFFARX1)            0.04      28.76 r
+  data arrival time                                  28.76
+
+  clock Clk_CI (rise edge)                 6.00       6.00
+  clock network delay (ideal)              0.00       6.00
+  FF_4/Q_DO_reg[22]/CLK (DFFARX1)          0.00       6.00 r
+  library setup time                      -0.06       5.94
+  data required time                                  5.94
+  -----------------------------------------------------------
+  data required time                                  5.94
+  data arrival time                                 -28.76
+  -----------------------------------------------------------
+  slack (VIOLATED)                                  -22.82
+
+
+  Startpoint: FF_2/Q_DO_reg[1]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: FF_3/Q_DO_reg[22]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                1000000               saed90nm_typ
+  FF_DATA_WIDTH24_1  8000                  saed90nm_typ
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk_CI (rise edge)                 0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FF_2/Q_DO_reg[1]/CLK (DFFARX1)           0.00 #     0.00 r
+  FF_2/Q_DO_reg[1]/Q (DFFARX1)             0.21       0.21 r
+  FF_2/Q_DO[1] (FF_DATA_WIDTH24_2)         0.00       0.21 r
+  U23119/Q (OR2X1)                         0.99       1.19 r
+  U23125/Q (AO22X1)                        0.57       1.76 r
+  U23264/Q (OA21X1)                        0.56       2.32 r
+  U23155/Q (AO21X2)                        0.66       2.98 r
+  U23267/Q (OA21X1)                        0.56       3.53 r
+  U23153/Q (AO21X2)                        0.66       4.19 r
+  U23271/Q (OA21X1)                        0.56       4.75 r
+  U23148/Q (AO21X2)                        0.66       5.40 r
+  U23268/Q (OA21X1)                        0.56       5.96 r
+  U23152/Q (AO21X2)                        0.66       6.62 r
+  U23233/Q (OA21X1)                        0.56       7.17 r
+  U23115/Q (AO21X2)                        0.66       7.83 r
+  U23266/Q (OA21X1)                        0.56       8.39 r
+  U23151/Q (AO21X2)                        0.66       9.05 r
+  U23270/Q (OA21X1)                        0.56       9.60 r
+  U23116/Q (AO21X2)                        0.66      10.26 r
+  U23265/Q (OA21X1)                        0.56      10.82 r
+  U23150/Q (AO21X2)                        0.66      11.47 r
+  U23232/Q (OA21X1)                        0.56      12.03 r
+  U23117/Q (AO21X2)                        0.66      12.69 r
+  U23230/Q (OA21X1)                        0.56      13.25 r
+  U23149/Q (AO21X2)                        0.66      13.90 r
+  U23228/Q (OA21X1)                        0.56      14.46 r
+  U23154/Q (AO21X2)                        0.66      15.12 r
+  U23305/Q (OA21X1)                        0.56      15.68 r
+  U23163/Q (AO21X2)                        0.66      16.33 r
+  U23263/Q (OA21X1)                        0.56      16.89 r
+  U23160/Q (AO21X2)                        0.66      17.55 r
+  U23274/Q (OA21X1)                        0.56      18.10 r
+  U23162/Q (AO21X2)                        0.66      18.76 r
+  U23269/Q (OA21X1)                        0.56      19.32 r
+  U23157/Q (AO21X2)                        0.66      19.97 r
+  U23273/Q (OA21X1)                        0.56      20.53 r
+  U23161/Q (AO21X2)                        0.66      21.19 r
+  U23229/Q (OA21X1)                        0.56      21.74 r
+  U23156/Q (AO21X2)                        0.66      22.40 r
+  U23231/Q (OA21X1)                        0.56      22.96 r
+  U23164/Q (AO21X2)                        0.66      23.61 r
+  U23272/Q (OA21X1)                        0.56      24.17 r
+  U23158/Q (AO21X2)                        0.66      24.83 r
+  U23227/Q (OA21X1)                        0.56      25.39 r
+  U23159/Q (AO21X2)                        0.66      26.04 r
+  U23050/Z (NBUFFX2)                       0.79      26.83 r
+  U23332/Q (XOR3X1)                        1.07      27.90 r
+  FF_3/D_DI[22] (FF_DATA_WIDTH24_1)        0.00      27.90 r
+  FF_3/U6/Q (MUX21X1)                      0.82      28.72 r
+  FF_3/Q_DO_reg[22]/D (DFFARX1)            0.04      28.75 r
+  data arrival time                                  28.75
+
+  clock Clk_CI (rise edge)                 6.00       6.00
+  clock network delay (ideal)              0.00       6.00
+  FF_3/Q_DO_reg[22]/CLK (DFFARX1)          0.00       6.00 r
+  library setup time                      -0.06       5.94
+  data required time                                  5.94
+  -----------------------------------------------------------
+  data required time                                  5.94
+  data arrival time                                 -28.75
+  -----------------------------------------------------------
+  slack (VIOLATED)                                  -22.82

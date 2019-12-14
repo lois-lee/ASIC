@@ -1,0 +1,546 @@
+dc_shell> analyze -library work -format verilog ../nyq/FF.v
+Running PRESTO HDLC
+Compiling source file ../nyq/FF.v
+Presto compilation completed successfully.
+Loading db file '/work/global/brg/install/adk-pkgs/saed-90nm/pkgs/SAED_EDK90nm_01252011/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models/saed90nm_typ.db'
+Loading db file '/opt/synopsys/M-2016.12/synopsys-dc-M-2016.12/libraries/syn/dw_foundation.sldb'
+Loading db file '/opt/synopsys/M-2016.12/synopsys-dc-M-2016.12/libraries/syn/dft_jtag.sldb'
+Loading db file '/opt/synopsys/M-2016.12/synopsys-dc-M-2016.12/libraries/syn/dft_lbist.sldb'
+Loading db file '/opt/synopsys/M-2016.12/synopsys-dc-M-2016.12/libraries/syn/dft_mbist.sldb'
+Loading db file '/opt/synopsys/M-2016.12/synopsys-dc-M-2016.12/libraries/syn/standard.sldb'
+1
+dc_shell> analyze -library work -format verilog ../nyq/MAC.v
+Running PRESTO HDLC
+Compiling source file ../nyq/MAC.v
+Presto compilation completed successfully.
+1
+dc_shell> analyze -library work -format verilog ../nyq/counter.v
+Running PRESTO HDLC
+Compiling source file ../nyq/counter.v
+Presto compilation completed successfully.
+1
+dc_shell> analyze -library work -format verilog ../nyq/NYQ.v
+Running PRESTO HDLC
+Compiling source file ../nyq/NYQ.v
+Warning:  ../nyq/NYQ.v:138: the undeclared symbol 'NYQ_MAC_Clr' assumed to have the default net type, which is 'wire'. (VER-936)
+Presto compilation completed successfully.
+1
+dc_shell> 
+dc_shell> elaborate NYQ -library work
+Loading db file '/opt/synopsys/M-2016.12/synopsys-dc-M-2016.12/libraries/syn/gtech.db'
+  Loading link library 'saed90nm_typ'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Warning:  ../nyq/NYQ.v:135: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../nyq/NYQ.v:164: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../nyq/NYQ.v:234: signed to unsigned conversion occurs. (VER-318)
+
+Inferred memory devices in process
+        in routine NYQ line 102 in file
+                '../nyq/NYQ.v'.
+================================================================================
+|    Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+================================================================================
+| parameter_memory_reg | Flip-flop | 24600 |  Y  | N  | Y  | N  | N  | N  | N  |
+================================================================================
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'NYQ'.
+Information: Building the design 'counter'. (HDL-193)
+
+Inferred memory devices in process
+        in routine counter line 23 in file
+                '../nyq/counter.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   Cnt_Out_DO_reg    | Flip-flop |   8   |  Y  | N  | N  | Y  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'MAC' instantiated from design 'NYQ' with
+        the parameters "WIDTH=24". (HDL-193)
+Warning:  ../nyq/MAC.v:29: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../nyq/MAC.v:44: signed to unsigned part selection occurs. (VER-318)
+Presto compilation completed successfully.
+Information: Building the design 'FF' instantiated from design 'NYQ' with
+        the parameters "DATA_WIDTH=24". (HDL-193)
+
+Inferred memory devices in process
+        in routine FF_DATA_WIDTH24 line 28 in file
+                '../nyq/FF.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      Q_DO_reg       | Flip-flop |  24   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'FF' instantiated from design 'MAC_WIDTH24' with
+        the parameters "DATA_WIDTH=48". (HDL-193)
+
+Inferred memory devices in process
+        in routine FF_DATA_WIDTH48 line 28 in file
+                '../nyq/FF.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      Q_DO_reg       | Flip-flop |  48   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+1
+dc_shell> 
+dc_shell> create_clock Clk_CI -period 70.0
+1
+dc_shell> set_clock_transition 0.2 [get_clocks Clk_CI]
+1
+dc_shell> 
+dc_shell> set_driving_cell -library saed90nm_typ -lib_cell INVX4 -pin ZN [all_inputs]
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+        set on the port. (UID-401)
+1
+dc_shell> set_load 0.01 [all_outputs]
+1
+dc_shell> compile_ultra -no_autoungroup
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | M-2016.12-DWBB_201612.0 |     *     |
+| Licensed DW Building Blocks        | M-2016.12-DWBB_201612.0 |     *     |
+| dft_jtag.sldb                      | M-2016.12-DWBB_201612.0 |     *     |
+| dft_lbist.sldb                     | M-2016.12-DWBB_201612.0 |     *     |
+| dft_mbist.sldb                     | M-2016.12-DWBB_201612.0 |     *     |
+============================================================================
+
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+Information: There are 1 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+Information: Uniquified 4 instances of design 'MAC_WIDTH24'. (OPT-1056)
+Information: Uniquified 4 instances of design 'FF_DATA_WIDTH24'. (OPT-1056)
+Information: Uniquified 4 instances of design 'FF_DATA_WIDTH48'. (OPT-1056)
+  Simplifying Design 'NYQ'
+
+Loaded alib file './alib-52/saed90nm_typ.db.alib'
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'NYQ'
+ Implement Synthetic for 'NYQ'.
+  Processing 'FF_DATA_WIDTH48_0'
+  Processing 'MAC_WIDTH24_0'
+ Implement Synthetic for 'MAC_WIDTH24_0'.
+  Processing 'FF_DATA_WIDTH24_0'
+  Processing 'counter'
+ Implement Synthetic for 'counter'.
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: Complementing port 'WrEn_SI' in design 'FF_DATA_WIDTH48_3'.
+         The new name of the port is 'WrEn_SI_BAR'. (OPT-319)
+Information: Complementing port 'WrEn_SI' in design 'MAC_WIDTH24_3'.
+         The new name of the port is 'WrEn_SI_BAR'. (OPT-319)
+Information: Complementing port 'WrEn_SI' in design 'MAC_WIDTH24_0'.
+         The new name of the port is 'WrEn_SI_BAR'. (OPT-319)
+Information: Complementing port 'WrEn_SI' in design 'MAC_WIDTH24_1'.
+         The new name of the port is 'WrEn_SI_BAR'. (OPT-319)
+Information: Complementing port 'WrEn_SI' in design 'MAC_WIDTH24_2'.
+         The new name of the port is 'WrEn_SI_BAR'. (OPT-319)
+Information: Complementing port 'WrEn_SI' in design 'FF_DATA_WIDTH48_0'.
+         The new name of the port is 'WrEn_SI_BAR'. (OPT-319)
+Information: Complementing port 'WrEn_SI' in design 'FF_DATA_WIDTH48_1'.
+         The new name of the port is 'WrEn_SI_BAR'. (OPT-319)
+Information: Complementing port 'WrEn_SI' in design 'FF_DATA_WIDTH48_2'.
+         The new name of the port is 'WrEn_SI_BAR'. (OPT-319)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+Information: Added key list 'DesignWare' to design 'counter'. (DDB-72)
+  Mapping Optimization (Phase 1)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Constant Register Removal
+  -----------------------------------
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+  Selecting critical implementations
+  Mapping 'NYQ_DW01_add_0'
+  Mapping 'NYQ_DW01_add_1'
+  Mapping 'NYQ_DW01_add_2'
+  Mapping 'NYQ_DW01_add_3'
+  Mapping 'NYQ_DW01_add_4'
+  Mapping 'NYQ_DW01_add_5'
+  Mapping 'MAC_WIDTH24_3_DP_OP_4J1_122_716_0'
+  Mapping 'MAC_WIDTH24_3_DP_OP_4J1_122_716_1'
+Information: Added key list 'DesignWare' to design 'MAC_WIDTH24_0'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'MAC_WIDTH24_1'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'MAC_WIDTH24_2'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'NYQ'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'MAC_WIDTH24_3'. (DDB-72)
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Isolate Ports
+  -----------------------
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning Delay Optimization
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:04:41 1385204.4     46.77    1048.1       0.2                           7310996992.0000
+    0:05:09 1387678.9      5.17      29.0       0.2                           7329918976.0000
+    0:05:09 1387678.9      5.17      29.0       0.2                           7329918976.0000
+    0:05:10 1387691.8      5.16      28.9       0.2                           7329984512.0000
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:08:34 1383749.2      5.14      25.5       0.0                           7296944128.0000
+    0:08:42 1378663.8      5.10      31.3       0.0                           7229446656.0000
+    0:08:49 1373722.2      4.95      29.0       0.0                           7157272064.0000
+    0:08:56 1365101.6      4.96      31.5       0.0                           7103591424.0000
+    0:08:56 1365101.6      4.96      31.5       0.0                           7103591424.0000
+    0:08:59 1365433.4      3.26      17.1       0.0                           7106834432.0000
+    0:08:59 1365433.4      3.26      17.1       0.0                           7106834432.0000
+    0:08:59 1365431.5      3.09      16.6       0.0                           7106797568.0000
+    0:08:59 1365431.5      3.09      16.6       0.0                           7106797568.0000
+    0:09:00 1365431.5      3.09      16.6       0.0                           7106797568.0000
+    0:09:00 1365431.5      3.09      16.6       0.0                           7106797568.0000
+    0:09:07 1365698.8      0.00       0.0       0.0                           7111563264.0000
+    0:09:07 1365698.8      0.00       0.0       0.0                           7111563264.0000
+    0:09:07 1365698.8      0.00       0.0       0.0                           7111563264.0000
+    0:09:07 1365698.8      0.00       0.0       0.0                           7111563264.0000
+    0:09:07 1365698.8      0.00       0.0       0.0                           7111563264.0000
+    0:09:07 1365698.8      0.00       0.0       0.0                           7111563264.0000
+    0:09:07 1365698.8      0.00       0.0       0.0                           7111563264.0000
+    0:09:07 1365698.8      0.00       0.0       0.0                           7111563264.0000
+    0:09:07 1365698.8      0.00       0.0       0.0                           7111563264.0000
+    0:09:07 1365698.8      0.00       0.0       0.0                           7111563264.0000
+    0:09:07 1365698.8      0.00       0.0       0.0                           7111563264.0000
+
+
+  Beginning Design Rule Fixing  (max_transition)
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:09:07 1365698.8      0.00       0.0       0.0                           7111563264.0000
+  Global Optimization (Phase 31)
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+    0:09:11 1366330.1      0.00       0.0       0.0                           7114472960.0000
+    0:09:11 1366330.1      0.00       0.0       0.0                           7114472960.0000
+
+Threshold voltage group cell usage:
+>> saed90cell_svt 100.00%
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:09:11 1366330.1      0.00       0.0       0.0                           7114472960.0000
+  Global Optimization (Phase 34)
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+  Global Optimization (Phase 43)
+  Global Optimization (Phase 44)
+  Global Optimization (Phase 45)
+  Global Optimization (Phase 46)
+  Global Optimization (Phase 47)
+  Global Optimization (Phase 48)
+  Global Optimization (Phase 49)
+  Global Optimization (Phase 50)
+  Global Optimization (Phase 51)
+  Global Optimization (Phase 52)
+  Global Optimization (Phase 53)
+  Global Optimization (Phase 54)
+  Global Optimization (Phase 55)
+  Global Optimization (Phase 56)
+  Global Optimization (Phase 57)
+  Global Optimization (Phase 58)
+  Global Optimization (Phase 59)
+  Global Optimization (Phase 60)
+  Global Optimization (Phase 61)
+  Global Optimization (Phase 62)
+  Global Optimization (Phase 63)
+  Global Optimization (Phase 64)
+  Global Optimization (Phase 65)
+  Global Optimization (Phase 66)
+  Global Optimization (Phase 67)
+  Global Optimization (Phase 68)
+  Global Optimization (Phase 69)
+  Global Optimization (Phase 70)
+  Global Optimization (Phase 71)
+  Global Optimization (Phase 72)
+  Global Optimization (Phase 73)
+  Global Optimization (Phase 74)
+  Global Optimization (Phase 75)
+  Global Optimization (Phase 76)
+  Global Optimization (Phase 77)
+  Global Optimization (Phase 78)
+  Global Optimization (Phase 79)
+  Global Optimization (Phase 80)
+  Global Optimization (Phase 81)
+  Global Optimization (Phase 82)
+  Global Optimization (Phase 83)
+  Global Optimization (Phase 84)
+  Global Optimization (Phase 85)
+  Global Optimization (Phase 86)
+Information: Complementing port 'Rst_RBI' in design 'FF_DATA_WIDTH24_0'.
+         The new name of the port is 'Rst_RBI_BAR'. (OPT-319)
+    0:12:55 1365076.7      0.00       0.0      14.1                           7165231104.0000
+    0:12:55 1365076.7      0.00       0.0      14.1                           7165231104.0000
+    0:12:55 1365076.7      0.00       0.0      14.1                           7165231104.0000
+    0:13:04 1363510.0      0.00       0.0      14.1                           7125753856.0000
+    0:13:04 1363510.0      0.00       0.0      14.1                           7125753856.0000
+    0:13:06 1363510.9      0.00       0.0      14.1                           7125787136.0000
+    0:13:06 1363510.9      0.00       0.0      14.1                           7125787136.0000
+    0:13:06 1363510.9      0.00       0.0      14.1                           7125787136.0000
+    0:13:06 1363510.9      0.00       0.0      14.1                           7125787136.0000
+    0:13:06 1363510.9      0.00       0.0      14.1                           7125787136.0000
+    0:13:06 1363510.9      0.00       0.0      14.1                           7125787136.0000
+    0:13:06 1363510.9      0.00       0.0      14.1                           7125787136.0000
+    0:13:06 1363510.9      0.00       0.0      14.1                           7125787136.0000
+    0:13:06 1363510.9      0.00       0.0      14.1                           7125787136.0000
+    0:13:06 1363510.9      0.00       0.0      14.1                           7125787136.0000
+    0:13:06 1363510.9      0.00       0.0      14.1                           7125787136.0000
+    0:13:06 1363510.9      0.00       0.0      14.1                           7125787136.0000
+    0:13:06 1363510.9      0.00       0.0      14.1                           7125787136.0000
+    0:13:06 1363510.9      0.00       0.0      14.1                           7125787136.0000
+    0:13:06 1363510.9      0.00       0.0      14.1                           7125787136.0000
+    0:13:06 1363510.9      0.00       0.0      14.1                           7125787136.0000
+    0:13:06 1363510.9      0.00       0.0      14.1                           7125787136.0000
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:13:08 1363510.9      0.00       0.0      14.1                           7125787136.0000
+    0:13:13 1362228.0      9.38     259.9      14.1                           7117346304.0000
+    0:13:22 1367223.1      0.18       0.3     191.1 FF_3/Q_DO_reg[23]/D       7149864960.0000
+    0:13:23 1367281.2      0.00       0.0     191.1                           7149995008.0000
+    0:13:23 1367281.2      0.00       0.0     191.1                           7149995008.0000
+    0:13:31 1366078.5      0.00       0.0     191.1                           7123481088.0000
+    0:15:12 1363112.8      0.00       0.0     191.0                           7106016256.0000
+    0:15:26 1363309.1      0.00       0.0       5.8 net65781                  7103511552.0000
+    0:15:29 1365605.7      0.00       0.0       0.0                           7114164736.0000
+    0:15:29 1365605.7      0.00       0.0       0.0                           7114164736.0000
+    0:15:29 1365605.7      0.00       0.0       0.0                           7114164736.0000
+    0:15:29 1365605.7      0.00       0.0       0.0                           7114164736.0000
+    0:15:30 1365578.1      0.00       0.0       0.0                           7113375744.0000
+Loading db file '/work/global/brg/install/adk-pkgs/saed-90nm/pkgs/SAED_EDK90nm_01252011/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models/saed90nm_typ.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Warning: Design 'NYQ' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+     Net 'FF_2/Clk_CI': 24869 load(s), 1 driver(s)
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+1
+dc_shell> 
+dc_shell> 
+dc_shell> report_timing -max_paths 5 > ../reports/timing_max_70.rpt
+dc_shell> report_timing -delay min -max_paths 5 > ../reports/timing_min_70.rpt
+dc_shell> report_area -hierarchy > ../reports/area_70.rpt
+dc_shell> report_power -hierarchy > ../reports/power_70.rpt
+dc_shell> change_names -rules verilog -hierarchy
+Warning: The specified replacement character (_) is conflicting with the specified allowed or restricted character.   (UCN-4)
+1
+dc_shell> write -hierarchy -format verilog -output ./outputs/NYQ_Gate.v
+Writing verilog file '/home/ece5746/ok93/Verilog/version_4/syn/outputs/NYQ_Gate.v'.
+1
+dc_shell> exit
+
+Thank you...
+

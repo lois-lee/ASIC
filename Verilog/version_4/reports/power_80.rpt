@@ -1,0 +1,65 @@
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : NYQ
+Version: M-2016.12
+Date   : Mon Nov 25 17:13:59 2019
+****************************************
+
+
+Library(s) Used:
+
+    saed90nm_typ (File: /work/global/brg/install/adk-pkgs/saed-90nm/pkgs/SAED_EDK90nm_01252011/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models/saed90nm_typ.db)
+
+
+Operating Conditions: TYPICAL   Library: saed90nm_typ
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+NYQ                    140000            saed90nm_typ
+counter                ForQA             saed90nm_typ
+MAC_WIDTH24_3          35000             saed90nm_typ
+FF_DATA_WIDTH24_3      8000              saed90nm_typ
+FF_DATA_WIDTH48_3      8000              saed90nm_typ
+MAC_WIDTH24_0          35000             saed90nm_typ
+MAC_WIDTH24_1          35000             saed90nm_typ
+MAC_WIDTH24_2          35000             saed90nm_typ
+FF_DATA_WIDTH48_0      8000              saed90nm_typ
+FF_DATA_WIDTH48_1      8000              saed90nm_typ
+FF_DATA_WIDTH48_2      8000              saed90nm_typ
+FF_DATA_WIDTH24_0      8000              saed90nm_typ
+FF_DATA_WIDTH24_1      8000              saed90nm_typ
+FF_DATA_WIDTH24_2      8000              saed90nm_typ
+
+
+Global Operating Voltage = 1.2  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+NYQ                                      16.486  352.660 5.81e+08  949.768 100.0
+  FF_4 (FF_DATA_WIDTH24_0)             1.88e-04    7.753 4.98e+06   12.735   1.3
+  MAC_4 (MAC_WIDTH24_0)                   3.373   18.301 9.04e+07  112.097  11.8
+    FF_1 (FF_DATA_WIDTH48_0)              0.193   15.187 9.82e+06   25.202   2.7
+  FF_3 (FF_DATA_WIDTH24_1)             5.45e-04    7.754 4.98e+06   12.736   1.3
+  MAC_3 (MAC_WIDTH24_1)                   3.267   18.055 9.04e+07  111.722  11.8
+    FF_1 (FF_DATA_WIDTH48_1)              0.192   15.181 9.82e+06   25.191   2.7
+  FF_2 (FF_DATA_WIDTH24_2)             3.82e-04    7.753 4.98e+06   12.735   1.3
+  MAC_2 (MAC_WIDTH24_2)                   3.305   18.139 9.04e+07  111.870  11.8
+    FF_1 (FF_DATA_WIDTH48_2)              0.194   15.188 9.83e+06   25.210   2.7
+  FF_1 (FF_DATA_WIDTH24_3)             1.30e-04    7.750 4.98e+06   12.731   1.3
+  MAC_1 (MAC_WIDTH24_3)                   3.158   18.201 9.04e+07  111.760  11.8
+    FF_1 (FF_DATA_WIDTH48_3)              0.102   15.338 9.82e+06   25.259   2.7
+  counter_1 (counter)                  5.81e-03    1.184 6.08e+05    1.798   0.2
+1

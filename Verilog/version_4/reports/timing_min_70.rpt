@@ -1,0 +1,191 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay min
+        -max_paths 5
+Design : NYQ
+Version: M-2016.12
+Date   : Thu Dec  5 22:08:42 2019
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: TYPICAL   Library: saed90nm_typ
+Wire Load Model Mode: enclosed
+
+  Startpoint: counter_1/Cnt_Out_DO_reg[5]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: counter_1/Cnt_Out_DO_reg[5]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                2000000               saed90nm_typ
+  counter            8000                  saed90nm_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk_CI (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  counter_1/Cnt_Out_DO_reg[5]/CLK (DFFASX1)               0.00 #     0.00 r
+  counter_1/Cnt_Out_DO_reg[5]/QN (DFFASX1)                0.17       0.17 f
+  counter_1/U24/Q (MUX21X1)                               0.11       0.28 f
+  counter_1/Cnt_Out_DO_reg[5]/D (DFFASX1)                 0.03       0.31 f
+  data arrival time                                                  0.31
+
+  clock Clk_CI (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  counter_1/Cnt_Out_DO_reg[5]/CLK (DFFASX1)               0.00       0.00 r
+  library hold time                                       0.01       0.01
+  data required time                                                 0.01
+  --------------------------------------------------------------------------
+  data required time                                                 0.01
+  data arrival time                                                 -0.31
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.30
+
+
+  Startpoint: MAC_1/FF_1/Q_DO_reg[3]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: MAC_1/FF_1/Q_DO_reg[3]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                2000000               saed90nm_typ
+  MAC_WIDTH24_3      35000                 saed90nm_typ
+  FF_DATA_WIDTH48_3  8000                  saed90nm_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk_CI (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  MAC_1/FF_1/Q_DO_reg[3]/CLK (DFFARX1)                    0.00 #     0.00 r
+  MAC_1/FF_1/Q_DO_reg[3]/Q (DFFARX1)                      0.22       0.22 f
+  MAC_1/FF_1/U47/Q (MUX21X1)                              0.11       0.33 f
+  MAC_1/FF_1/Q_DO_reg[3]/D (DFFARX1)                      0.03       0.35 f
+  data arrival time                                                  0.35
+
+  clock Clk_CI (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  MAC_1/FF_1/Q_DO_reg[3]/CLK (DFFARX1)                    0.00       0.00 r
+  library hold time                                       0.01       0.01
+  data required time                                                 0.01
+  --------------------------------------------------------------------------
+  data required time                                                 0.01
+  data arrival time                                                 -0.35
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.34
+
+
+  Startpoint: MAC_1/FF_1/Q_DO_reg[2]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: MAC_1/FF_1/Q_DO_reg[2]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                2000000               saed90nm_typ
+  MAC_WIDTH24_3      35000                 saed90nm_typ
+  FF_DATA_WIDTH48_3  8000                  saed90nm_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk_CI (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  MAC_1/FF_1/Q_DO_reg[2]/CLK (DFFARX1)                    0.00 #     0.00 r
+  MAC_1/FF_1/Q_DO_reg[2]/Q (DFFARX1)                      0.22       0.22 f
+  MAC_1/FF_1/U48/Q (MUX21X1)                              0.11       0.33 f
+  MAC_1/FF_1/Q_DO_reg[2]/D (DFFARX1)                      0.03       0.35 f
+  data arrival time                                                  0.35
+
+  clock Clk_CI (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  MAC_1/FF_1/Q_DO_reg[2]/CLK (DFFARX1)                    0.00       0.00 r
+  library hold time                                       0.01       0.01
+  data required time                                                 0.01
+  --------------------------------------------------------------------------
+  data required time                                                 0.01
+  data arrival time                                                 -0.35
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.34
+
+
+  Startpoint: MAC_1/FF_1/Q_DO_reg[1]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: MAC_1/FF_1/Q_DO_reg[1]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                2000000               saed90nm_typ
+  MAC_WIDTH24_3      35000                 saed90nm_typ
+  FF_DATA_WIDTH48_3  8000                  saed90nm_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk_CI (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  MAC_1/FF_1/Q_DO_reg[1]/CLK (DFFARX1)                    0.00 #     0.00 r
+  MAC_1/FF_1/Q_DO_reg[1]/Q (DFFARX1)                      0.22       0.22 f
+  MAC_1/FF_1/U49/Q (MUX21X1)                              0.11       0.33 f
+  MAC_1/FF_1/Q_DO_reg[1]/D (DFFARX1)                      0.03       0.35 f
+  data arrival time                                                  0.35
+
+  clock Clk_CI (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  MAC_1/FF_1/Q_DO_reg[1]/CLK (DFFARX1)                    0.00       0.00 r
+  library hold time                                       0.01       0.01
+  data required time                                                 0.01
+  --------------------------------------------------------------------------
+  data required time                                                 0.01
+  data arrival time                                                 -0.35
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.34
+
+
+  Startpoint: MAC_1/FF_1/Q_DO_reg[0]
+              (rising edge-triggered flip-flop clocked by Clk_CI)
+  Endpoint: MAC_1/FF_1/Q_DO_reg[0]
+            (rising edge-triggered flip-flop clocked by Clk_CI)
+  Path Group: Clk_CI
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  NYQ                2000000               saed90nm_typ
+  MAC_WIDTH24_3      35000                 saed90nm_typ
+  FF_DATA_WIDTH48_3  8000                  saed90nm_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk_CI (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  MAC_1/FF_1/Q_DO_reg[0]/CLK (DFFARX1)                    0.00 #     0.00 r
+  MAC_1/FF_1/Q_DO_reg[0]/Q (DFFARX1)                      0.22       0.22 f
+  MAC_1/FF_1/U50/Q (MUX21X1)                              0.11       0.33 f
+  MAC_1/FF_1/Q_DO_reg[0]/D (DFFARX1)                      0.03       0.35 f
+  data arrival time                                                  0.35
+
+  clock Clk_CI (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  MAC_1/FF_1/Q_DO_reg[0]/CLK (DFFARX1)                    0.00       0.00 r
+  library hold time                                       0.01       0.01
+  data required time                                                 0.01
+  --------------------------------------------------------------------------
+  data required time                                                 0.01
+  data arrival time                                                 -0.35
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.34
+
+
+1
