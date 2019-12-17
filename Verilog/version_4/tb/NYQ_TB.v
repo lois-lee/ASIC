@@ -1,18 +1,18 @@
 /*
  * NYQ_TB.v
  * NYQ block testbench
- * Last modified by : Lois Lee
+ * Last modified by : Tomi Kalejaiye
  * 
- * Last update: Oct 30, 2019
+ * Last update: Dec 16, 2019
  */
  
 `timescale 1ns / 1ps
 
 module NYQ_TB();
 
- localparam CLK_PERIOD = 1.0; // Clock period in ns
+ localparam CLK_PERIOD = 80.0; // Clock period in ns
  localparam IN_DELAY   = 0.2; // Delay after clock edge that testbench signals take to reach DUT pins 
- localparam OUT_DELAY  = 0.8; // Delay after clock edge that DUT outputs take to change
+ localparam OUT_DELAY  = 79.8; // Delay after clock edge that DUT outputs take to change
  localparam ADDR_WIDTH = 11;   // Number of bits for address
  localparam MEM_WIDTH = 24;   // Number of bits for memory words
  localparam IN_WIDTH = 24;    // Number of bits for module inputs
@@ -46,10 +46,10 @@ module NYQ_TB();
 
  
  NYQ #(
-   .ADDR_WIDTH( ADDR_WIDTH ),
-   .MEM_WIDTH ( MEM_WIDTH  ),
-   .IN_WIDTH  ( IN_WIDTH   ),
-   .OUT_WIDTH ( OUT_WIDTH  )
+   //.ADDR_WIDTH( ADDR_WIDTH ),
+   //.MEM_WIDTH ( MEM_WIDTH  ),
+   //.IN_WIDTH  ( IN_WIDTH   ),
+   //.OUT_WIDTH ( OUT_WIDTH  )
  )
  DUT (
    .Clk_CI     ( Clk_C     ),
